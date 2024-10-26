@@ -1,14 +1,8 @@
-import Footer from './components/footer';
-import Header from './components/header';
-
 export default function Home() {
   return (
     <>
-      <div>
-        <Header />
-        Hellow World
-      </div>
-      <Footer />
+      <div>Hellow World</div>
+      <div>This is the home page</div>
     </>
   );
 }
