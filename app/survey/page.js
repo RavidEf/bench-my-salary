@@ -1,3 +1,3 @@
-export default function EnterSalaryPage() {
+export default function SurveyPage() {
   return <div>Here you will enter your salary</div>;
 }
