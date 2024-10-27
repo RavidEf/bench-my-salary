@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import React from 'react';
+import logo from '../../public/images/bench-my-salary-logo.png';
 
 export default function Header() {
   return (
@@ -42,7 +44,9 @@ export default function Header() {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="btn btn-ghost text-xl">
+            <Image src={logo} alt="logo" width={120} height={100} />
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
