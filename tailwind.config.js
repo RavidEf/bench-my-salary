@@ -14,6 +14,15 @@ module.exports = {
         foreground: 'var(--foreground)',
       },
     },
+    animation: {
+      carousel: 'carousel 40s linear infinite',
+    },
+    keyframes: {
+      carousel: {
+        '0%': { transform: 'translateX(0)' },
+        '100%': { transform: 'translateX(-100%)' },
+      },
+    },
   },
   plugins: [daisyui],
 };

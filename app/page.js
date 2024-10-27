@@ -1,3 +1,5 @@
+import CarouselCompanies from './components/carousel';
+
 export default function Home() {
   return (
     <>
@@ -18,8 +20,7 @@ export default function Home() {
         </div>
       </section>
       <div>
-        Slider
-        <div>trusted by these companies</div>
+        <CarouselCompanies />
       </div>
     </>
   );
