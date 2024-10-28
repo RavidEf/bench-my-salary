@@ -1,25 +1,22 @@
-import { config } from 'dotenv-safe';
+import type { Sql } from 'postgres';
 import postgres from 'postgres';
+import { postgresConfig, setEnvironmentVariables } from '../util/config';
 
-export const postgresConfig = {
-  ssl: Boolean(process.env.POSTGRES_URL),
-  transform: {
-    ...postgres.camel,
-    undefined: null,
-  },
-};
+setEnvironmentVariables();
 
-export function setEnvironmentVariables() {
-  if (process.env.NODE_ENV === 'production' || process.env.CI) {
-    // Set standard environment variables for Postgres.js from
-    // Vercel environment variables
-    if (process.env.POSTGRES_URL) {
-      process.env.PGHOST = process.env.POSTGRES_HOST;
-      process.env.PGDATABASE = process.env.POSTGRES_DATABASE;
-      process.env.PGUSERNAME = process.env.POSTGRES_USER;
-      process.env.PGPASSWORD = process.env.POSTGRES_PASSWORD;
-    }
-    return;
-  }
-  config();
+declare namespace globalThis {
+  let postgresSqlClient: Sql;
 }
+
+// Connect only once to the database
+// https://github.com/vercel/next.js/issues/7811#issuecomment-715259370
+function connectOneTimeToDatabase() {
+  if (!('postgresSqlClient' in globalThis)) {
+    globalThis.postgresSqlClient = postgres(postgresConfig);
+  }
+
+  return globalThis.postgresSqlClient;
+}
+
+// Connect to PostgreSQL
+export const sql = connectOneTimeToDatabase();

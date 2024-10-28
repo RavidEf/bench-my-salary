@@ -5,6 +5,13 @@ import CarouselCompanies from './components/carousel';
 export default async function Home() {
   const jobInfo = await getJobInformationInsecure();
   console.log('jobInfo results:', jobInfo);
+
+  const avg =
+    (jobInfo[0].income +
+      jobInfo[1].income +
+      jobInfo[2].income +
+      jobInfo[3].income) /
+    4;
   return (
     <>
       <section>
@@ -24,6 +31,8 @@ export default async function Home() {
                 {jobInfo[0].jobTitle}, {jobInfo[0].income}€
                 <br />
                 <br />
+                The average salary amount of all entries:
+                {avg}€
                 <br />
               </p>
               <button className="btn btn-primary">Add your salary</button>
