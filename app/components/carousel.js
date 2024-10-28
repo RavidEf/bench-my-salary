@@ -11,6 +11,8 @@ import Samsung from '../../public/images/samsung-logo.png';
 import SAP from '../../public/images/sap-logo.png';
 import Siemens from '../../public/images/siemens.png';
 import Toyota from '../../public/images/toyota-logo.png';
+import Xbox from '../../public/images/xbox.png';
+import Yelp from '../../public/images/yelp.png';
 
 export default function CarouselCompanies() {
   return (
@@ -98,20 +100,20 @@ export default function CarouselCompanies() {
           <div className="carousel-item flex-none w-48">
             <Image
               src={Amazon}
+              alt="amazon logo"
+              className="h-20 w-auto object-contain"
+            />
+          </div>
+          <div className="carousel-item flex-none w-48">
+            <Image
+              src={Xbox}
               alt="porsche logo"
               className="h-20 w-auto object-contain"
             />
           </div>
           <div className="carousel-item flex-none w-48">
             <Image
-              src={Porsce}
-              alt="porsche logo"
-              className="h-20 w-auto object-contain"
-            />
-          </div>
-          <div className="carousel-item flex-none w-48">
-            <Image
-              src={Porsce}
+              src={Yelp}
               alt="porsche logo"
               className="h-20 w-auto object-contain"
             />
