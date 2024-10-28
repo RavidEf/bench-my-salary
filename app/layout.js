@@ -17,6 +17,9 @@ const geistMono = localFont({
 export const metadata = {
   title: 'Home | Bench My Salary',
   description: 'Upload your salary, check if you are being paid well or not',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({ children }) {

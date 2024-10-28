@@ -1,6 +1,7 @@
 import { get } from 'http';
 import { getJobInformationInsecure } from '../database/jobinformation';
 import CarouselCompanies from './components/carousel';
+import { handelClickToLogin } from './components/navigationlogin';
 
 export default async function Home() {
   const jobInfo = await getJobInformationInsecure();
@@ -35,7 +36,9 @@ export default async function Home() {
                 {avg}€
                 <br />
               </p>
-              <button className="btn btn-primary">Add your salary</button>
+              <button className="btn btn-primary" onClick={handelClickToLogin}>
+                Add your salary
+              </button>
             </div>
           </div>
         </div>
