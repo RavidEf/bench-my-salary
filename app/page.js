@@ -1,6 +1,10 @@
+import { get } from 'http';
+import { getJobInformationInsecure } from '../database/jobinformation';
 import CarouselCompanies from './components/carousel';
 
-export default function Home() {
+export default async function Home() {
+  const jobInfo = await getJobInformationInsecure();
+  console.log('jobInfo results:', jobInfo);
   return (
     <>
       <section>
@@ -14,7 +18,15 @@ export default function Home() {
                 Check your worth, add your salary and see if your are getting
                 properly compensated compared to the market.
               </p>
-              <button className="btn btn-primary">Add salary</button>
+              <p>
+                last salary entered 4 minutes ago:
+                <br />
+                {jobInfo[0].jobTitle}, {jobInfo[0].income}€
+                <br />
+                <br />
+                <br />
+              </p>
+              <button className="btn btn-primary">Add your salary</button>
             </div>
           </div>
         </div>
