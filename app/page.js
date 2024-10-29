@@ -1,18 +1,12 @@
 import { get } from 'http';
-import { getJobInformationInsecure } from '../database/jobinformation';
+import { getSalaryInsecure } from '../database/jobinformation';
 import CarouselCompanies from './components/carousel';
 import { handelClickToLogin } from './components/navigationlogin';
 
 export default async function Home() {
-  const jobInfo = await getJobInformationInsecure();
-  console.log('jobInfo results:', jobInfo);
+  const jobInfo = await getSalaryInsecure();
+  console.log('jobInfo results:', jobInfo[0]);
 
-  const avg =
-    (jobInfo[0].income +
-      jobInfo[1].income +
-      jobInfo[2].income +
-      jobInfo[3].income) /
-    4;
   return (
     <>
       <section>
@@ -28,13 +22,14 @@ export default async function Home() {
               </p>
               <p>
                 last salary entered 4 minutes ago:
-                <br />
-                {jobInfo[0].jobTitle}, {jobInfo[0].income}€
-                <br />
-                <br />
-                The average salary amount of all entries:
-                {avg}€
-                <br />
+                {jobInfo.map((item) => {
+                  return (
+                    <div key={`item-${item.id}`}>
+                      salary: {item.salary}€, Years of expereince:{' '}
+                      {item.yearsOfExperience}.
+                    </div>
+                  );
+                })}
               </p>
               <button className="btn btn-primary" onClick={handelClickToLogin}>
                 Add your salary

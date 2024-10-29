@@ -12,7 +12,7 @@ export type jobInformationType = {
   yearsOfExperience: number;
 };
 
-export const getJobInformationInsecure = cache(async () => {
+/* export const getJobInformationInsecure = cache(async () => {
   const jobInformations = await sql`
     SELECT
       *
@@ -20,7 +20,7 @@ export const getJobInformationInsecure = cache(async () => {
       salaries
   `;
   return jobInformations;
-});
+}); */
 
 const jobInformationTable: jobInformationType[] = [
   {
@@ -34,3 +34,16 @@ const jobInformationTable: jobInformationType[] = [
     yearsOfExperience: 3,
   },
 ];
+
+export const getSalaryInsecure = cache(async () => {
+  const salaries = await sql`
+    SELECT
+      salary,
+      years_of_experience,
+      gender_id AS gender,
+      id
+    FROM
+      job_information
+  `;
+  return salaries;
+});
