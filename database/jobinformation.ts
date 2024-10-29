@@ -7,9 +7,8 @@ export type jobInformationType = {
   seniorityId: number;
   indusrtyId: number;
   genderId: number;
-  email: string;
   salary: number;
-  useId: number;
+  userId: number;
   yearsOfExperience: number;
 };
 
@@ -30,9 +29,8 @@ const jobInformationTable: jobInformationType[] = [
     seniorityId: 1,
     indusrtyId: 1,
     genderId: 1,
-    email: 'dev@example.com',
     salary: 50000,
-    useId: 1,
+    userId: 1,
     yearsOfExperience: 3,
   },
 ];
