@@ -1,4 +1,4 @@
-const jobFunctions = [
+const titles = [
   {
     id: 1,
     jobFunction: 'Frontend  web Developer',

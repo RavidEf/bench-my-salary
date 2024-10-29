@@ -1,48 +1,40 @@
 import type { Sql } from 'postgres';
 
-const salaryEntries = [
+const users = [
   {
-    id: 1,
-    jobTitle: 'Front end web developer',
-    income: 55000,
+    passwordHash: 'xqxqxqxqxqxq',
+    email: 'dev1@exmaple.com',
   },
   {
-    id: 2,
-    jobTitle: 'Beckend web developer',
-    income: 60000,
+    passwordHash: 'xqxqxdewsqxqxqxq',
+    email: 'dev2@exmaple.com',
   },
   {
-    id: 3,
-    jobTitle: 'Full stack web developer',
-    income: 65000,
-  },
-  {
-    id: 4,
-    jobTitle: 'Software Engineer',
-    income: 69000,
+    passwordHash: 'xqxqdewxqxqxqxq',
+    email: 'dev3@exmaple.com',
   },
 ];
 
 export async function up(sql: Sql) {
-  for (const salary of salaryEntries) {
+  for (const user of users) {
     await sql`
       INSERT INTO
-        salaries (job_title, income)
+        users (password_hash, email)
       VALUES
         (
-          ${salary.jobTitle},
-          ${salary.income}
+          ${user.passwordHash},
+          ${user.email}
         )
     `;
   }
 }
 
 export async function down(sql: Sql) {
-  for (const salary of salaryEntries) {
+  for (const user of users) {
     await sql`
-      DELETE FROM salaries
+      DELETE FROM users
       WHERE
-        id = ${salary.id}
+        email = ${user.email}
     `;
   }
 }
