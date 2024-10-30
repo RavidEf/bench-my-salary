@@ -1,8 +1,27 @@
 'use client';
 import Image from 'next/image';
+import { useState } from 'react';
 import logo from '../../../public/images/bench-my-salary-logo.png';
 
 export default function RegisterForm() {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState<{ message: string }[]>([]);
+
+  async function handleRegister(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const response = await fetch('api/register', {
+      method: 'POST',
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+    });
+  }
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -18,7 +37,10 @@ export default function RegisterForm() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form
+            onSubmit={async (event) => await handleRegister(event)}
+            className="space-y-6"
+          >
             <div>
               <label
                 htmlFor="email"
@@ -33,6 +55,8 @@ export default function RegisterForm() {
                   type="text"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value={username}
+                  onChange={(event) => setUsername(event.currentTarget.value)}
                 />
               </div>
             </div>
@@ -51,6 +75,8 @@ export default function RegisterForm() {
                   required
                   autoComplete="email"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value={email}
+                  onChange={(event) => setEmail(event.currentTarget.value)}
                 />
               </div>
             </div>
@@ -72,6 +98,8 @@ export default function RegisterForm() {
                   required
                   autoComplete="current-password"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value={password}
+                  onChange={(event) => setPassword(event.currentTarget.value)}
                 />
               </div>
             </div>
