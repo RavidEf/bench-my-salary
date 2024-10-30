@@ -5,7 +5,8 @@ export async function up(sql: Sql) {
     CREATE TABLE users (
       id serial PRIMARY KEY,
       password_hash varchar(100) NOT NULL,
-      email varchar(100) NOT NULL UNIQUE
+      email varchar(100) NOT NULL UNIQUE,
+      user_name varchar(50) NOT NULL
     )
   `;
 }
