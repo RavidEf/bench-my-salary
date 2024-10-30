@@ -77,16 +77,16 @@ export default function SurveyForm() {
               <option>Star Trek</option>
             </select>
           </label>
-          <label className="label mt-4">Years of Experience</label>
+          <label className="label mt-4">Years of Experience: {yrs}</label>
           <input
             type="range"
-            min={0}
-            max="100"
+            min={1}
+            max="20"
             step="1"
             value={yrs}
             className="range"
             onChange={(e) => {
-              setYrs(e.target.value);
+              setYrs(Number(e.target.value));
             }}
           />
           <div className="flex w-full max-w-xs justify-between px-2 text-xs">
@@ -105,6 +105,11 @@ export default function SurveyForm() {
             <span>13</span>
             <span>14</span>
             <span>15</span>
+            <span>16</span>
+            <span>17</span>
+            <span>18</span>
+            <span>19</span>
+            <span>20</span>
           </div>
           <br />
           <br />
