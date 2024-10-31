@@ -52,14 +52,14 @@ export const createUserInsecure = cache(
 // get a user with pass hash
 
 export const getUserWithPasswordHashInsecure = cache(
-  async (userName: User['userName']) => {
+  async (email: User['email']) => {
     const [user] = await sql<UserWithPasswordHash[]>`
       SELECT
         *
       FROM
         users
       WHERE
-        user_name = ${userName}
+        email = ${email}
     `;
 
     return user;

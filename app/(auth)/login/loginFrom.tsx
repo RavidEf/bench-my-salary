@@ -38,7 +38,7 @@ export default function RegisterForm() {
             className="mx-auto h-10 w-auto"
           />
           <h1 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Register for free
+            Login to your account
           </h1>
         </div>
 

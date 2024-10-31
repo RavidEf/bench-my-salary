@@ -1,19 +1,14 @@
 import bcrypt from 'bcrypt';
 import { NextResponse } from 'next/server';
-// import { z } from 'zod';
+import { getUserWithPasswordHashInsecure } from '../../../../database/users';
 import {
-  createUserInsecure,
-  getUserInsecure,
-  getUserWithPasswordHashInsecure,
-} from '../../../../database/users';
-import {
+  loginSchema,
   type User,
-  userSchema,
 } from '../../../../migrations/00000-createtableusers';
 
 export type LoginResponseBody =
   | {
-      user: { username: User['userName'] };
+      user: { email: User['email'] };
     }
   | { errors: { message: string }[] };
 
@@ -27,7 +22,7 @@ export async function POST(
 
   // 2. Validate the user data with zod
 
-  const result = userSchema.safeParse(requestBody);
+  const result = loginSchema.safeParse(requestBody);
   // console.log('zod result', result);
 
   if (!result.success) {
@@ -36,7 +31,7 @@ export async function POST(
 
   // 3. Varify the user credentials
   const userWithPasswordHash = await getUserWithPasswordHashInsecure(
-    result.data.username,
+    result.data.email,
   );
 
   if (!userWithPasswordHash) {
@@ -72,6 +67,6 @@ export async function POST(
     );
   }
   return NextResponse.json({
-    user: { username: userWithPasswordHash.userName },
+    user: { email: userWithPasswordHash.email },
   });
 }
