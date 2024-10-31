@@ -50,7 +50,7 @@ export default function RegisterForm() {
           >
             <div>
               <label
-                htmlFor="email"
+                htmlFor="fname"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 First Name

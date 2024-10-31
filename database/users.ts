@@ -10,7 +10,8 @@ export const getUserInsecure = cache(async (userName: User['userName']) => {
   const [user] = await sql<User[]>`
     SELECT
       id,
-      user_name
+      user_name,
+      email
     FROM
       users
     WHERE
