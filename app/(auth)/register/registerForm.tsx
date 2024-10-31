@@ -27,6 +27,9 @@ export default function RegisterForm() {
       setErrors(data.errors);
       return;
     }
+    setUsername('');
+    setEmail('');
+    setPassword('');
   }
 
   return (

@@ -45,9 +45,9 @@ export default function Header() {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">
+          <Link href="/" className="btn btn-ghost text-xl">
             <Image src={logo} alt="logo" width={120} height={100} />
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
