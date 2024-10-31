@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import logo from '../../public/images/bench-my-salary-logo.png';
 
@@ -72,7 +73,12 @@ export default function Header() {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <Link href="/register" className="btn">
+            Register
+          </Link>
+          <Link href="/login" className="btn">
+            Login
+          </Link>
         </div>
       </div>
     </section>

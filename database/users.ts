@@ -49,6 +49,7 @@ export const createUserInsecure = cache(
     return user;
   },
 );
+// get a user with pass hash
 
 export const getUserWithPasswordHashInsecure = cache(
   async (userName: User['userName']) => {
