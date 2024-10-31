@@ -6,15 +6,15 @@ export type UserWithPasswordHash = User & {
   passwordHash: string;
 };
 
-export const getUserInsecure = cache(async (username: User['userName']) => {
+export const getUserInsecure = cache(async (userName: User['userName']) => {
   const [user] = await sql<User[]>`
     SELECT
       id,
-      username
+      user_name
     FROM
       users
     WHERE
-      username = ${username}
+      user_name = ${userName}
   `;
 
   return user;
@@ -29,7 +29,7 @@ export const createUserInsecure = cache(
     const [user] = await sql<User[]>`
       INSERT INTO
         users (
-          username,
+          user_name,
           email,
           password_hash
         )
@@ -42,7 +42,7 @@ export const createUserInsecure = cache(
       RETURNING
         users.id,
         users.email,
-        users.username
+        users.user_name
     `;
 
     return user;
@@ -50,14 +50,14 @@ export const createUserInsecure = cache(
 );
 
 export const getUserWithPasswordHashInsecure = cache(
-  async (username: User['userName']) => {
+  async (userName: User['userName']) => {
     const [user] = await sql<UserWithPasswordHash[]>`
       SELECT
         *
       FROM
         users
       WHERE
-        username = ${username}
+        user_name = ${userName}
     `;
 
     return user;

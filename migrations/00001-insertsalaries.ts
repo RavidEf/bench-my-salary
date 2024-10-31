@@ -2,17 +2,17 @@ import type { Sql } from 'postgres';
 
 const users = [
   {
-    userName: 'Marco',
+    username: 'Marco',
     passwordHash: 'xqxqxqxqxqxq',
     email: 'dev1@exmaple.com',
   },
   {
-    userName: 'Jack',
+    username: 'Jack',
     passwordHash: 'xqxqxdewsqxqxqxq',
     email: 'dev2@exmaple.com',
   },
   {
-    userName: 'Baloo',
+    username: 'Baloo',
     passwordHash: 'xqxqdewxqxqxqxq',
     email: 'dev3@exmaple.com',
   },
@@ -29,7 +29,7 @@ export async function up(sql: Sql) {
         )
       VALUES
         (
-          ${user.userName},
+          ${user.username},
           ${user.passwordHash},
           ${user.email}
         )
