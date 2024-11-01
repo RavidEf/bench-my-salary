@@ -5,7 +5,6 @@ import { handelClickToLogin } from './components/navigationlogin';
 
 export default async function Home() {
   const jobInfo = await getSalaryInsecure();
-  console.log('jobInfo results:', jobInfo[0]);
 
   return (
     <>
@@ -20,7 +19,7 @@ export default async function Home() {
                 Check your worth, add your salary and see if your are getting
                 properly compensated compared to the market.
               </p>
-              <p>
+              {/*  <p>
                 last salary entered 4 minutes ago:
                 {jobInfo.map((item) => {
                   return (
@@ -30,7 +29,7 @@ export default async function Home() {
                     </div>
                   );
                 })}
-              </p>
+              </p> */}
               <button className="btn btn-primary" onClick={handelClickToLogin}>
                 Add your salary
               </button>

@@ -1,4 +1,4 @@
 'use client';
 export function handelClickToLogin() {
-  window.location.href = '/login/';
+  window.location.href = '/register/';
 }
