@@ -7,7 +7,7 @@ import {
   getUserInsecure,
 } from '../../../../database/users';
 import {
-  RegisterUserSchema,
+  registerUserSchema,
   type User,
 } from '../../../../migrations/00000-createtableusers';
 
@@ -31,7 +31,7 @@ export async function POST(
   const requestBody = await request.json();
 
   // 2. Validate the user data with zod (userSchema we define in users.ts)
-  const result = RegisterUserSchema.safeParse(requestBody);
+  const result = registerUserSchema.safeParse(requestBody);
   // console.log('zod result', result);
 
   // return the errors we get from a falsy registration

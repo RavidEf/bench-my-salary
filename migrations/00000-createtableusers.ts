@@ -1,7 +1,7 @@
 import type { Sql } from 'postgres';
 import { z } from 'zod';
 
-export const RegisterUserSchema = z.object({
+export const registerUserSchema = z.object({
   username: z.string().min(3),
   email: z.string().email().min(5),
   password: z.string().min(6),

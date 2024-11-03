@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import logo from '../../../public/images/bench-my-salary-logo.png';
 import type { RegisterResponseBody } from '../api/register/route';
@@ -9,6 +10,8 @@ export default function RegisterForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ message: string }[]>([]);
+
+  const router = useRouter();
 
   async function handleRegister(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -27,6 +30,9 @@ export default function RegisterForm() {
       setErrors(data.errors);
       return;
     }
+
+    router.push('/');
+
     setUsername('');
     setEmail('');
     setPassword('');
@@ -117,6 +123,11 @@ export default function RegisterForm() {
               <button className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                 Register
               </button>
+              {errors.map((error) => (
+                <div className="text-red-500" key={`error-${error.message}`}>
+                  <p>{error.message}</p>{' '}
+                </div>
+              ))}
             </div>
           </form>
           <br />
