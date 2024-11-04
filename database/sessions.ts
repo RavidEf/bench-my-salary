@@ -19,6 +19,12 @@ export const createSessionInsecure = cache(
         sessions.user_id
     `;
 
+    await sql`
+      DELETE FROM sessions
+      WHERE
+        sessions.expiry_timestamp < now()
+    `;
+
     return session;
   },
 );

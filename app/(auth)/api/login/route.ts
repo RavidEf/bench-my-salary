@@ -8,6 +8,7 @@ import {
   loginSchema,
   type User,
 } from '../../../../migrations/00000-createtableusers';
+import { secureCookieOptions } from '../../../../util/cookies';
 
 export type LoginResponseBody =
   | {
@@ -104,11 +105,7 @@ export async function POST(
   (await cookies()).set({
     name: 'sessionToken',
     value: session.token,
-    httpOnly: true,
-    path: '/',
-    sameSite: 'lax',
-    secure: process.env.NODE_ENV === 'production',
-    maxAge: 60 * 60 * 24,
+    ...secureCookieOptions,
   });
   // 8. Return the new user infromation without the password hash
 
