@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import LogoutButton from '../(auth)/logout/logoutButton';
 import logo from '../../public/images/bench-my-salary-logo.png';
 
 export default function Header() {
@@ -73,6 +74,7 @@ export default function Header() {
           </ul>
         </div>
         <div className="navbar-end">
+          <LogoutButton />
           <Link href="/register" className="btn">
             Register
           </Link>

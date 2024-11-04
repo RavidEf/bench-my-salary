@@ -4,6 +4,23 @@ import type { Session } from '../migrations/00012-createtablesessions';
 import { sql } from './connect';
 import type { UserWithPasswordHash } from './users';
 
+export const getValidSessionToken = cache(
+  async (sessionToken: Session['token']) => {
+    const [session] = await sql<Session[]>`
+      SELECT
+        sessions.token,
+        sessions.user_id
+      FROM
+        sessions
+      WHERE
+        sessions.token = ${sessionToken}
+        AND sessions.expiry_timestamp > now()
+    `;
+
+    return session;
+  },
+);
+
 export const createSessionInsecure = cache(
   async (userId: User['id'], token: Session['token']) => {
     const [session] = await sql<Session[]>`
@@ -28,3 +45,16 @@ export const createSessionInsecure = cache(
     return session;
   },
 );
+
+export const deleteSession = cache(async (sessionToken: Session['token']) => {
+  const [user] = await sql<Session[]>`
+    DELETE FROM sessions
+    WHERE
+      sessions.token = ${sessionToken}
+    RETURNING
+      sessions.token,
+      sessions.user_id
+  `;
+
+  return user;
+});
