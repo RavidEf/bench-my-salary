@@ -5,14 +5,14 @@ import { sql } from './connect';
 import type { UserWithPasswordHash } from './users';
 
 export const createSessionInsecure = cache(
-  async (token: Session['token'], userId: User['id']) => {
+  async (userId: User['id'], token: Session['token']) => {
     const [session] = await sql<Session[]>`
       INSERT INTO
-        sessions (user_id, token,)
+        sessions (user_id, token)
       VALUES
         (
           ${userId},
-          ${token},
+          ${token}
         )
       RETURNING
         sessions.token,
