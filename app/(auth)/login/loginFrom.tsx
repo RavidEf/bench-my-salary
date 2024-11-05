@@ -32,6 +32,7 @@ export default function RegisterForm() {
     }
 
     router.push('/dashboard');
+    router.refresh();
 
     setEmail('');
     setPassword('');
@@ -111,12 +112,9 @@ export default function RegisterForm() {
               ))}
             </div>
           </form>
-          <br />
-          <br />
-          <br />
-          <br />
+
           <p className="mt-10 text-center text-sm/6 text-gray-500">
-            Not a member yet?{' '}
+            No account yet?{' '}
             <Link
               href="/register"
               className="font-semibold text-indigo-600 hover:text-indigo-500"

@@ -1,10 +1,19 @@
+import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import LogoutButton from '../(auth)/logout/logoutButton';
+import { getValidSessionToken } from '../../database/sessions';
 import logo from '../../public/images/bench-my-salary-logo.png';
 
-export default function Header() {
+export default async function Header() {
+  // 1. Check if the sessionToken cookie exists
+  const sessionTokenCookie = (await cookies()).get('sessionToken');
+  // 2. Check if the sessionToken is still valid
+  const session =
+    sessionTokenCookie &&
+    (await getValidSessionToken(sessionTokenCookie.value));
+
   return (
     <section>
       <div className="navbar bg-base-100">
@@ -73,15 +82,24 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
-          <LogoutButton />
-          <Link href="/register" className="btn">
-            Register
-          </Link>
-          <Link href="/login" className="btn">
-            Login
-          </Link>
-        </div>
+        {session ? (
+          <div className="navbar-end">
+            <Link href="/dashboard" className="btn">
+              {' '}
+              Dashboard{' '}
+            </Link>
+            <LogoutButton />{' '}
+          </div>
+        ) : (
+          <div className="navbar-end">
+            <Link href="/register" className="btn">
+              Register
+            </Link>
+            <Link href="/login" className="btn">
+              Login
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
