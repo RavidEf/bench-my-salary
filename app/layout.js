@@ -1,5 +1,7 @@
 import './globals.css';
 import localFont from 'next/font/local';
+import { cookies } from 'next/headers';
+import { getUser } from '../database/users';
 import Footer from './components/footer';
 import Header from './components/header';
 
@@ -22,7 +24,7 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body

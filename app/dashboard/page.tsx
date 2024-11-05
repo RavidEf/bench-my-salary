@@ -19,9 +19,14 @@ export default async function DashboardPage() {
     redirect('/login?returnTo=/dashboard');
   }
   return (
-    <>
-      <div>This is the dashboard page</div>
-      <div>Here the user will be able to see all their salary entries</div>
-    </>
+    <section>
+      <div className="hero bg-base-200 min-h-screen">
+        <div className="hero-content text-center">
+          <div className="max-w-md">
+            <h1 className="text-5xl font-bold">The Dashboard page</h1>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

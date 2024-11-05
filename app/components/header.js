@@ -4,15 +4,19 @@ import Link from 'next/link';
 import React from 'react';
 import LogoutButton from '../(auth)/logout/logoutButton';
 import { getValidSessionToken } from '../../database/sessions';
+import { getUser } from '../../database/users';
 import logo from '../../public/images/bench-my-salary-logo.png';
 
-export default async function Header() {
+export default async function Header(props) {
   // 1. Check if the sessionToken cookie exists
   const sessionTokenCookie = (await cookies()).get('sessionToken');
   // 2. Check if the sessionToken is still valid
   const session =
     sessionTokenCookie &&
     (await getValidSessionToken(sessionTokenCookie.value));
+
+  // Display the user name that has a valid token from the DB
+  const user = sessionTokenCookie && (await getUser(sessionTokenCookie?.value));
 
   return (
     <section>
@@ -82,8 +86,9 @@ export default async function Header() {
             </li>
           </ul>
         </div>
-        {session ? (
+        {user ? (
           <div className="navbar-end">
+            <p>Hi {user.userName} </p>
             <Link href="/dashboard" className="btn">
               {' '}
               Dashboard{' '}

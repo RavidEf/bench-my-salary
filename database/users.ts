@@ -1,5 +1,6 @@
 import { cache } from 'react';
 import type { User } from '../migrations/00000-createtableusers';
+import type { Session } from '../migrations/00012-createtablesessions';
 import { sql } from './connect';
 
 export type UserWithPasswordHash = User & {
@@ -16,6 +17,22 @@ export const getUserInsecure = cache(async (userName: User['userName']) => {
       users
     WHERE
       user_name = ${userName}
+  `;
+
+  return user;
+});
+
+export const getUser = cache(async (sessionToken: Session['token']) => {
+  const [user] = await sql<User[]>`
+    SELECT
+      users.id,
+      users.user_name
+    FROM
+      users
+      INNER JOIN sessions ON (sessions.user_id = users.id)
+    WHERE
+      sessions.token = ${sessionToken}
+      AND sessions.expiry_timestamp > now()
   `;
 
   return user;
