@@ -3,6 +3,7 @@ import './survey.css';
 import { useState } from 'react';
 
 export default function SurveyForm() {
+  const [jobFunction, setJobFunction] = useState('Frontend web Developer');
   const [yrs, setYrs] = useState(1);
 
   return (
@@ -14,68 +15,88 @@ export default function SurveyForm() {
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">Job Function</span>
+              <p>{jobFunction}</p>
             </div>
-            <select className="select select-bordered w-full max-w-xs">
-              <option disabled selected>
-                Pick one
+            <select
+              className="select select-bordered w-full max-w-xs"
+              required
+              value={jobFunction}
+              onChange={(e) => setJobFunction(e.currentTarget.value)}
+            >
+              <option value="Frontend web Developer">
+                Frontend web Developer
               </option>
-              <option>Star Wars</option>
-              <option>Harry Potter</option>
-              <option>Lord of the Rings</option>
-              <option>Planet of the Apes</option>
-              <option>Star Trek</option>
+              <option value="Backend web Developer">
+                Backend web Developer
+              </option>
+              <option value="Full-stack web Developer">
+                Full-stack web Developer
+              </option>
+              <option value="Software Developer">Software Developer</option>
+              <option value="Android mobile Developer">
+                Android mobile Developer
+              </option>
+              <option value="iOS mobile Developer">iOS mobile Developer</option>
             </select>
           </label>
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text">
-                Pick the best fantasy franchise
-              </span>
+              <span className="label-text">Seniority Level</span>
             </div>
-            <select className="select select-bordered w-full max-w-xs">
-              <option disabled selected>
-                Pick one
-              </option>
-              <option>Star Wars</option>
-              <option>Harry Potter</option>
-              <option>Lord of the Rings</option>
-              <option>Planet of the Apes</option>
-              <option>Star Trek</option>
+            <select className="select select-bordered w-full max-w-xs" required>
+              <option>Junior</option>
+              <option>Mid-level</option>
+              <option>Senior</option>
+              <option>Principal</option>
+              <option>Lead</option>
             </select>
           </label>
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text">
-                Pick the best fantasy franchise
-              </span>
+              <span className="label-text">Industry</span>
             </div>
             <select className="select select-bordered w-full max-w-xs">
-              <option disabled selected>
-                Pick one
-              </option>
-              <option>Star Wars</option>
-              <option>Harry Potter</option>
-              <option>Lord of the Rings</option>
-              <option>Planet of the Apes</option>
-              <option>Star Trek</option>
+              <option>Food Delivery</option>
+              <option>Technology</option>
+              <option>Consulting</option>
+              <option>Pharmaceuticals</option>
+              <option>Finance and Banking</option>
+              <option>Healthcare</option>
             </select>
           </label>
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text">
-                Pick the best fantasy franchise
-              </span>
+              <span className="label-text">Gender</span>
             </div>
             <select className="select select-bordered">
-              <option disabled selected>
-                Pick one
-              </option>
-              <option>Star Wars</option>
-              <option>Harry Potter</option>
-              <option>Lord of the Rings</option>
-              <option>Planet of the Apes</option>
-              <option>Star Trek</option>
+              <option>Female</option>
+              <option>Male</option>
             </select>
+          </label>
+
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text">
+                What is your company Email address?
+              </span>
+            </div>
+            <input
+              type="email"
+              placeholder="ex. marco@upleveled.io"
+              className="input input-bordered w-full max-w-xs"
+            />
+          </label>
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text">
+                What is your annual salary in Euro?
+              </span>
+            </div>
+            <input
+              type="text"
+              placeholder="ex. 65,000"
+              className="input input-bordered w-full max-w-xs"
+            />
           </label>
           <label className="label mt-4">Years of Experience: {yrs}</label>
           <input
@@ -111,6 +132,11 @@ export default function SurveyForm() {
             <span>19</span>
             <span>20</span>
           </div>
+          <br />
+          <br />
+          <button className="btn btn-primary">Submit Salary</button>
+
+          <br />
           <br />
           <br />
           <br />
