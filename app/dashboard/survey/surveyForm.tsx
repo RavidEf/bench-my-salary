@@ -4,24 +4,32 @@ import { setegid } from 'process';
 import { useState } from 'react';
 
 export default function SurveyForm() {
-  const [jobFunction, setJobFunction] = useState('Frontend web Developer');
-  const [seniority, setSeniority] = useState('Junior');
-  const [industry, setIndustry] = useState('Food Delivery');
-  const [gender, setGender] = useState('Female');
+  const [jobFunction, setJobFunction] = useState('');
+  const [seniority, setSeniority] = useState('');
+  const [industry, setIndustry] = useState('');
+  const [gender, setGender] = useState('');
   const [email, setEmail] = useState('');
   const [salary, setSalary] = useState('');
   const [yrs, setYrs] = useState(1);
+
+  // console.log('salary amount:', salary);
+  // console.log('email:', email);
+  // console.log('years of experience:', yrs);
 
   return (
     <section className="survey-page-container">
       Here you will enter your salary
       <h1>Add your salary details</h1>
+      <div>
+        You are a <b>{gender}</b> <b>{seniority}</b> <b>{jobFunction}</b> with{' '}
+        <b>{yrs}</b> years of expeience, working in <b>{industry}</b> (good for
+        you!!) and making <b>{salary}</b>€ a year, nice.
+      </div>
       <div className="w-full max-w-xs">
         <form className="survey-form">
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">Job Function</span>
-              <p>{jobFunction}</p>
             </div>
             <select
               className="select select-bordered w-full max-w-xs"
@@ -48,7 +56,6 @@ export default function SurveyForm() {
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">Seniority Level</span>
-              <p>{seniority}</p>
             </div>
             <select
               className="select select-bordered w-full max-w-xs"
@@ -66,7 +73,6 @@ export default function SurveyForm() {
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">Industry</span>
-              <p>{industry}</p>
             </div>
             <select
               className="select select-bordered w-full max-w-xs"
@@ -85,7 +91,6 @@ export default function SurveyForm() {
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">Gender</span>
-              <p>{gender}</p>
             </div>
             <select
               className="select select-bordered"
@@ -120,7 +125,7 @@ export default function SurveyForm() {
               </span>
             </div>
             <input
-              type="text"
+              type="number"
               placeholder="ex. 65,000"
               className="input input-bordered w-full max-w-xs"
               required
