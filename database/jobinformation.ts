@@ -22,19 +22,6 @@ export type jobInformationType = {
   return jobInformations;
 }); */
 
-const jobInformationTable: jobInformationType[] = [
-  {
-    id: 1,
-    jobFunctionId: 1,
-    seniorityId: 1,
-    indusrtyId: 1,
-    genderId: 1,
-    salary: 50000,
-    userId: 1,
-    yearsOfExperience: 3,
-  },
-];
-
 export const getSalaryInsecure = cache(async () => {
   const salaries = await sql`
     SELECT

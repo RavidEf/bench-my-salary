@@ -1,20 +1,50 @@
 'use client';
 import './survey.css';
-import { setegid } from 'process';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import type { LoginResponseBody } from '../../(auth)/api/login/route';
 
 export default function SurveyForm() {
   const [jobFunction, setJobFunction] = useState('');
   const [seniority, setSeniority] = useState('');
   const [industry, setIndustry] = useState('');
   const [gender, setGender] = useState('');
-  const [email, setEmail] = useState('');
   const [salary, setSalary] = useState('');
   const [yrs, setYrs] = useState(1);
 
-  // console.log('salary amount:', salary);
-  // console.log('email:', email);
-  // console.log('years of experience:', yrs);
+  const router = useRouter();
+
+  async function handleMainSurvey(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const response = await fetch('api/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        jobFunction,
+        seniority,
+        industry,
+        gender,
+        salary,
+        yrs,
+      }),
+    });
+    const data: LoginResponseBody = await response.json();
+
+    /* if ('errors' in data) {
+      setErrors(data.errors);
+      return;
+    } */
+
+    router.push('/dashboard');
+    router.refresh();
+
+    setJobFunction('');
+    setSeniority('');
+    setIndustry('');
+    setGender('');
+    setSalary('');
+    setYrs(1);
+  }
 
   return (
     <section className="survey-page-container">
@@ -26,7 +56,10 @@ export default function SurveyForm() {
         you!!) and making <b>{salary}</b>€ a year, nice.
       </div>
       <div className="w-full max-w-xs">
-        <form className="survey-form">
+        <form
+          className="survey-form"
+          onSubmit={async (event) => await handleMainSurvey(event)}
+        >
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">Job Function</span>
@@ -63,7 +96,7 @@ export default function SurveyForm() {
               value={seniority}
               onChange={(e) => setSeniority(e.currentTarget.value)}
             >
-              <option value="Junior">Junior</option>
+              <option value="1">Junior</option>
               <option value="Mid-level">Mid-level</option>
               <option value="Senior">Senior</option>
               <option value="Principal">Principal</option>
@@ -106,27 +139,13 @@ export default function SurveyForm() {
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">
-                What is your company Email address?
-              </span>
-            </div>
-            <input
-              type="email"
-              placeholder="ex. marco@upleveled.io"
-              className="input input-bordered w-full max-w-xs"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.currentTarget.value)}
-            />
-          </label>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">
                 What is your annual salary in Euro?
               </span>
             </div>
             <input
-              type="number"
-              placeholder="ex. 65,000"
+              type="text"
+              inputMode="numeric"
+              placeholder="65,000"
               className="input input-bordered w-full max-w-xs"
               required
               value={salary}

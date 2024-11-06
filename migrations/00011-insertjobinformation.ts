@@ -10,6 +10,7 @@ const jobInformation: jobInformationType[] = [
     genderId: 1,
     salary: 50000,
     userId: 1,
+
     yearsOfExperience: 3,
   },
   {

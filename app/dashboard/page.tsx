@@ -2,6 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import React from 'react';
 import { getValidSessionToken } from '../../database/sessions';
+import { handelClickToSurvey } from '../components/navigationlogin';
 
 export default async function DashboardPage() {
   // 1.
@@ -24,6 +25,13 @@ export default async function DashboardPage() {
         <div className="hero-content text-center">
           <div className="max-w-md">
             <h1 className="text-5xl font-bold">The Dashboard page</h1>
+            <p className="py-6">
+              Check your worth, add your salary and see if your are getting
+              properly compensated compared to the market.
+            </p>
+            <button className="btn btn-primary" onClick={handelClickToSurvey}>
+              Add your salary
+            </button>
           </div>
         </div>
       </div>
