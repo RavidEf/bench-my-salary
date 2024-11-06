@@ -1,9 +1,15 @@
 'use client';
 import './survey.css';
+import { setegid } from 'process';
 import { useState } from 'react';
 
 export default function SurveyForm() {
   const [jobFunction, setJobFunction] = useState('Frontend web Developer');
+  const [seniority, setSeniority] = useState('Junior');
+  const [industry, setIndustry] = useState('Food Delivery');
+  const [gender, setGender] = useState('Female');
+  const [email, setEmail] = useState('');
+  const [salary, setSalary] = useState('');
   const [yrs, setYrs] = useState(1);
 
   return (
@@ -42,35 +48,53 @@ export default function SurveyForm() {
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">Seniority Level</span>
+              <p>{seniority}</p>
             </div>
-            <select className="select select-bordered w-full max-w-xs" required>
-              <option>Junior</option>
-              <option>Mid-level</option>
-              <option>Senior</option>
-              <option>Principal</option>
-              <option>Lead</option>
+            <select
+              className="select select-bordered w-full max-w-xs"
+              required
+              value={seniority}
+              onChange={(e) => setSeniority(e.currentTarget.value)}
+            >
+              <option value="Junior">Junior</option>
+              <option value="Mid-level">Mid-level</option>
+              <option value="Senior">Senior</option>
+              <option value="Principal">Principal</option>
+              <option value="Lead">Lead</option>
             </select>
           </label>
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">Industry</span>
+              <p>{industry}</p>
             </div>
-            <select className="select select-bordered w-full max-w-xs">
-              <option>Food Delivery</option>
-              <option>Technology</option>
-              <option>Consulting</option>
-              <option>Pharmaceuticals</option>
-              <option>Finance and Banking</option>
-              <option>Healthcare</option>
+            <select
+              className="select select-bordered w-full max-w-xs"
+              required
+              value={industry}
+              onChange={(e) => setIndustry(e.currentTarget.value)}
+            >
+              <option value="Food Delivery">Food Delivery</option>
+              <option value="Technology">Technology</option>
+              <option value="Consulting">Consulting</option>
+              <option value="Pharmaceuticals">Pharmaceuticals</option>
+              <option value="Finance and Banking">Finance and Banking</option>
+              <option value="Healthcare">Healthcare</option>
             </select>
           </label>
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">Gender</span>
+              <p>{gender}</p>
             </div>
-            <select className="select select-bordered">
-              <option>Female</option>
-              <option>Male</option>
+            <select
+              className="select select-bordered"
+              required
+              value={gender}
+              onChange={(e) => setGender(e.currentTarget.value)}
+            >
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
             </select>
           </label>
 
@@ -84,6 +108,9 @@ export default function SurveyForm() {
               type="email"
               placeholder="ex. marco@upleveled.io"
               className="input input-bordered w-full max-w-xs"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.currentTarget.value)}
             />
           </label>
           <label className="form-control w-full max-w-xs">
@@ -96,6 +123,9 @@ export default function SurveyForm() {
               type="text"
               placeholder="ex. 65,000"
               className="input input-bordered w-full max-w-xs"
+              required
+              value={salary}
+              onChange={(e) => setSalary(e.currentTarget.value)}
             />
           </label>
           <label className="label mt-4">Years of Experience: {yrs}</label>
