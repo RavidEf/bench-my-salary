@@ -44,7 +44,7 @@ export async function POST(
     return NextResponse.json({ errors: result.error.issues }, { status: 400 });
   }
 
-  // 3. Check if the use Email already exist in the database
+  // 3. Check if the Email already exist in the database
   const user = await getUserEmailInsecure(result.data.email);
 
   if (user) {

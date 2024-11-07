@@ -10,7 +10,7 @@ export const mainSurveySchema = z.object({
   yrs: z.number(),
 });
 
-export type jobInformationType = {
+export type JobInformationType = {
   id: number;
   jobFunctionId: number;
   seniorityId: number;
