@@ -1,4 +1,25 @@
 import type { Sql } from 'postgres';
+import { z } from 'zod';
+
+export const mainSurveySchema = z.object({
+  jobFunction: z.number(),
+  seniority: z.number(),
+  industry: z.number(),
+  gender: z.number(),
+  salary: z.number().min(5),
+  yrs: z.number(),
+});
+
+export type jobInformationType = {
+  id: number;
+  jobFunctionId: number;
+  seniorityId: number;
+  indusrtyId: number;
+  genderId: number;
+  salary: number;
+  userId: number;
+  yearsOfExperience: number;
+};
 
 export async function up(sql: Sql) {
   await sql`

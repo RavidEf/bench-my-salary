@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import logo from '../../../public/images/bench-my-salary-logo.png';
@@ -132,6 +133,15 @@ export default function RegisterForm() {
             </div>
           </form>
           <br />
+          <p className="mt-10 text-center text-sm/6 text-gray-500">
+            Already have an account with us?{' '}
+            <Link
+              href="/login"
+              className="font-semibold text-indigo-600 hover:text-indigo-500"
+            >
+              Go to Login
+            </Link>
+          </p>
           <br />
           <br />
           <br />

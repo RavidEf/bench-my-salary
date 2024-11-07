@@ -2,15 +2,22 @@
 import './survey.css';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import type { LoginResponseBody } from '../../(auth)/api/login/route';
+import type { MainSurveyResponseBody } from '../../api/jobsinformation/route';
+import {
+  genderObject,
+  industryObject,
+  jobFunctionObject,
+  seniorityObject,
+} from '../../components/formObjects';
 
 export default function SurveyForm() {
-  const [jobFunction, setJobFunction] = useState('');
-  const [seniority, setSeniority] = useState('');
-  const [industry, setIndustry] = useState('');
-  const [gender, setGender] = useState('');
+  const [jobFunction, setJobFunction] = useState(0);
+  const [seniority, setSeniority] = useState(0);
+  const [industry, setIndustry] = useState(0);
+  const [gender, setGender] = useState(0);
   const [salary, setSalary] = useState('');
   const [yrs, setYrs] = useState(1);
+  const [errors, setErrors] = useState('');
 
   const router = useRouter();
 
@@ -22,34 +29,39 @@ export default function SurveyForm() {
     return numbers.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
+  function formatSalary(salaryString: string) {
+    return Number(salaryString.replace(/,/g, ''));
+  }
+
   async function handleMainSurvey(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    formatSalary(salary);
 
-    const response = await fetch('api/login', {
+    const response = await fetch('/api/jobsinformation', {
       method: 'POST',
       body: JSON.stringify({
         jobFunction,
         seniority,
         industry,
         gender,
-        salary,
+        salary: formatSalary(salary),
         yrs,
       }),
     });
-    const data: LoginResponseBody = await response.json();
+    const data: MainSurveyResponseBody = await response.json();
 
-    /* if ('errors' in data) {
+    if ('errors' in data) {
       setErrors(data.errors);
       return;
-    } */
+    }
 
     router.push('/dashboard');
     router.refresh();
 
-    setJobFunction('');
-    setSeniority('');
-    setIndustry('');
-    setGender('');
+    setJobFunction(0);
+    setSeniority(0);
+    setIndustry(0);
+    setGender(0);
     setSalary('');
     setYrs(1);
   }
@@ -76,22 +88,14 @@ export default function SurveyForm() {
               className="select select-bordered w-full max-w-xs"
               required
               value={jobFunction}
-              onChange={(e) => setJobFunction(e.currentTarget.value)}
+              onChange={(e) => setJobFunction(Number(e.currentTarget.value))}
             >
-              <option value="Frontend web Developer">
-                Frontend web Developer
-              </option>
-              <option value="Backend web Developer">
-                Backend web Developer
-              </option>
-              <option value="Full-stack web Developer">
-                Full-stack web Developer
-              </option>
-              <option value="Software Developer">Software Developer</option>
-              <option value="Android mobile Developer">
-                Android mobile Developer
-              </option>
-              <option value="iOS mobile Developer">iOS mobile Developer</option>
+              <option value="">Select a Job Function</option>
+              {Object.entries(jobFunctionObject).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
             </select>
           </label>
           <label className="form-control w-full max-w-xs">
@@ -102,13 +106,14 @@ export default function SurveyForm() {
               className="select select-bordered w-full max-w-xs"
               required
               value={seniority}
-              onChange={(e) => setSeniority(e.currentTarget.value)}
+              onChange={(e) => setSeniority(Number(e.currentTarget.value))}
             >
-              <option value="1">Junior</option>
-              <option value="Mid-level">Mid-level</option>
-              <option value="Senior">Senior</option>
-              <option value="Principal">Principal</option>
-              <option value="Lead">Lead</option>
+              <option value="">Select a Seniority level</option>
+              {Object.entries(seniorityObject).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
             </select>
           </label>
           <label className="form-control w-full max-w-xs">
@@ -119,14 +124,14 @@ export default function SurveyForm() {
               className="select select-bordered w-full max-w-xs"
               required
               value={industry}
-              onChange={(e) => setIndustry(e.currentTarget.value)}
+              onChange={(e) => setIndustry(Number(e.currentTarget.value))}
             >
-              <option value="Food Delivery">Food Delivery</option>
-              <option value="Technology">Technology</option>
-              <option value="Consulting">Consulting</option>
-              <option value="Pharmaceuticals">Pharmaceuticals</option>
-              <option value="Finance and Banking">Finance and Banking</option>
-              <option value="Healthcare">Healthcare</option>
+              <option value="">Select the industry you are in</option>
+              {Object.entries(industryObject).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
             </select>
           </label>
           <label className="form-control w-full max-w-xs">
@@ -137,10 +142,14 @@ export default function SurveyForm() {
               className="select select-bordered"
               required
               value={gender}
-              onChange={(e) => setGender(e.currentTarget.value)}
+              onChange={(e) => setGender(Number(e.currentTarget.value))}
             >
-              <option value="Female">Female</option>
-              <option value="Male">Male</option>
+              <option value="">Select your gender</option>
+              {Object.entries(genderObject).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
             </select>
           </label>
 
@@ -151,7 +160,6 @@ export default function SurveyForm() {
               </span>
             </div>
             <input
-              type="text"
               inputMode="numeric"
               placeholder="55,000"
               className="input input-bordered w-full max-w-xs"
@@ -203,6 +211,7 @@ export default function SurveyForm() {
 
           <br />
           <br />
+
           <br />
           <br />
         </form>
