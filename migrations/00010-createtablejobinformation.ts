@@ -6,7 +6,13 @@ export const mainSurveySchema = z.object({
   seniority: z.number(),
   industry: z.number(),
   gender: z.number(),
-  salary: z.number().min(5),
+  salary: z
+    .number()
+    .gt(18000, {
+      message:
+        'Your salary should be above the minimum wage to submit it. sorry. ',
+    })
+    .int(),
   yrs: z.number(),
 });
 

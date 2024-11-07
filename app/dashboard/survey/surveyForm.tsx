@@ -17,7 +17,7 @@ export default function SurveyForm() {
   const [gender, setGender] = useState(0);
   const [salary, setSalary] = useState('');
   const [yrs, setYrs] = useState(1);
-  const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState<{ message: string }[]>([]);
 
   const router = useRouter();
 
@@ -211,7 +211,11 @@ export default function SurveyForm() {
 
           <br />
           <br />
-
+          {errors.map((error) => (
+            <div className="text-red-500" key={`error-${error.message}`}>
+              <p>{error.message}</p>{' '}
+            </div>
+          ))}
           <br />
           <br />
         </form>

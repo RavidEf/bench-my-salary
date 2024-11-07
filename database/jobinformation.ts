@@ -4,15 +4,6 @@ import type { JobInformationType } from '../migrations/00010-createtablejobinfor
 import type { Session } from '../migrations/00012-createtablesessions';
 import { sql } from './connect';
 
-/* export const getJobInformationInsecure = cache(async () => {
-  const jobInformations = await sql`
-    SELECT
-      *
-    FROM
-      salaries
-  `;
-  return jobInformations;
-}); */
 export const createNewSurveyEntryInsecure = cache(
   async (
     sessionsTokenCookie: Session['token'],
