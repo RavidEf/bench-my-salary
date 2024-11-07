@@ -14,6 +14,14 @@ export default function SurveyForm() {
 
   const router = useRouter();
 
+  const formatWithCommas = (value: string) => {
+    // Remove any non-digit characters
+    const numbers = value.replace(/[^\d]/g, '');
+
+    // Add commas every 3 digits
+    return numbers.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
   async function handleMainSurvey(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -145,11 +153,14 @@ export default function SurveyForm() {
             <input
               type="text"
               inputMode="numeric"
-              placeholder="65,000"
+              placeholder="55,000"
               className="input input-bordered w-full max-w-xs"
               required
               value={salary}
-              onChange={(e) => setSalary(e.currentTarget.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+                setSalary(formatWithCommas(value));
+              }}
             />
           </label>
           <label className="label mt-4">Years of Experience: {yrs}</label>
