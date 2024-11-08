@@ -22,8 +22,8 @@ export type JobInformationType = {
   seniorityId: number;
   indusrtyId: number;
   genderId: number;
-  salary: number;
   userId: number;
+  salary: number;
   yearsOfExperience: number;
 };
 

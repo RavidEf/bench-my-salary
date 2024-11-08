@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react';
 import { getValidSessionToken } from '../../database/sessions';
-import { handelClickToSurvey } from '../components/navigationlogin';
 
 export default async function DashboardPage() {
   // 1.

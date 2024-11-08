@@ -1,5 +1,5 @@
 import { cache } from 'react';
-import type { User } from '../migrations/00000-createtableusers';
+// import type { User } from '../migrations/00000-createtableusers';
 import type { JobInformationType } from '../migrations/00010-createtablejobinformation';
 import type { Session } from '../migrations/00012-createtablesessions';
 import { sql } from './connect';
@@ -54,15 +54,26 @@ export const createNewSurveyEntryInsecure = cache(
   },
 );
 
-export const getSalaryInsecure = cache(async () => {
-  const salaries = await sql`
+export const getJobFunctionInsecure = cache(async (jobFunction: string) => {
+  const jobTitle = await sql<
+    {
+      salary: number;
+      yearsOfExperience: number;
+      gender: number;
+      id: number;
+    }[]
+  >`
     SELECT
-      salary,
-      years_of_experience,
-      gender_id AS gender,
-      id
+      job_information.job_function_id,
+      job_information.user_id,
+      titles.job_function
     FROM
       job_information
+      INNER JOIN titles ON (
+        titles.id = job_information.job_function_id
+      )
+    WHERE
+      job_information.job_function_id = ${jobFunction}
   `;
-  return salaries;
+  return jobTitle;
 });
