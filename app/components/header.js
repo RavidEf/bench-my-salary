@@ -88,8 +88,11 @@ export default async function Header(props) {
         </div>
         {user ? (
           <div className="navbar-end">
-            <p>Hi {user.userName} </p>
-            <Link href="/dashboard" className="btn">
+            <p>
+              {' '}
+              <span>Hi {user.userName}</span>{' '}
+            </p>
+            <Link href="/dashboard" className="btn-primary">
               {' '}
               Dashboard{' '}
             </Link>

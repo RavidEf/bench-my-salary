@@ -54,26 +54,31 @@ export const createNewSurveyEntryInsecure = cache(
   },
 );
 
-export const getJobFunctionInsecure = cache(async (jobFunction: string) => {
-  const jobTitle = await sql<
-    {
-      salary: number;
-      yearsOfExperience: number;
-      gender: number;
-      id: number;
-    }[]
-  >`
-    SELECT
-      job_information.job_function_id,
-      job_information.user_id,
-      titles.job_function
-    FROM
-      job_information
-      INNER JOIN titles ON (
-        titles.id = job_information.job_function_id
-      )
-    WHERE
-      job_information.job_function_id = ${jobFunction}
-  `;
-  return jobTitle;
-});
+export const getJobFunctionSeniorityInsecure = cache(
+  async (jobFunction: string, userId: number) => {
+    const jobTitle = await sql<
+      {
+        userName: string;
+        jobFunction: string;
+        seniorityLevel: string;
+      }[]
+    >`
+      SELECT
+        users.user_name AS username,
+        titles.job_function AS jobfunction,
+        seniority.seniority_level AS senioritylevel,
+        job_information.user_id
+      FROM
+        job_information
+        JOIN users ON job_information.user_id = users.id
+        JOIN titles ON job_information.job_function_id = titles.id
+        JOIN seniority ON job_information.seniority_id = seniority.id
+      WHERE
+        job_information.job_function_id = 1 -- Replace with a known job function ID
+        AND users.id = 4;
+
+      -- Replace with a known user ID
+    `;
+    return jobTitle;
+  },
+);

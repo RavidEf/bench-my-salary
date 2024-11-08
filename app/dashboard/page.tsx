@@ -3,9 +3,13 @@ import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react';
+import { getJobFunctionSeniorityInsecure } from '../../database/jobinformation';
 import { getValidSessionToken } from '../../database/sessions';
 
-export default async function DashboardPage() {
+export default async function DashboardPage(
+  jobFunction: string,
+  userId: number,
+) {
   // 1.
   const sessionTokenCookie = (await cookies()).get('sessionToken');
 
@@ -20,7 +24,10 @@ export default async function DashboardPage() {
   if (!session) {
     redirect('/login?returnTo=/dashboard');
   }
-  // Dashboard.jsx
+
+  const jobDetails = await getJobFunctionSeniorityInsecure(jobFunction, userId);
+  console.log('JOBDETAILs:', jobDetails);
+
   return (
     <section>
       <div className="hero">
@@ -47,7 +54,8 @@ export default async function DashboardPage() {
               </div>
               <div className="card-body">
                 <h2>Junior frontend web developer</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <br />
+
                 <div className="card-actions">
                   <button className="btn-primary">View entry</button>
                   <button className="btn-primary-edit">Edit salary</button>

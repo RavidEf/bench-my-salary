@@ -3,9 +3,7 @@ import { getSalaryInsecure } from '../database/jobinformation';
 import CarouselCompanies from './components/carousel';
 import { handelClickToLogin } from './components/navigationlogin';
 
-export default async function Home() {
-  const jobInfo = await getSalaryInsecure();
-
+export default function Home() {
   return (
     <>
       <section>
