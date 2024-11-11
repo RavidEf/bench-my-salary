@@ -6,6 +6,7 @@ import React from 'react';
 import { getJobFunctions } from '../../database/jobinformation';
 import { getValidSessionToken } from '../../database/sessions';
 import { getUser } from '../../database/users';
+import { handelLinkToResults } from '../components/handelLinks';
 
 export default async function DashboardPage() {
   // 1.
@@ -75,7 +76,12 @@ export default async function DashboardPage() {
                       {item.yearsOfExperience}
                     </p>
                     <div className="card-actions">
-                      <button className="btn-primary">View entry</button>
+                      <button
+                        onClick={handelLinkToResults}
+                        className="btn-primary"
+                      >
+                        View entry
+                      </button>
                       <button className="btn-primary-edit">Edit salary</button>
                     </div>
                   </div>

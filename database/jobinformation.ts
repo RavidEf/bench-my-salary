@@ -1,6 +1,6 @@
 import { cache } from 'react';
-// import type { User } from '../migrations/00000-createtableusers';
 import type { JobInformationType } from '../migrations/00010-createtablejobinformation';
+// import type { User } from '../migrations/00000-createtableusers';
 import type { Session } from '../migrations/00012-createtablesessions';
 import { sql } from './connect';
 
@@ -53,12 +53,6 @@ export const createNewSurveyEntryInsecure = cache(
     return job;
   },
 );
-
-/* export type singleEntry = {
-  userName: string;
-  jobFunction: string;
-  seniorityLevel: string;
-}; */
 
 export const getJobFunctions = cache(async (sessionToken: string) => {
   const jobTitle = await sql<

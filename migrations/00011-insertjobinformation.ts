@@ -1,7 +1,7 @@
 import type { Sql } from 'postgres';
-import type { jobInformationType } from '../database/jobinformation';
+import type { JobInformationType } from './00010-createtablejobinformation';
 
-const jobInformation: jobInformationType[] = [
+const jobInformation: JobInformationType[] = [
   {
     id: 1,
     jobFunctionId: 1,
@@ -10,7 +10,6 @@ const jobInformation: jobInformationType[] = [
     genderId: 1,
     salary: 50000,
     userId: 1,
-
     yearsOfExperience: 3,
   },
   {
