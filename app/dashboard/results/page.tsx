@@ -1,9 +1,11 @@
 'use server';
-import { redirect } from 'next/dist/server/api-utils';
+import './results.css';
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { getJobFunctions } from '../../../database/jobinformation';
 import { getValidSessionToken } from '../../../database/sessions';
 import { getUser } from '../../../database/users';
+import { MathSeniority } from '../../components/math';
 import BarGraphI from './graphs-results';
 
 export default async function ResultsPage() {
@@ -16,7 +18,7 @@ export default async function ResultsPage() {
     (await getValidSessionToken(sessionTokenCookie.value));
 
   // get the user name so we can show it without having the need for a first salary entry
-  const user = sessionTokenCookie && (await getUser(sessionTokenCookie?.value));
+  const user = sessionTokenCookie && (await getUser(sessionTokenCookie.value));
 
   // 3. if there is no valid session redirect user to login page
 
@@ -25,15 +27,22 @@ export default async function ResultsPage() {
   }
 
   const jobDetails = await getJobFunctions(sessionTokenCookie.value);
+  const seniorityAll = await MathSeniority();
+  console.log('seniorityAll::::', seniorityAll);
 
   return (
-    <section>
-      <div className="hero">
+    <section className="results-container">
+      <div className="results-page">
         <div>
-          <h1>Results page</h1>
+          <h1 className="results-h1">Results page</h1>
         </div>
       </div>
-      <BarGraphI jobDetails={jobDetails[0]?.salary} />
+      <BarGraphI
+        userName={user}
+        jobDetailsSalary={jobDetails[0]?.salary}
+        jobDetailstitle={jobDetails[0]?.jobFunction}
+      />
+      <div />
     </section>
   );
 }

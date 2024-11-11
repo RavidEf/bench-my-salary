@@ -1,5 +1,34 @@
-.chart-bar {
-  display: flex;
-
-  width: 600px;
+.results-container {
+  min-height: 100vh;
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
 }
+
+.results-page {
+  display: grid;
+  width: 100%;
+  place-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.bar-chart {
+  margin-top: 4rem;
+  padding: 4rem;
+  display: flex;
+  min-height: 80vh;
+}
+.results-h1 {
+  margin-top: 4rem;
+  font-size: 3rem /* 48px */;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* .bar-chart-section {
+  display: flex;
+  align-items: left;
+
+  width: 400px;
+}
+ */

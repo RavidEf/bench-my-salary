@@ -1,6 +1,7 @@
 import type { Sql } from 'postgres';
+import { usersDummyData } from '../database/usersdummydata';
 
-const users = [
+/* const users = [
   {
     username: 'Marco',
     passwordHash: 'xqxqxqxqxqxq',
@@ -16,10 +17,10 @@ const users = [
     passwordHash: 'xqxqdewxqxqxqxq',
     email: 'dev3@exmaple.com',
   },
-];
+]; */
 
 export async function up(sql: Sql) {
-  for (const user of users) {
+  for (const user of usersDummyData) {
     await sql`
       INSERT INTO
         users (
@@ -29,7 +30,7 @@ export async function up(sql: Sql) {
         )
       VALUES
         (
-          ${user.username},
+          ${user.userName},
           ${user.passwordHash},
           ${user.email}
         )
@@ -38,7 +39,7 @@ export async function up(sql: Sql) {
 }
 
 export async function down(sql: Sql) {
-  for (const user of users) {
+  for (const user of usersDummyData) {
     await sql`
       DELETE FROM users
       WHERE

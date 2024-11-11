@@ -1,7 +1,8 @@
 import type { Sql } from 'postgres';
+import { jobInformationDummyData } from '../database/dummyjsonfilejobs';
 import type { JobInformationType } from './00010-createtablejobinformation';
 
-const jobInformation: JobInformationType[] = [
+/* const jobInformation: JobInformationType[] = [
   {
     id: 1,
     jobFunctionId: 1,
@@ -22,10 +23,10 @@ const jobInformation: JobInformationType[] = [
     userId: 2,
     yearsOfExperience: 6,
   },
-];
+]; */
 
 export async function up(sql: Sql) {
-  for (const entry of jobInformation) {
+  for (const entry of jobInformationDummyData) {
     await sql`
       INSERT INTO
         job_information (
@@ -43,7 +44,7 @@ export async function up(sql: Sql) {
           ${entry.id},
           ${entry.jobFunctionId},
           ${entry.seniorityId},
-          ${entry.indusrtyId},
+          ${entry.industryId},
           ${entry.genderId},
           ${entry.salary},
           ${entry.userId},
@@ -54,7 +55,7 @@ export async function up(sql: Sql) {
 }
 
 export async function down(sql: Sql) {
-  for (const entry of jobInformation) {
+  for (const entry of jobInformationDummyData) {
     await sql`
       DELETE FROM job_information
       WHERE

@@ -14,6 +14,7 @@ export const loginSchema = z.object({
 
 export type User = {
   id: number;
+  passwordHash: string;
   email: string;
   userName: string;
 };

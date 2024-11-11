@@ -85,3 +85,26 @@ export const getJobFunctions = cache(async (sessionToken: string) => {
   `;
   return jobTitle;
 });
+
+export const getJobsenioritiesInsecure = cache(async () => {
+  const jobSeniority = await sql<
+    {
+      seniorityLevel: string;
+      jobFunction: string;
+      seniority_id: number;
+      salary: number;
+      yearsOfExperience: number;
+    }[]
+  >`
+    SELECT
+      seniority.seniority_level AS seniority_level,
+      job_information.user_id,
+      seniority_id,
+      salary,
+      years_of_experience
+    FROM
+      job_information
+      JOIN seniority ON job_information.seniority_id = seniority.id
+  `;
+  return jobSeniority;
+});

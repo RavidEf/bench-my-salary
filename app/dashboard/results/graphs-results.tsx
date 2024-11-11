@@ -1,19 +1,25 @@
 'use client';
+import './results.css';
 import Chart, { CategoryScale } from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
 
 export default function BarGraphI(props) {
   Chart.register(CategoryScale);
+
   return (
-    <section>
-      <div className="chart-bar">
+    <section className="bar-chart-section">
+      <div className="bar-chart">
         <Bar
           data={{
-            labels: ['A', 'B'],
+            labels: [props.jobDetailstitle, 'The market average'],
             datasets: [
               {
                 label: 'Revenu',
-                data: [props.salary, 300],
+                data: [props.jobDetailsSalary, 65000],
+              },
+              {
+                label: 'Revenu',
+                data: [props.jobDetailsSalary, 65000],
               },
             ],
           }}

@@ -20,7 +20,7 @@ export type JobInformationType = {
   id: number;
   jobFunctionId: number;
   seniorityId: number;
-  indusrtyId: number;
+  industryId: number;
   genderId: number;
   userId: number;
   salary: number;
