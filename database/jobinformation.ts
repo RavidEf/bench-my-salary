@@ -54,31 +54,37 @@ export const createNewSurveyEntryInsecure = cache(
   },
 );
 
-export const getJobFunctionSeniorityInsecure = cache(
-  async (jobFunction: string, userId: number) => {
-    const jobTitle = await sql<
-      {
-        userName: string;
-        jobFunction: string;
-        seniorityLevel: string;
-      }[]
-    >`
-      SELECT
-        users.user_name AS username,
-        titles.job_function AS jobfunction,
-        seniority.seniority_level AS senioritylevel,
-        job_information.user_id
-      FROM
-        job_information
-        JOIN users ON job_information.user_id = users.id
-        JOIN titles ON job_information.job_function_id = titles.id
-        JOIN seniority ON job_information.seniority_id = seniority.id
-      WHERE
-        job_information.job_function_id = 1 -- Replace with a known job function ID
-        AND users.id = 4;
+/* export type singleEntry = {
+  userName: string;
+  jobFunction: string;
+  seniorityLevel: string;
+}; */
 
-      -- Replace with a known user ID
-    `;
-    return jobTitle;
-  },
-);
+export const getJobFunctions = cache(async (sessionToken: string) => {
+  const jobTitle = await sql<
+    {
+      userName: string;
+      jobFunction: string;
+      seniorityLevel: string;
+      salary: number;
+    }[]
+  >`
+    SELECT
+      users.user_name AS user_name,
+      titles.job_function AS job_function,
+      seniority.seniority_level AS seniority_level,
+      job_information.user_id,
+      salary
+    FROM
+      job_information
+      JOIN users ON job_information.user_id = users.id
+      JOIN titles ON job_information.job_function_id = titles.id
+      JOIN seniority ON job_information.seniority_id = seniority.id
+      INNER JOIN sessions ON (
+        sessions.token = ${sessionToken}
+        AND sessions.user_id = job_information.user_id
+        AND expiry_timestamp > now()
+      )
+  `;
+  return jobTitle;
+});

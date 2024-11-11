@@ -3,17 +3,24 @@ import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react';
-import { getJobFunctionSeniorityInsecure } from '../../database/jobinformation';
+import {
+  getJobFunctions,
+  getJobFunctionSeniority,
+  getJobFunctionSeniorityInsecure,
+} from '../../database/jobinformation';
 import { getValidSessionToken } from '../../database/sessions';
+import { getUser } from '../../database/users';
 
 export default async function DashboardPage(
   jobFunction: string,
   userId: number,
+  senioritylevel: string,
 ) {
   // 1.
   const sessionTokenCookie = (await cookies()).get('sessionToken');
 
   // 2.
+  // const user = sessionTokenCookie && (await getUser(sessionTokenCookie));
 
   const session =
     sessionTokenCookie &&
@@ -25,7 +32,7 @@ export default async function DashboardPage(
     redirect('/login?returnTo=/dashboard');
   }
 
-  const jobDetails = await getJobFunctionSeniorityInsecure(jobFunction, userId);
+  const jobDetails = await getJobFunctions(sessionTokenCookie.value);
   console.log('JOBDETAILs:', jobDetails);
 
   return (
@@ -35,33 +42,37 @@ export default async function DashboardPage(
           <h1>The Dashboard page</h1>
           <div className="card-container">
             {/* Card 1 - Existing Entry */}
-            <div className="card">
-              <div className="icon-container">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"
-                  />
-                </svg>
-              </div>
-              <div className="card-body">
-                <h2>Junior frontend web developer</h2>
-                <br />
+            {jobDetails.map((item) => {
+              return (
+                <div className="card" key={`jobDetails-${item.userId}`}>
+                  <div className="icon-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"
+                      />
+                    </svg>
+                  </div>
+                  <div className="card-body" key={`jobDetails-${item.userId}`}>
+                    <h2>{item.jobFunction}</h2>
+                    <br />
 
-                <div className="card-actions">
-                  <button className="btn-primary">View entry</button>
-                  <button className="btn-primary-edit">Edit salary</button>
+                    <div className="card-actions">
+                      <button className="btn-primary">View entry</button>
+                      <button className="btn-primary-edit">Edit salary</button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              );
+            })}
 
             {/* Card 2 - Add New Entry */}
             <Link href="/dashboard/survey" className="card card-button">
