@@ -3,17 +3,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import LogoutButton from '../(auth)/logout/logoutButton';
-import { getValidSessionToken } from '../../database/sessions';
+// import { getValidSessionToken } from '../../database/sessions';
 import { getUser } from '../../database/users';
 import logo from '../../public/images/bench-my-salary-logo.png';
 
-export default async function Header(props) {
+export default async function Header() {
   // 1. Check if the sessionToken cookie exists
   const sessionTokenCookie = (await cookies()).get('sessionToken');
   // 2. Check if the sessionToken is still valid
-  const session =
+  /*   const session =
     sessionTokenCookie &&
-    (await getValidSessionToken(sessionTokenCookie.value));
+    (await getValidSessionToken(sessionTokenCookie.value)); */
 
   // Display the user name that has a valid token from the DB
   const user = sessionTokenCookie && (await getUser(sessionTokenCookie?.value));

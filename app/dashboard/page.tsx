@@ -3,30 +3,24 @@ import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react';
-import {
-  getJobFunctions,
-  getJobFunctionSeniority,
-  getJobFunctionSeniorityInsecure,
-} from '../../database/jobinformation';
+import { getJobFunctions } from '../../database/jobinformation';
 import { getValidSessionToken } from '../../database/sessions';
 import { getUser } from '../../database/users';
 
-export default async function DashboardPage(
-  jobFunction: string,
-  userId: number,
-  senioritylevel: string,
-) {
+export default async function DashboardPage() {
   // 1.
   const sessionTokenCookie = (await cookies()).get('sessionToken');
 
-  // 2.
-  // const user = sessionTokenCookie && (await getUser(sessionTokenCookie));
+  // 2. get the session token the use provides us in the FE
 
   const session =
     sessionTokenCookie &&
     (await getValidSessionToken(sessionTokenCookie.value));
 
-  // 3.
+  // get the user name so we can show it without having the need for a first salary entry
+  const user = sessionTokenCookie && (await getUser(sessionTokenCookie?.value));
+
+  // 3. if there is no valid session redirect user to login page
 
   if (!session) {
     redirect('/login?returnTo=/dashboard');
@@ -39,7 +33,17 @@ export default async function DashboardPage(
     <section>
       <div className="hero">
         <div className="hero-content">
-          <h1>The Dashboard page</h1>
+          <h1>
+            {jobDetails[0]?.userName
+              ? `Here is your salary entry, ${jobDetails[0].userName} `
+              : `Add your first salary entry, ${user?.userName} `}{' '}
+          </h1>
+          <h3 className="h3-dashboard">
+            {jobDetails[0]?.userName
+              ? `click to view how you compare in the market`
+              : `It takes 2 minutes, really.`}
+          </h3>
+
           <div className="card-container">
             {/* Card 1 - Existing Entry */}
             {jobDetails.map((item) => {
@@ -62,9 +66,14 @@ export default async function DashboardPage(
                     </svg>
                   </div>
                   <div className="card-body" key={`jobDetails-${item.userId}`}>
-                    <h2>{item.jobFunction}</h2>
+                    <h2>
+                      {item.seniorityLevel} {item.jobFunction}
+                    </h2>
                     <br />
-
+                    <p>
+                      Salary: {item.salary}, yrs of experience:{' '}
+                      {item.yearsOfExperience}
+                    </p>
                     <div className="card-actions">
                       <button className="btn-primary">View entry</button>
                       <button className="btn-primary-edit">Edit salary</button>

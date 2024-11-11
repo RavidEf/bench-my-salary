@@ -66,7 +66,9 @@ export const getJobFunctions = cache(async (sessionToken: string) => {
       userName: string;
       jobFunction: string;
       seniorityLevel: string;
+      userId: number;
       salary: number;
+      yearsOfExperience: number;
     }[]
   >`
     SELECT
@@ -74,7 +76,8 @@ export const getJobFunctions = cache(async (sessionToken: string) => {
       titles.job_function AS job_function,
       seniority.seniority_level AS seniority_level,
       job_information.user_id,
-      salary
+      salary,
+      years_of_experience
     FROM
       job_information
       JOIN users ON job_information.user_id = users.id
