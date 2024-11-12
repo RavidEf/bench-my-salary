@@ -30,7 +30,6 @@ export async function up(sql: Sql) {
     await sql`
       INSERT INTO
         job_information (
-          id,
           job_function_id,
           seniority_id,
           industry_id,
@@ -41,7 +40,6 @@ export async function up(sql: Sql) {
         )
       VALUES
         (
-          ${entry.id},
           ${entry.jobFunctionId},
           ${entry.seniorityId},
           ${entry.industryId},
