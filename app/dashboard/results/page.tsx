@@ -1,5 +1,6 @@
 'use server';
 import './results.css';
+import { BoxPlotChart } from '@sgratzl/chartjs-chart-boxplot';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getJobFunctions } from '../../../database/jobinformation';
@@ -14,7 +15,7 @@ import {
   IndustryAverageTech,
   MathAll,
 } from '../../components/math';
-import BarGraphI from './graphs-results';
+import BarGraphI from './bargraphs-results';
 
 export default async function ResultsPage() {
   const sessionTokenCookie = (await cookies()).get('sessionToken');
@@ -36,15 +37,20 @@ export default async function ResultsPage() {
 
   const jobDetails = await getJobFunctions(sessionTokenCookie.value);
   const seniorityAvg = await MathAll();
-  console.log('seniorityAll::::', Math.ceil(seniorityAvg));
+  // calling industry average math functions
   const foodDelivery = await IndustryAverageFood();
-  console.log('foodDeliveryAverage::::', Math.ceil(foodDelivery));
   const techAvg = await IndustryAverageTech();
-  console.log('TechAvg::::', Math.ceil(techAvg));
   const consultAvg = await IndustryAverageConsult();
   const pharmaAvg = await IndustryAveragePharmaceuticals();
   const financeAvg = await IndustryAverageFinance();
   const healthAvg = await IndustryAverageHealthcare();
+
+  // Calculate differrence of user salary compared to consulting average
+  let percentageDif = 0;
+  if (jobDetails[0] !== undefined) {
+    percentageDif = ((jobDetails[0].salary - consultAvg) / consultAvg) * 100;
+  }
+  const percentageDifRound = percentageDif.toFixed(2);
 
   return (
     <section className="results-container">
@@ -54,8 +60,7 @@ export default async function ResultsPage() {
         </div>
       </div>
       <BarGraphI
-        userName={user}
-        jobDetailsSalary={jobDetails[1]?.salary}
+        jobDetailsSalary={jobDetails[0]?.salary}
         jobDetailstitle={jobDetails[0]?.jobFunction}
         seniorityAvg={seniorityAvg}
         foodDelivery={foodDelivery}
@@ -65,6 +70,17 @@ export default async function ResultsPage() {
         financeAvg={financeAvg}
         healthAvg={healthAvg}
       />
+      <div />
+      <h1>
+        {' '}
+        Your salary is {percentageDifRound}% lower compared to the consulting
+        industry average
+      </h1>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div />
     </section>
   );

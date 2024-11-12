@@ -1,5 +1,8 @@
 import { cache } from 'react';
-import type { JobInformationType } from '../migrations/00010-createtablejobinformation';
+import type {
+  JobInformationAndTitles,
+  JobInformationType,
+} from '../migrations/00010-createtablejobinformation';
 // import type { User } from '../migrations/00000-createtableusers';
 import type { Session } from '../migrations/00012-createtablesessions';
 import { sql } from './connect';
@@ -87,7 +90,7 @@ export const getJobFunctions = cache(async (sessionToken: string) => {
 });
 
 export const getAllJobsenioritiesInsecure = cache(async () => {
-  const jobSeniority = await sql<JobInformationType[]>`
+  const jobSeniority = await sql<JobInformationAndTitles[]>`
     SELECT
       se.seniority_level AS seniority_level,
       ji.*,

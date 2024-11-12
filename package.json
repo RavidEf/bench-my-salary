@@ -11,6 +11,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@sgratzl/chartjs-chart-boxplot": "^4.4.3",
     "@upleveled/ley": "^0.9.2",
     "bcrypt": "^5.1.1",
     "chart.js": "^4.4.6",
