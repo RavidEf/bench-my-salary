@@ -15,7 +15,7 @@ export default function BarGraphI(props) {
             datasets: [
               {
                 label: 'Revenu',
-                data: [props.jobDetailsSalary, 65000],
+                data: [props.jobDetailsSalary, props.seniorityAvg],
               },
               {
                 label: 'Revenu',

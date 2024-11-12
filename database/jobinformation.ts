@@ -9,7 +9,7 @@ export const createNewSurveyEntryInsecure = cache(
     sessionsTokenCookie: Session['token'],
     jobFunction: JobInformationType['jobFunctionId'],
     seniority: JobInformationType['seniorityId'],
-    industry: JobInformationType['indusrtyId'],
+    industry: JobInformationType['industryId'],
     gender: JobInformationType['genderId'],
     salary: JobInformationType['salary'],
     yrs: JobInformationType['yearsOfExperience'],
@@ -86,25 +86,20 @@ export const getJobFunctions = cache(async (sessionToken: string) => {
   return jobTitle;
 });
 
-export const getJobsenioritiesInsecure = cache(async () => {
-  const jobSeniority = await sql<
-    {
-      seniorityLevel: string;
-      jobFunction: string;
-      seniority_id: number;
-      salary: number;
-      yearsOfExperience: number;
-    }[]
-  >`
+export const getAllJobsenioritiesInsecure = cache(async () => {
+  const jobSeniority = await sql<JobInformationType[]>`
     SELECT
-      seniority.seniority_level AS seniority_level,
-      job_information.user_id,
-      seniority_id,
-      salary,
-      years_of_experience
+      se.seniority_level AS seniority_level,
+      ji.*,
+      ge.gender_title,
+      titles.job_function,
+      ind.industry_category
     FROM
-      job_information
-      JOIN seniority ON job_information.seniority_id = seniority.id
+      job_information ji
+      JOIN seniority se ON ji.seniority_id = se.id
+      JOIN genders ge ON ji.gender_id = ge.id
+      JOIN titles ON ji.job_function_id = titles.id
+      JOIN industry ind ON ji.industry_id = ind.id
   `;
   return jobSeniority;
 });

@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import { getJobFunctions } from '../../../database/jobinformation';
 import { getValidSessionToken } from '../../../database/sessions';
 import { getUser } from '../../../database/users';
-import { MathSeniority } from '../../components/math';
+import { MathAll, MathSeniority } from '../../components/math';
 import BarGraphI from './graphs-results';
 
 export default async function ResultsPage() {
@@ -27,8 +27,8 @@ export default async function ResultsPage() {
   }
 
   const jobDetails = await getJobFunctions(sessionTokenCookie.value);
-  const seniorityAll = await MathSeniority();
-  console.log('seniorityAll::::', seniorityAll);
+  const seniorityAvg = await MathAll();
+  console.log('seniorityAll::::', Math.ceil(seniorityAvg));
 
   return (
     <section className="results-container">
@@ -41,6 +41,7 @@ export default async function ResultsPage() {
         userName={user}
         jobDetailsSalary={jobDetails[0]?.salary}
         jobDetailstitle={jobDetails[0]?.jobFunction}
+        seniorityAvg={seniorityAvg}
       />
       <div />
     </section>
