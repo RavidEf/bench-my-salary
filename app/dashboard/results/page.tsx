@@ -5,7 +5,15 @@ import { redirect } from 'next/navigation';
 import { getJobFunctions } from '../../../database/jobinformation';
 import { getValidSessionToken } from '../../../database/sessions';
 import { getUser } from '../../../database/users';
-import { MathAll, MathSeniority } from '../../components/math';
+import {
+  IndustryAverageConsult,
+  IndustryAverageFinance,
+  IndustryAverageFood,
+  IndustryAverageHealthcare,
+  IndustryAveragePharmaceuticals,
+  IndustryAverageTech,
+  MathAll,
+} from '../../components/math';
 import BarGraphI from './graphs-results';
 
 export default async function ResultsPage() {
@@ -29,6 +37,14 @@ export default async function ResultsPage() {
   const jobDetails = await getJobFunctions(sessionTokenCookie.value);
   const seniorityAvg = await MathAll();
   console.log('seniorityAll::::', Math.ceil(seniorityAvg));
+  const foodDelivery = await IndustryAverageFood();
+  console.log('foodDeliveryAverage::::', Math.ceil(foodDelivery));
+  const techAvg = await IndustryAverageTech();
+  console.log('TechAvg::::', Math.ceil(techAvg));
+  const consultAvg = await IndustryAverageConsult();
+  const pharmaAvg = await IndustryAveragePharmaceuticals();
+  const financeAvg = await IndustryAverageFinance();
+  const healthAvg = await IndustryAverageHealthcare();
 
   return (
     <section className="results-container">
@@ -39,9 +55,15 @@ export default async function ResultsPage() {
       </div>
       <BarGraphI
         userName={user}
-        jobDetailsSalary={jobDetails[0]?.salary}
+        jobDetailsSalary={jobDetails[1]?.salary}
         jobDetailstitle={jobDetails[0]?.jobFunction}
         seniorityAvg={seniorityAvg}
+        foodDelivery={foodDelivery}
+        techAvg={techAvg}
+        consultAvg={consultAvg}
+        pharmaAvg={pharmaAvg}
+        financeAvg={financeAvg}
+        healthAvg={healthAvg}
       />
       <div />
     </section>

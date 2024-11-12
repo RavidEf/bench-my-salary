@@ -2,8 +2,9 @@
 import './results.css';
 import Chart, { CategoryScale } from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
+import type { BarGraphProps } from '../../../util/propstypes';
 
-export default function BarGraphI(props) {
+export default function BarGraphI(props: BarGraphProps) {
   Chart.register(CategoryScale);
 
   return (
@@ -11,15 +12,35 @@ export default function BarGraphI(props) {
       <div className="bar-chart">
         <Bar
           data={{
-            labels: [props.jobDetailstitle, 'The market average'],
+            labels: ['Industry salary average'],
             datasets: [
               {
-                label: 'Revenu',
-                data: [props.jobDetailsSalary, props.seniorityAvg],
+                label: 'Your Salary 123',
+                data: [props.jobDetailsSalary],
               },
               {
-                label: 'Revenu',
-                data: [props.jobDetailsSalary, 65000],
+                label: 'Food Delivery Salary average ',
+                data: [Math.ceil(props.foodDelivery)],
+              },
+              {
+                label: 'Technology Salary average ',
+                data: [Math.ceil(props.techAvg)],
+              },
+              {
+                label: 'Consulting Salary average ',
+                data: [Math.ceil(props.consultAvg)],
+              },
+              {
+                label: 'Pharmaceuticals Salary average ',
+                data: [Math.ceil(props.pharmaAvg)],
+              },
+              {
+                label: 'Finance and Banking Salary average ',
+                data: [Math.ceil(props.financeAvg)],
+              },
+              {
+                label: 'Healthcare Salary average ',
+                data: [Math.ceil(props.healthAvg)],
               },
             ],
           }}
