@@ -132,11 +132,13 @@ export async function IndustryAverageHealthcare() {
   return salAverageHealth;
 }
 
-// Average of salaries based on Gender
-export async function GenderAverage() {
+// Average of salaries based on Gender Male
+export async function GenderAverageMale() {
   const jobSeniority = await getAllJobsenioritiesInsecure();
   //
-  const jobFiltergender = jobSeniority.filter((item) => item.genderId === 1);
+  const jobFiltergender = jobSeniority.filter(
+    (item) => item.genderId === 1 && item.seniorityId === 3,
+  );
   // First map to get all salaries, then reduce to get the sum
 
   const totalSalaryGenderMale = jobFiltergender.reduce(
@@ -149,4 +151,25 @@ export async function GenderAverage() {
     totalSalaryGenderMale / jobFiltergender.length;
 
   return salAverageGenderMale;
+}
+
+// Average of salaries based on Gender Female
+export async function GenderAverageFemale() {
+  const getGenders = await getAllJobsenioritiesInsecure();
+  //
+  const jobFiltergender = getGenders.filter(
+    (item) => item.genderId === 2 && item.seniorityId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum
+
+  const totalSalaryGenderFemale = jobFiltergender.reduce(
+    (sum, item) => sum + item.salary,
+    0,
+  );
+
+  // Calculate average by dividing by the number of items
+  const salAverageGenderFemale: number =
+    totalSalaryGenderFemale / jobFiltergender.length;
+
+  return salAverageGenderFemale;
 }

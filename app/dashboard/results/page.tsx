@@ -7,6 +7,8 @@ import { getJobFunctions } from '../../../database/jobinformation';
 import { getValidSessionToken } from '../../../database/sessions';
 import { getUser } from '../../../database/users';
 import {
+  GenderAverageFemale,
+  GenderAverageMale,
   IndustryAverageConsult,
   IndustryAverageFinance,
   IndustryAverageFood,
@@ -16,6 +18,7 @@ import {
   MathAll,
 } from '../../components/math';
 import BarGraphI from './bargraphs-results';
+import BoxPlotGraph from './boxplotgraph';
 
 export default async function ResultsPage() {
   const sessionTokenCookie = (await cookies()).get('sessionToken');
@@ -45,6 +48,11 @@ export default async function ResultsPage() {
   const financeAvg = await IndustryAverageFinance();
   const healthAvg = await IndustryAverageHealthcare();
 
+  // calling gender average math functions
+  const maleSalAvg = await GenderAverageMale();
+  const femaleSalAvg = await GenderAverageFemale();
+  console.log('MALEAVG:::', maleSalAvg);
+
   // Calculate differrence of user salary compared to consulting average
   let percentageDif = 0;
   if (jobDetails[0] !== undefined) {
@@ -69,6 +77,8 @@ export default async function ResultsPage() {
         pharmaAvg={pharmaAvg}
         financeAvg={financeAvg}
         healthAvg={healthAvg}
+        maleSalAvg={maleSalAvg}
+        femaleSalAvg={femaleSalAvg}
       />
       <div />
       <h1>
@@ -79,6 +89,7 @@ export default async function ResultsPage() {
       <br />
       <br />
       <br />
+
       <br />
       <br />
       <div />

@@ -44,6 +44,50 @@ export default function BarGraphI(props: BarGraphProps) {
               },
             ],
           }}
+          options={{
+            plugins: {
+              title: {
+                display: true,
+                text: 'Average salary comparision by industry',
+                font: {
+                  size: 20, // Customize the font size if desired
+                },
+              },
+            },
+          }}
+        />
+      </div>
+
+      <div className="bar-chart">
+        <Bar
+          data={{
+            labels: ['Industry salary average'],
+            datasets: [
+              {
+                label: 'Your Salary Becca',
+                data: [props.jobDetailsSalary],
+              },
+              {
+                label: 'Male Average Salary',
+                data: [Math.ceil(props.maleSalAvg)],
+              },
+              {
+                label: 'Female Average Salary',
+                data: [Math.ceil(props.femaleSalAvg)],
+              },
+            ],
+          }}
+          options={{
+            plugins: {
+              title: {
+                display: true,
+                text: 'Senior developers Male vs Female comparision',
+                font: {
+                  size: 20, // Customize the font size if desired
+                },
+              },
+            },
+          }}
         />
       </div>
     </section>
