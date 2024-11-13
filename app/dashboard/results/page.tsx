@@ -42,7 +42,7 @@ export default async function ResultsPage() {
 
   // query the user data from the DB with the session token
   const userDeatail = await getJobFunctions(sessionTokenCookie.value);
-  console.log('userDeatail::', userDeatail);
+  // console.log('userDeatail::', userDeatail);
   // query all market data from the DB
   async function getMarketData() {
     const marketData = await getAllJobsenioritiesInsecure();
@@ -96,6 +96,16 @@ export default async function ResultsPage() {
         <div>
           <h1 className="results-h1">Results page</h1>
         </div>
+        <br />
+        <br />
+        <div>
+          <p>
+            Your salary is {userDeatail[0]?.salary}, the market average for this
+            position is: {similarProfilesResult} <br />
+            Your salary is {percentageDifRound}% lower compared to the
+            consulting industry average
+          </p>
+        </div>
       </div>
       <BarGraphI
         jobDetailsSalary={userDeatail[0]?.salary}
@@ -108,6 +118,7 @@ export default async function ResultsPage() {
         healthAvg={healthAvg}
         maleSalAvg={maleSalAvg}
         femaleSalAvg={femaleSalAvg}
+        similarProfilesResult={similarProfilesResult}
       />
       <div />
       <h1>
