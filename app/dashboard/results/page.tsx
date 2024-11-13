@@ -67,7 +67,7 @@ export default async function ResultsPage() {
     return salaryAvgMarket;
   }
 
-  const similarProfilesResult = await compareWithMarket();
+  const similarProfilesResult = Math.ceil(await compareWithMarket());
 
   console.log('new log:::', similarProfilesResult);
 
@@ -102,14 +102,15 @@ export default async function ResultsPage() {
           <p>
             Your salary is {userDeatail[0]?.salary}, the market average for this
             position is: {similarProfilesResult} <br />
-            Your salary is {percentageDifRound}% lower compared to the
-            consulting industry average
+            Your salary is {percentageDifRound}% higher compared to the market
+            average.
           </p>
         </div>
       </div>
       <BarGraphI
         jobDetailsSalary={userDeatail[0]?.salary}
         jobDetailstitle={userDeatail[0]?.jobFunction}
+        jobDetailsLevel={userDeatail[0]?.seniorityLevel}
         foodDelivery={foodDelivery}
         techAvg={techAvg}
         consultAvg={consultAvg}
