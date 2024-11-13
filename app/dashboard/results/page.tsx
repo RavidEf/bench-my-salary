@@ -19,6 +19,21 @@ import {
   IndustryAverageHealthcare,
   IndustryAveragePharmaceuticals,
   IndustryAverageTech,
+  YearsofexperienceJunior,
+  YearsofexperienceJuniorFemale,
+  YearsofexperienceJuniorMale,
+  YearsofexperienceLead,
+  YearsofexperienceLeadFemale,
+  YearsofexperienceLeadMale,
+  YearsofexperienceMid,
+  YearsofexperienceMidFemale,
+  YearsofexperienceMidMale,
+  YearsofexperiencePrinciple,
+  YearsofexperiencePrincipleFemale,
+  YearsofexperiencePrincipleMale,
+  YearsofexperienceSenior,
+  YearsofexperienceSeniorFemale,
+  YearsofexperienceSeniorMale,
 } from '../../components/math';
 import BarGraphI from './bargraphs-results';
 
@@ -83,6 +98,40 @@ export default async function ResultsPage() {
   const maleSalAvg = await GenderAverageMale();
   const femaleSalAvg = await GenderAverageFemale();
 
+  // calling salary average by Yrs
+  const salaryAvgJunior = Math.ceil(await YearsofexperienceJunior());
+  const salaryAvgMid = Math.ceil(await YearsofexperienceMid());
+  const salaryAvgSenior = Math.ceil(await YearsofexperienceSenior());
+  const salaryAvgPrincple = Math.ceil(await YearsofexperiencePrinciple());
+  const salaryAvgLead = Math.ceil(await YearsofexperienceLead());
+  console.log('salary average for yrs 1-3:::', salaryAvgJunior);
+  console.log('salary average for yrs 4-6:::', salaryAvgMid);
+  console.log('salary average for yrs 7-9:::', salaryAvgSenior);
+  console.log('salary average for yrs 10-15:::', salaryAvgPrincple);
+  console.log('salary average for yrs +15:::', salaryAvgLead);
+
+  // calling salary average by Yrs && Male
+  const salaryAvgJuniorMale = Math.ceil(await YearsofexperienceJuniorMale());
+  const salaryAvgMidMale = Math.ceil(await YearsofexperienceMidMale());
+  const salaryAvgSeniorMale = Math.ceil(await YearsofexperienceSeniorMale());
+  const salaryAvgPrincpleMale = Math.ceil(
+    await YearsofexperiencePrincipleMale(),
+  );
+  const salaryAvgLeadMale = Math.ceil(await YearsofexperienceLeadMale());
+
+  // calling salary average by Yrs && Female
+  const salaryAvgJuniorFemale = Math.ceil(
+    await YearsofexperienceJuniorFemale(),
+  );
+  const salaryAvgMidFemale = Math.ceil(await YearsofexperienceMidFemale());
+  const salaryAvgSeniorFemale = Math.ceil(
+    await YearsofexperienceSeniorFemale(),
+  );
+  const salaryAvgPrincpleFemale = Math.ceil(
+    await YearsofexperiencePrincipleFemale(),
+  );
+  const salaryAvgLeadFemale = Math.ceil(await YearsofexperienceLeadFemale());
+
   // Calculate differrence of user salary compared to consulting average
   let percentageDif = 0;
   if (userDeatail[0] !== undefined) {
@@ -120,6 +169,21 @@ export default async function ResultsPage() {
         maleSalAvg={maleSalAvg}
         femaleSalAvg={femaleSalAvg}
         similarProfilesResult={similarProfilesResult}
+        salaryAvgJunior={salaryAvgJunior}
+        salaryAvgMid={salaryAvgMid}
+        salaryAvgSenior={salaryAvgSenior}
+        salaryAvgPrincple={salaryAvgPrincple}
+        salaryAvgLead={salaryAvgLead}
+        salaryAvgJuniorMale={salaryAvgJuniorMale}
+        salaryAvgMidMale={salaryAvgMidMale}
+        salaryAvgSeniorMale={salaryAvgSeniorMale}
+        salaryAvgPrincpleMale={salaryAvgPrincpleMale}
+        salaryAvgLeadMale={salaryAvgLeadMale}
+        salaryAvgJuniorFemale={salaryAvgJuniorFemale}
+        salaryAvgMidFemale={salaryAvgMidFemale}
+        salaryAvgSeniorFemale={salaryAvgSeniorFemale}
+        salaryAvgPrincpleFemale={salaryAvgPrincpleFemale}
+        salaryAvgLeadFemale={salaryAvgLeadFemale}
       />
       <div />
       <h1>

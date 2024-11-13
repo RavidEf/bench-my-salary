@@ -173,3 +173,256 @@ export async function GenderAverageFemale() {
 
   return salAverageGenderFemale;
 }
+
+// yrs of experinece calc yrs 1 to 3
+export async function YearsofexperienceJunior() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter((item) => item.yearsOfExperience <= 3);
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+
+// yrs of experinece calc yrs 4 to 6
+export async function YearsofexperienceMid() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter(
+    (item) =>
+      item.yearsOfExperience === 4 ||
+      item.yearsOfExperience === 5 ||
+      item.yearsOfExperience === 6,
+  );
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+
+// yrs of experinece calc yrs 7 to 9
+export async function YearsofexperienceSenior() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter(
+    (item) =>
+      item.yearsOfExperience === 7 ||
+      item.yearsOfExperience === 8 ||
+      item.yearsOfExperience === 9,
+  );
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+
+// yrs of experinece calc yrs 10 - 15
+export async function YearsofexperiencePrinciple() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter(
+    (item) =>
+      item.yearsOfExperience === 10 ||
+      item.yearsOfExperience === 11 ||
+      item.yearsOfExperience === 12 ||
+      item.yearsOfExperience === 13 ||
+      item.yearsOfExperience === 14 ||
+      item.yearsOfExperience === 15,
+  );
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+
+// yrs of experinece calc yrs 15 and above
+export async function YearsofexperienceLead() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter((item) => item.yearsOfExperience > 15);
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+//
+//
+// yrs of experience and Male
+// yrs of experinece calc yrs 1 to 3
+export async function YearsofexperienceJuniorMale() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter(
+    (item) => item.yearsOfExperience <= 3 && item.genderId === 1,
+  );
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+
+// yrs of experinece calc yrs 4 to 6
+export async function YearsofexperienceMidMale() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter(
+    (item) =>
+      item.genderId === 1 &&
+      (item.yearsOfExperience === 4 ||
+        item.yearsOfExperience === 5 ||
+        item.yearsOfExperience === 6),
+  );
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+
+// yrs of experinece calc yrs 7 to 9
+export async function YearsofexperienceSeniorMale() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter(
+    (item) =>
+      item.genderId === 1 &&
+      (item.yearsOfExperience === 7 ||
+        item.yearsOfExperience === 8 ||
+        item.yearsOfExperience === 9),
+  );
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+
+// yrs of experinece calc yrs 10 - 15
+export async function YearsofexperiencePrincipleMale() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter(
+    (item) =>
+      item.genderId === 1 &&
+      (item.yearsOfExperience === 10 ||
+        item.yearsOfExperience === 11 ||
+        item.yearsOfExperience === 12 ||
+        item.yearsOfExperience === 13 ||
+        item.yearsOfExperience === 14 ||
+        item.yearsOfExperience === 15),
+  );
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+
+// yrs of experinece calc yrs 15 and above
+export async function YearsofexperienceLeadMale() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter(
+    (item) => item.genderId === 1 && item.yearsOfExperience > 15,
+  );
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+
+//
+//
+// yrs of experience and FeMale
+// yrs of experinece calc yrs 1 to 3
+export async function YearsofexperienceJuniorFemale() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter(
+    (item) => item.yearsOfExperience <= 3 && item.genderId === 2,
+  );
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+
+// yrs of experinece calc yrs 4 to 6
+export async function YearsofexperienceMidFemale() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter(
+    (item) =>
+      item.genderId === 2 &&
+      (item.yearsOfExperience === 4 ||
+        item.yearsOfExperience === 5 ||
+        item.yearsOfExperience === 6),
+  );
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+
+// yrs of experinece calc yrs 7 to 9
+export async function YearsofexperienceSeniorFemale() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter(
+    (item) =>
+      item.genderId === 2 &&
+      (item.yearsOfExperience === 7 ||
+        item.yearsOfExperience === 8 ||
+        item.yearsOfExperience === 9),
+  );
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+
+// yrs of experinece calc yrs 10 - 15
+export async function YearsofexperiencePrincipleFemale() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter(
+    (item) =>
+      item.genderId === 2 &&
+      (item.yearsOfExperience === 10 ||
+        item.yearsOfExperience === 11 ||
+        item.yearsOfExperience === 12 ||
+        item.yearsOfExperience === 13 ||
+        item.yearsOfExperience === 14 ||
+        item.yearsOfExperience === 15),
+  );
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}
+
+// yrs of experinece calc yrs 15 and above
+export async function YearsofexperienceLeadFemale() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  //
+  const jobFilterYrs = getAllData.filter(
+    (item) => item.genderId === 2 && item.yearsOfExperience > 15,
+  );
+  const totalSalaryYrs =
+    jobFilterYrs.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterYrs.length;
+
+  return totalSalaryYrs;
+}

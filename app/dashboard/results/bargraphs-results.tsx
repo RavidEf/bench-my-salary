@@ -41,13 +41,59 @@ export default function BarGraphI(props: BarGraphProps) {
       <div className="bar-chart">
         <Line
           data={{
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'], // Add labels for the x-axis
+            labels: [
+              '0',
+              '1-3 Yrs',
+              '4-6 Yrs',
+              '7-10 Yrs',
+              '11-15 Yrs',
+              '+16 Yrs',
+              '',
+            ], // Add labels for the x-axis
             datasets: [
               {
-                label: 'My First Dataset',
-                data: [65, 59, 80, 81, 56, 55, 40],
+                label: ' Male Market Average',
+                data: [
+                  65000,
+                  props.salaryAvgJuniorMale,
+                  props.salaryAvgMidMale,
+                  props.salaryAvgSeniorMale,
+                  props.salaryAvgPrincpleMale,
+                  props.salaryAvgLeadMale,
+                  90000,
+                ],
+                fill: false,
+                borderColor: 'rgb(44, 70, 215)',
+                tension: 0.1,
+              },
+              {
+                label: 'Market Average',
+                data: [
+                  65000,
+                  props.salaryAvgJunior,
+                  props.salaryAvgMid,
+                  props.salaryAvgSenior,
+                  props.salaryAvgPrincple,
+                  props.salaryAvgLead,
+                  90000,
+                ],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1,
+              },
+              {
+                label: 'Female Market Average',
+                data: [
+                  65000,
+                  props.salaryAvgJuniorFemale,
+                  props.salaryAvgMidFemale,
+                  props.salaryAvgSeniorFemale,
+                  props.salaryAvgPrincpleFemale,
+                  props.salaryAvgLeadFemale,
+                  90000,
+                ],
+                fill: false,
+                borderColor: 'rgb(174, 18, 163)',
                 tension: 0.1,
               },
             ],
