@@ -104,11 +104,6 @@ export default async function ResultsPage() {
   const salaryAvgSenior = Math.ceil(await YearsofexperienceSenior());
   const salaryAvgPrincple = Math.ceil(await YearsofexperiencePrinciple());
   const salaryAvgLead = Math.ceil(await YearsofexperienceLead());
-  console.log('salary average for yrs 1-3:::', salaryAvgJunior);
-  console.log('salary average for yrs 4-6:::', salaryAvgMid);
-  console.log('salary average for yrs 7-9:::', salaryAvgSenior);
-  console.log('salary average for yrs 10-15:::', salaryAvgPrincple);
-  console.log('salary average for yrs +15:::', salaryAvgLead);
 
   // calling salary average by Yrs && Male
   const salaryAvgJuniorMale = Math.ceil(await YearsofexperienceJuniorMale());
@@ -194,7 +189,14 @@ export default async function ResultsPage() {
       <br />
       <br />
       <br />
-
+      <div className="results-page">
+        <div className="Bar-chart-container">
+          <div className="Bar-chart-Large-box">
+            {' '}
+            <div className="Bar-rectangle">{userDeatail[0]?.salary}</div>
+          </div>
+        </div>
+      </div>
       <br />
       <br />
       <div />

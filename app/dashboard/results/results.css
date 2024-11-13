@@ -25,6 +25,12 @@
   font-weight: 700;
 }
 
+.Bar-rectangle {
+  width: 900px;
+  height: 100px;
+  background-color: rgb(76, 76, 246);
+  border-radius: 5px;
+}
 /* .bar-chart-section {
   display: flex;
   align-items: left;
