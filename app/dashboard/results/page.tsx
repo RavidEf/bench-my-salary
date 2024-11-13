@@ -3,7 +3,11 @@ import './results.css';
 import { BoxPlotChart } from '@sgratzl/chartjs-chart-boxplot';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { getJobFunctions } from '../../../database/jobinformation';
+import { use } from 'react';
+import {
+  getAllJobsenioritiesInsecure,
+  getJobFunctions,
+} from '../../../database/jobinformation';
 import { getValidSessionToken } from '../../../database/sessions';
 import { getUser } from '../../../database/users';
 import {
@@ -15,7 +19,6 @@ import {
   IndustryAverageHealthcare,
   IndustryAveragePharmaceuticals,
   IndustryAverageTech,
-  MathAll,
 } from '../../components/math';
 import BarGraphI from './bargraphs-results';
 
@@ -37,8 +40,37 @@ export default async function ResultsPage() {
     redirect('/login?returnTo=/dashboard');
   }
 
-  const jobDetails = await getJobFunctions(sessionTokenCookie.value);
-  const seniorityAvg = await MathAll();
+  // query the user data from the DB with the session token
+  const userDeatail = await getJobFunctions(sessionTokenCookie.value);
+  console.log('userDeatail::', userDeatail);
+  // query all market data from the DB
+  async function getMarketData() {
+    const marketData = await getAllJobsenioritiesInsecure();
+    return marketData;
+  }
+
+  // match the user data to the market data
+  async function compareWithMarket() {
+    const marketData = await getMarketData();
+
+    const similarProfiles = marketData.filter((profile) => {
+      return (
+        profile.genderId === userDeatail[0]?.genderId &&
+        profile.seniorityId === userDeatail[0].seniorityId &&
+        profile.jobFunctionId === userDeatail[0].jobFunctionId
+      );
+    });
+    const salaryAvgMarket =
+      similarProfiles.reduce((sum, item) => sum + item.salary, 0) /
+      similarProfiles.length;
+
+    return salaryAvgMarket;
+  }
+
+  const similarProfilesResult = await compareWithMarket();
+
+  console.log('new log:::', similarProfilesResult);
+
   // calling industry average math functions
   const foodDelivery = await IndustryAverageFood();
   const techAvg = await IndustryAverageTech();
@@ -50,12 +82,11 @@ export default async function ResultsPage() {
   // calling gender average math functions
   const maleSalAvg = await GenderAverageMale();
   const femaleSalAvg = await GenderAverageFemale();
-  console.log('MALEAVG:::', maleSalAvg);
 
   // Calculate differrence of user salary compared to consulting average
   let percentageDif = 0;
-  if (jobDetails[0] !== undefined) {
-    percentageDif = ((jobDetails[0].salary - consultAvg) / consultAvg) * 100;
+  if (userDeatail[0] !== undefined) {
+    percentageDif = ((userDeatail[0].salary - consultAvg) / consultAvg) * 100;
   }
   const percentageDifRound = percentageDif.toFixed(2);
 
@@ -67,9 +98,8 @@ export default async function ResultsPage() {
         </div>
       </div>
       <BarGraphI
-        jobDetailsSalary={jobDetails[0]?.salary}
-        jobDetailstitle={jobDetails[0]?.jobFunction}
-        seniorityAvg={seniorityAvg}
+        jobDetailsSalary={userDeatail[0]?.salary}
+        jobDetailstitle={userDeatail[0]?.jobFunction}
         foodDelivery={foodDelivery}
         techAvg={techAvg}
         consultAvg={consultAvg}

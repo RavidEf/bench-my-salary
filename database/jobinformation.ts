@@ -58,23 +58,12 @@ export const createNewSurveyEntryInsecure = cache(
 );
 
 export const getJobFunctions = cache(async (sessionToken: string) => {
-  const jobTitle = await sql<
-    {
-      userName: string;
-      jobFunction: string;
-      seniorityLevel: string;
-      userId: number;
-      salary: number;
-      yearsOfExperience: number;
-    }[]
-  >`
+  const jobTitle = await sql<JobInformationAndTitles[]>`
     SELECT
       users.user_name AS user_name,
       titles.job_function AS job_function,
       seniority.seniority_level AS seniority_level,
-      job_information.user_id,
-      salary,
-      years_of_experience
+      job_information.*
     FROM
       job_information
       JOIN users ON job_information.user_id = users.id
