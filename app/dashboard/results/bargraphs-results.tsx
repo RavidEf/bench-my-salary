@@ -28,7 +28,7 @@ export default function BarGraphI(props: BarGraphProps) {
             plugins: {
               title: {
                 display: true,
-                text: `${props.jobDetailsLevel} ${props.jobDetailstitle} compared to the market average`,
+                text: `${props.jobDetailsLevel}${props.jobDetailstitle} compared to the market average`,
                 font: {
                   size: 22, // Customize the font size if desired
                 },
@@ -54,13 +54,12 @@ export default function BarGraphI(props: BarGraphProps) {
               {
                 label: ' Male Market Average',
                 data: [
-                  65000,
+                  30000,
                   props.salaryAvgJuniorMale,
                   props.salaryAvgMidMale,
                   props.salaryAvgSeniorMale,
                   props.salaryAvgPrincpleMale,
                   props.salaryAvgLeadMale,
-                  90000,
                 ],
                 fill: false,
                 borderColor: 'rgb(44, 70, 215)',
@@ -69,13 +68,12 @@ export default function BarGraphI(props: BarGraphProps) {
               {
                 label: 'Market Average',
                 data: [
-                  65000,
+                  30000,
                   props.salaryAvgJunior,
                   props.salaryAvgMid,
                   props.salaryAvgSenior,
                   props.salaryAvgPrincple,
                   props.salaryAvgLead,
-                  90000,
                 ],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
@@ -84,13 +82,12 @@ export default function BarGraphI(props: BarGraphProps) {
               {
                 label: 'Female Market Average',
                 data: [
-                  65000,
+                  30000,
                   props.salaryAvgJuniorFemale,
                   props.salaryAvgMidFemale,
                   props.salaryAvgSeniorFemale,
                   props.salaryAvgPrincpleFemale,
                   props.salaryAvgLeadFemale,
-                  90000,
                 ],
                 fill: false,
                 borderColor: 'rgb(174, 18, 163)',
