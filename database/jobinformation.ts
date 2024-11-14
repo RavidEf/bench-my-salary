@@ -95,3 +95,33 @@ export const getAllJobsenioritiesInsecure = cache(async () => {
   `;
   return jobSeniority;
 });
+
+// Update job information entry
+
+export const updateJobInfromation = cache(
+  async (
+    sessionToken: Session['token'],
+    updatedJobInformation: JobInformationType,
+  ) => {
+    const [signleEntry] = await sql<JobInformationType[]>`
+      UPDATE job_information
+      SET
+        job_function_id = ${updatedJobInformation.jobFunctionId},
+        seniority_id = ${updatedJobInformation.seniorityId},
+        industry_id = ${updatedJobInformation.industryId},
+        gender_id = ${updatedJobInformation.genderId},
+        user_id = ${updatedJobInformation.userId},
+        salary = ${updatedJobInformation.salary},
+        years_of_experience = ${updatedJobInformation.yearsOfExperience}
+      FROM
+        sessions
+      WHERE
+        sessions.token = ${sessionToken}
+        AND sessions.expiry_timestamp > now()
+        AND job_information.id = ${updatedJobInformation.id}
+      RETURNING
+        job_information.*
+    `;
+    return signleEntry;
+  },
+);
