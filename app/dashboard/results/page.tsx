@@ -144,11 +144,14 @@ export default async function ResultsPage() {
         <br />
         <div>
           <p>
-            Your salary is {userDeatail[0]?.salary}, the market average for this
-            position is: {similarProfilesResult} <br />
+            Your salary is {userDeatail[0]?.salary.toLocaleString()}€, the
+            market average for this position is:{' '}
+            {similarProfilesResult.toLocaleString()}€ <br />
             Your salary is {percentageDifRound}% higher compared to the market
             average.
           </p>
+          <br />
+          <br />
         </div>
       </div>
       <BarGraphI

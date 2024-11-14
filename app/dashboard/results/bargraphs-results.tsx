@@ -1,26 +1,47 @@
 'use client';
 import './results.css';
+import {
+  BarElement,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  Title,
+  Tooltip,
+} from 'chart.js';
 import Chart, { CategoryScale } from 'chart.js/auto';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Bar, Line } from 'react-chartjs-2';
 import type { BarGraphProps } from '../../../util/propstypes';
 
 export default function BarGraphI(props: BarGraphProps) {
-  Chart.register(CategoryScale);
+  Chart.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    ChartDataLabels,
+  );
 
   return (
     <section className="bar-chart-section">
-      <div className="bar-chart">
+      <div style={{ width: '80%', margin: '0 auto' }}>
+        {' '}
+        {/* Center the chart on the page */}
         <Bar
           data={{
-            labels: ['Industry salary average'],
+            labels: [` ${props.jobDetailsLevel}${props.jobDetailstitle}`],
             datasets: [
               {
                 label: 'Your Salary',
                 data: [Math.ceil(props.jobDetailsSalary)],
+                backgroundColor: 'rgba(54, 162, 235, 0.6)', // Light blue color for "Your Salary"
               },
               {
                 label: 'Market average',
                 data: [Math.ceil(props.similarProfilesResult)],
+                backgroundColor: 'rgba(255, 99, 132, 0.6)', // Light pink color for "Market average"
               },
             ],
           }}
@@ -28,17 +49,49 @@ export default function BarGraphI(props: BarGraphProps) {
             plugins: {
               title: {
                 display: true,
-                text: `${props.jobDetailsLevel}${props.jobDetailstitle} compared to the market average`,
+                text: `${props.jobDetailsLevel} ${props.jobDetailstitle} compared to the market average`,
                 font: {
                   size: 22, // Customize the font size if desired
                 },
               },
+              datalabels: {
+                color: 'black', // Label color
+                anchor: 'end', // Position the label at the end of each bar
+                align: 'top', // Align label at the top of each bar
+                formatter: (value) => `${value.toLocaleString()}€`, // Format labels with "€"
+                font: {
+                  weight: 'bold', // Make labels bold
+                  size: 16,
+                },
+              },
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'Industry salary average', // X-axis title
+                  font: {
+                    size: 14, // Customize font size if desired
+                  },
+                },
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: 'Annual Salary (€)', // Y-axis title
+                  font: {
+                    size: 14, // Customize font size if desired
+                  },
+                },
+                beginAtZero: true, // Start y-axis at 0
+              },
             },
           }}
+          plugins={[ChartDataLabels]} // Enables ChartDataLabels plugin
         />
       </div>
 
-      <div className="bar-chart">
+      <div style={{ width: '80%', margin: '0 auto' }}>
         <Line
           data={{
             labels: [
@@ -99,7 +152,7 @@ export default function BarGraphI(props: BarGraphProps) {
             plugins: {
               title: {
                 display: true,
-                text: 'Senior developers Male vs Female comparision',
+                text: 'Average salary Male vs Female',
                 font: {
                   size: 20, // Customize the font size if desired
                 },
@@ -111,7 +164,7 @@ export default function BarGraphI(props: BarGraphProps) {
                 display: true,
                 title: {
                   display: true,
-                  text: 'Month', // Add a title for the x-axis
+                  text: 'Years of experience', // Add a title for the x-axis
                 },
               },
               y: {
@@ -119,7 +172,7 @@ export default function BarGraphI(props: BarGraphProps) {
                 display: true,
                 title: {
                   display: true,
-                  text: 'Salary', // Add a title for the y-axis
+                  text: 'Annual Salary (€)', // Add a title for the y-axis
                 },
               },
             },
