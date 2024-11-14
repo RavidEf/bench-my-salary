@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createNewSurveyEntryInsecure } from '../../../database/jobinformation';
 import {
   type JobInformationType,
@@ -71,3 +71,5 @@ export async function POST(
 
   return NextResponse.json({ survey: newSurveyEntry });
 }
+
+// Update job_information entry

@@ -46,7 +46,8 @@ h1 {
 }
 
 .card {
-  width: 24rem;
+  width: 26rem;
+  height: 26rem;
   background-color: white;
   border-radius: 0.5rem;
   box-shadow:

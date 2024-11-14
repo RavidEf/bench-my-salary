@@ -36,8 +36,8 @@ export default async function DashboardPage() {
         <div className="hero-content">
           <h1>
             {jobDetails[0]?.userName
-              ? `Here is your salary entry, ${jobDetails[0].userName} `
-              : `Add your first salary entry, ${user?.userName} `}{' '}
+              ? `Here is your Salary entry, ${jobDetails[0].userName} `
+              : `Add Your Salary, ${user?.userName} `}{' '}
           </h1>
           <h3 className="h3-dashboard">
             {jobDetails[0]?.userName
@@ -82,7 +82,12 @@ export default async function DashboardPage() {
                       >
                         View entry
                       </button>
-                      <button className="btn-primary-edit">Edit salary</button>
+                      <button
+                        onClick={handelLinkToResults}
+                        className="btn-primary-edit"
+                      >
+                        Update Salary
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -105,7 +110,7 @@ export default async function DashboardPage() {
                   <line x1="8" y1="12" x2="16" y2="12" />
                 </svg>
               </div>
-              <p className="cta-add-salary">Add Salary Entry</p>
+              <p className="cta-add-salary">Enter Salary</p>
             </Link>
           </div>
         </div>
