@@ -39,22 +39,16 @@ import BarGraphI from './bargraphs-results';
 
 export default async function ResultsPage() {
   const sessionTokenCookie = (await cookies()).get('sessionToken');
-
   // 2. get the session token the use provides us in the FE
-
   const session =
     sessionTokenCookie &&
     (await getValidSessionToken(sessionTokenCookie.value));
-
   // get the user name so we can show it without having the need for a first salary entry
   /* const user = sessionTokenCookie && (await getUser(sessionTokenCookie.value)); */
-
   // 3. if there is no valid session redirect user to login page
-
   if (!session) {
     redirect('/login?returnTo=/dashboard');
   }
-
   // query the user data from the DB with the session token
   const userDeatail = await getJobFunctions(sessionTokenCookie.value);
   // console.log('userDeatail::', userDeatail);

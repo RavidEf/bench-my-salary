@@ -1,4 +1,14 @@
-import { getAllJobsenioritiesInsecure } from '../../database/jobinformation';
+import { cookies } from 'next/headers';
+import {
+  getAllJobsenioritiesInsecure,
+  getJobFunctions,
+} from '../../database/jobinformation';
+import { getValidSessionToken } from '../../database/sessions';
+
+const sessionTokenCookie = (await cookies()).get('sessionToken');
+// 2. get the session token the use provides us in the FE
+const userDeatail = await getJobFunctions(sessionTokenCookie.value);
+// console.log('userDetails from math:::', userDeatail);
 
 export async function MathAll() {
   const jobSeniority = await getAllJobsenioritiesInsecure();
@@ -13,10 +23,16 @@ export async function MathAll() {
 // Average of salaries in food delivery industry
 export async function IndustryAverageFood() {
   const jobSeniority = await getAllJobsenioritiesInsecure();
+  // console.log('userDetails from math:::', jobSeniority.length);
+
   //
   const jobFilterIndustry = jobSeniority.filter(
-    (item) => item.industryId === 1,
+    (item) =>
+      item.industryId === 1 &&
+      item.seniorityId === userDeatail[0]?.seniorityId &&
+      item.jobFunctionId === userDeatail[0].jobFunctionId,
   );
+
   // First map to get all salaries, then reduce to get the sum
 
   const totalSalaryFoodDelivery = jobFilterIndustry.reduce(
@@ -36,7 +52,10 @@ export async function IndustryAverageTech() {
   const jobSeniority = await getAllJobsenioritiesInsecure();
   //
   const jobFilterIndustry = jobSeniority.filter(
-    (item) => item.industryId === 2,
+    (item) =>
+      item.industryId === 2 &&
+      item.seniorityId === userDeatail[0]?.seniorityId &&
+      item.jobFunctionId === userDeatail[0].jobFunctionId,
   );
   // First map to get all salaries, then reduce to get the sum
 
@@ -56,7 +75,10 @@ export async function IndustryAverageConsult() {
   const jobSeniority = await getAllJobsenioritiesInsecure();
   //
   const jobFilterIndustry = jobSeniority.filter(
-    (item) => item.industryId === 3,
+    (item) =>
+      item.industryId === 3 &&
+      item.seniorityId === userDeatail[0]?.seniorityId &&
+      item.jobFunctionId === userDeatail[0].jobFunctionId,
   );
   // First map to get all salaries, then reduce to get the sum
 
@@ -76,7 +98,10 @@ export async function IndustryAveragePharmaceuticals() {
   const jobSeniority = await getAllJobsenioritiesInsecure();
   //
   const jobFilterIndustry = jobSeniority.filter(
-    (item) => item.industryId === 4,
+    (item) =>
+      item.industryId === 4 &&
+      item.seniorityId === userDeatail[0]?.seniorityId &&
+      item.jobFunctionId === userDeatail[0].jobFunctionId,
   );
   // First map to get all salaries, then reduce to get the sum
 
@@ -97,7 +122,10 @@ export async function IndustryAverageFinance() {
   const jobSeniority = await getAllJobsenioritiesInsecure();
   //
   const jobFilterIndustry = jobSeniority.filter(
-    (item) => item.industryId === 5,
+    (item) =>
+      item.industryId === 5 &&
+      item.seniorityId === userDeatail[0]?.seniorityId &&
+      item.jobFunctionId === userDeatail[0].jobFunctionId,
   );
   // First map to get all salaries, then reduce to get the sum
 
@@ -117,7 +145,10 @@ export async function IndustryAverageHealthcare() {
   const jobSeniority = await getAllJobsenioritiesInsecure();
   //
   const jobFilterIndustry = jobSeniority.filter(
-    (item) => item.industryId === 6,
+    (item) =>
+      item.industryId === 6 &&
+      item.seniorityId === userDeatail[0]?.seniorityId &&
+      item.jobFunctionId === userDeatail[0].jobFunctionId,
   );
   // First map to get all salaries, then reduce to get the sum
 

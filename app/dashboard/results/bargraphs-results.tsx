@@ -95,7 +95,7 @@ export default function BarGraphI(props: BarGraphProps) {
         <Line
           data={{
             labels: [
-              '0',
+              '',
               '1-3 Yrs',
               '4-6 Yrs',
               '7-10 Yrs',
@@ -107,7 +107,7 @@ export default function BarGraphI(props: BarGraphProps) {
               {
                 label: ' Male Market Average',
                 data: [
-                  30000,
+                  25000,
                   props.salaryAvgJuniorMale,
                   props.salaryAvgMidMale,
                   props.salaryAvgSeniorMale,
@@ -121,7 +121,7 @@ export default function BarGraphI(props: BarGraphProps) {
               {
                 label: 'Market Average',
                 data: [
-                  30000,
+                  25000,
                   props.salaryAvgJunior,
                   props.salaryAvgMid,
                   props.salaryAvgSenior,
@@ -135,7 +135,7 @@ export default function BarGraphI(props: BarGraphProps) {
               {
                 label: 'Female Market Average',
                 data: [
-                  30000,
+                  25000,
                   props.salaryAvgJuniorFemale,
                   props.salaryAvgMidFemale,
                   props.salaryAvgSeniorFemale,
