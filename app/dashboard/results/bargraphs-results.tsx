@@ -3,6 +3,7 @@ import './results.css';
 import {
   BarElement,
   Chart as ChartJS,
+  layouts,
   Legend,
   LinearScale,
   Title,
@@ -53,6 +54,10 @@ export default function BarGraphI(props: BarGraphProps) {
                 font: {
                   size: 22, // Customize the font size if desired
                 },
+                padding: {
+                  top: 20, // Space above the title
+                  bottom: 20, // Space below the title
+                },
               },
               datalabels: {
                 color: 'black', // Label color
@@ -83,31 +88,31 @@ export default function BarGraphI(props: BarGraphProps) {
                     size: 14, // Customize font size if desired
                   },
                 },
-                beginAtZero: true, // Start y-axis at 0
+                beginAtZero: true,
+                max:
+                  Math.ceil(
+                    Math.max(
+                      props.jobDetailsSalary,
+                      props.similarProfilesResult,
+                    ),
+                  ) + 12000,
               },
             },
           }}
           plugins={[ChartDataLabels]} // Enables ChartDataLabels plugin
         />
       </div>
+      <br />
+      <br />
 
       <div style={{ width: '80%', margin: '0 auto' }}>
         <Line
           data={{
-            labels: [
-              '',
-              '1-3 Yrs',
-              '4-6 Yrs',
-              '7-10 Yrs',
-              '11-15 Yrs',
-              '+16 Yrs',
-              '',
-            ], // Add labels for the x-axis
+            labels: ['1-3 Yrs', '4-6 Yrs', '7-10 Yrs', '11-15 Yrs', '+16 Yrs'], // Add labels for the x-axis
             datasets: [
               {
                 label: ' Male Market Average',
                 data: [
-                  25000,
                   props.salaryAvgJuniorMale,
                   props.salaryAvgMidMale,
                   props.salaryAvgSeniorMale,
@@ -121,7 +126,6 @@ export default function BarGraphI(props: BarGraphProps) {
               {
                 label: 'Market Average',
                 data: [
-                  25000,
                   props.salaryAvgJunior,
                   props.salaryAvgMid,
                   props.salaryAvgSenior,
@@ -135,7 +139,6 @@ export default function BarGraphI(props: BarGraphProps) {
               {
                 label: 'Female Market Average',
                 data: [
-                  25000,
                   props.salaryAvgJuniorFemale,
                   props.salaryAvgMidFemale,
                   props.salaryAvgSeniorFemale,
@@ -150,9 +153,12 @@ export default function BarGraphI(props: BarGraphProps) {
           }}
           options={{
             plugins: {
+              legend: {
+                display: true,
+              },
               title: {
                 display: true,
-                text: 'Average salary Male vs Female',
+                text: 'Average Salary by Years of Experience: Male vs. Female',
                 font: {
                   size: 20, // Customize the font size if desired
                 },
@@ -166,6 +172,10 @@ export default function BarGraphI(props: BarGraphProps) {
                   display: true,
                   text: 'Years of experience', // Add a title for the x-axis
                 },
+                offset: true,
+                ticks: {
+                  padding: 10, // Add padding to create space before the first label
+                },
               },
               y: {
                 // Configure the y-axis
@@ -174,11 +184,25 @@ export default function BarGraphI(props: BarGraphProps) {
                   display: true,
                   text: 'Annual Salary (€)', // Add a title for the y-axis
                 },
+                beginAtZero: false,
+                ticks: {
+                  callback: function (value) {
+                    return '€' + value.toLocaleString();
+                  },
+                },
+              },
+            },
+            layout: {
+              padding: {
+                left: 30,
               },
             },
           }}
         />
       </div>
+      <br />
+      <br />
+      <br />
 
       <div className="bar-chart">
         <Bar

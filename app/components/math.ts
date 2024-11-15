@@ -457,3 +457,24 @@ export async function YearsofexperienceLeadFemale() {
 
   return totalSalaryYrs;
 }
+
+export async function percentageDifBySeniorityTitle() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  const matchUserData = getAllData.filter(
+    (item) =>
+      item.genderId === userDeatail[0]?.genderId &&
+      item.seniorityId === userDeatail[0]?.seniorityId &&
+      item.jobFunctionId === userDeatail[0].jobFunctionId,
+  );
+
+  const marketAvg =
+    matchUserData.reduce((sum, item) => sum + item.salary, 0) /
+    matchUserData.length;
+
+  let percentageDif = 0;
+  if (userDeatail[0] !== undefined) {
+    percentageDif = ((userDeatail[0].salary - marketAvg) / marketAvg) * 100;
+  }
+
+  return percentageDif;
+}

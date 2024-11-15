@@ -19,6 +19,7 @@ import {
   IndustryAverageHealthcare,
   IndustryAveragePharmaceuticals,
   IndustryAverageTech,
+  percentageDifBySeniorityTitle,
   YearsofexperienceJunior,
   YearsofexperienceJuniorFemale,
   YearsofexperienceJuniorMale,
@@ -122,6 +123,7 @@ export default async function ResultsPage() {
   const salaryAvgLeadFemale = Math.ceil(await YearsofexperienceLeadFemale());
 
   // Calculate differrence of user salary compared to consulting average
+  const percentageDifMarketAvg = await percentageDifBySeniorityTitle();
   let percentageDif = 0;
   if (userDeatail[0] !== undefined) {
     percentageDif = ((userDeatail[0].salary - consultAvg) / consultAvg) * 100;
@@ -141,8 +143,12 @@ export default async function ResultsPage() {
             Your salary is {userDeatail[0]?.salary.toLocaleString()}€, the
             market average for this position is:{' '}
             {similarProfilesResult.toLocaleString()}€ <br />
-            Your salary is {percentageDifRound}% higher compared to the market
-            average.
+            Your salary is {percentageDifMarketAvg.toLocaleString()}%{' '}
+            {percentageDifMarketAvg > 0
+              ? `higher compared to the
+            market average. Hurray! you rock!`
+              : `lower compared to the
+            market average. You should do something.`}
           </p>
           <br />
           <br />
@@ -178,22 +184,22 @@ export default async function ResultsPage() {
         salaryAvgLeadFemale={salaryAvgLeadFemale}
       />
       <div />
-      <h1>
+      {/* <h1>
         {' '}
         Your salary is {percentageDifRound}% lower compared to the consulting
         industry average
-      </h1>
+      </h1> */}
       <br />
       <br />
       <br />
-      <div className="results-page">
+      {/* <div className="results-page">
         <div className="Bar-chart-container">
           <div className="Bar-chart-Large-box">
             {' '}
             <div className="Bar-rectangle">{userDeatail[0]?.salary}</div>
           </div>
         </div>
-      </div>
+      </div> */}
       <br />
       <br />
       <div />
