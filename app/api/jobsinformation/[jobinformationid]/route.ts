@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import { updateJobInfromation } from '../../../../database/jobinformation';
 import {
@@ -14,12 +15,12 @@ export type MainSurveyResponseBodyPut =
 
 export async function PUT(
   request: NextRequest,
-  { params }: AnimalParams,
+  { params }: any,
 ): Promise<NextResponse<MainSurveyResponseBodyPut>> {
   const requestBody = await request.json();
 
   const result = mainSurveySchema.safeParse(requestBody);
-
+  console.log('result::', result);
   if (!result.success) {
     return NextResponse.json(
       {
@@ -32,18 +33,22 @@ export async function PUT(
   }
 
   // 3. Get the token from the cookie
-  const sessionsTokenCookie = await getCookie('sessionToken');
-  // 3. Update the new survey entry in the DB
+  const sessionTokenCookie = (await cookies()).get('sessionToken');
+
+  // 4. Update the new survey entry in the DB
   const updateJobInfo =
-    sessionsTokenCookie &&
-    (await updateJobInfromation(sessionsTokenCookie.value, {
+    sessionTokenCookie &&
+    (await updateJobInfromation(sessionTokenCookie.value, {
       id: Number((await params).jobInformationId),
-      sessionsTokenCookie,
+      sessionTokenCookie,
       jobFunctionId: result.data.jobFunction,
       seniorityId: result.data.seniority,
       industryId: result.data.industry,
       genderId: result.data.gender,
       salary: result.data.salary,
-      yrs: result.data.yrs,
+      yearsOfExperience: result.data.yrs,
     }));
+  return NextResponse.json({
+    updatedSurvey: updateJobInfo,
+  });
 }

@@ -63,12 +63,14 @@ export const getJobFunctions = cache(async (sessionToken: string) => {
       users.user_name AS user_name,
       titles.job_function AS job_function,
       seniority.seniority_level AS seniority_level,
+      industry.industry_category AS industry_category,
       job_information.*
     FROM
       job_information
       JOIN users ON job_information.user_id = users.id
       JOIN titles ON job_information.job_function_id = titles.id
       JOIN seniority ON job_information.seniority_id = seniority.id
+      JOIN industry ON job_information.industry_id = industry.id
       INNER JOIN sessions ON (
         sessions.token = ${sessionToken}
         AND sessions.user_id = job_information.user_id
@@ -103,14 +105,13 @@ export const updateJobInfromation = cache(
     sessionToken: Session['token'],
     updatedJobInformation: JobInformationType,
   ) => {
-    const [signleEntry] = await sql<JobInformationType[]>`
+    const [singleEntry] = await sql<JobInformationType[]>`
       UPDATE job_information
       SET
         job_function_id = ${updatedJobInformation.jobFunctionId},
         seniority_id = ${updatedJobInformation.seniorityId},
-        industry_id = ${updatedJobInformation.industryId},
         gender_id = ${updatedJobInformation.genderId},
-        user_id = ${updatedJobInformation.userId},
+        industry_id = ${updatedJobInformation.industryId},
         salary = ${updatedJobInformation.salary},
         years_of_experience = ${updatedJobInformation.yearsOfExperience}
       FROM
@@ -122,6 +123,6 @@ export const updateJobInfromation = cache(
       RETURNING
         job_information.*
     `;
-    return signleEntry;
+    return singleEntry;
   },
 );

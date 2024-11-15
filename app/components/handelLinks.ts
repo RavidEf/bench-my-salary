@@ -4,3 +4,7 @@ export function handelLinkToResults() {
 }
 
 export function handeClickDeleteSalary() {}
+
+export function handelLinkToEdit() {
+  window.location.href = '/dashboard/survey';
+}

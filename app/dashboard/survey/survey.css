@@ -1,0 +1,85 @@
+.survey-page-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  height: 100vh; /* Full viewport height */
+  padding: 16px;
+  box-sizing: border-box;
+  text-align: center; /* Center text inside the container */
+}
+
+.survey-user-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Spread items horizontally with space */
+  align-items: center; /* Vertically center both items */
+  width: 900px; /* Limit width for the layout */
+  margin-bottom: 4rem;
+}
+
+.main-form-container {
+  display: flex;
+  margin-top: 2rem;
+  width: 100%; /* Full width in mobile view */
+  max-width: 500px; /* Limit width on larger screens */
+  padding: 20px;
+  background-color: #f8f8f8; /* Light gray background */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for a clean look */
+}
+
+.user-container {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center;
+  height: 500px; /* Give the container enough height */
+  width: 100%; /* Full width in mobile view */
+  max-width: 500px; /* Limit width on larger screens */
+  padding: 20px;
+  background-color: #f9e5e5; /* White background for contrast */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+}
+
+.avatar {
+  margin-bottom: 20px;
+  width: 100px; /* Avatar size */
+  height: 100px;
+  border-radius: 50%; /* Make it circular */
+  overflow: hidden;
+  border: 2px solid #ddd; /* Light border around the avatar */
+}
+.user-functionSeniority {
+  font-size: 1.9rem;
+  color: #333;
+  margin-bottom: 10px; /* Add space between each section */
+  line-height: 1.4;
+}
+
+.user-industry,
+.user-salary,
+.user-yrs {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px; /* Add space between each section */
+  line-height: 1.4;
+}
+
+.user-functionSeniority {
+  font-weight: 600;
+}
+
+.user-industry,
+.user-salary,
+.user-yrs {
+  font-weight: 400;
+}
+
+.h1-surveypage {
+  font-size: 2rem; /* Larger heading for prominence */
+  color: #333;
+  margin-bottom: 20px; /* Space below the title */
+}

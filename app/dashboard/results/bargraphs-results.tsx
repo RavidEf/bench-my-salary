@@ -229,7 +229,7 @@ export default function BarGraphI(props: BarGraphProps) {
         />
       </div>
 
-      <div className="bar-chart">
+      {/* <div className="bar-chart">
         <Bar
           data={{
             labels: ['Industry salary average'],
@@ -260,7 +260,7 @@ export default function BarGraphI(props: BarGraphProps) {
             },
           }}
         />
-      </div>
+      </div> */}
     </section>
   );
 }

@@ -6,7 +6,10 @@ import React from 'react';
 import { getJobFunctions } from '../../database/jobinformation';
 import { getValidSessionToken } from '../../database/sessions';
 import { getUser } from '../../database/users';
-import { handelLinkToResults } from '../components/handelLinks';
+import {
+  handelLinkToEdit,
+  handelLinkToResults,
+} from '../components/handelLinks';
 
 export default async function DashboardPage() {
   // 1.
@@ -83,7 +86,7 @@ export default async function DashboardPage() {
                         View entry
                       </button>
                       <button
-                        onClick={handelLinkToResults}
+                        onClick={handelLinkToEdit}
                         className="btn-primary-edit"
                       >
                         Update Salary

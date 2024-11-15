@@ -2,10 +2,12 @@
 import './survey.css';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import type { MainSurveyResponseBodyPut } from '../../api/jobsinformation/[jobInformationId]/route';
 import type { MainSurveyResponseBody } from '../../api/jobsinformation/route';
 import {
   genderObject,
   industryObject,
+  jobDetailsArray,
   jobFunctionObject,
   seniorityObject,
 } from '../../components/formObjects';
@@ -32,8 +34,9 @@ export default function SurveyForm(props: any) {
   function formatSalary(salaryString: string) {
     return Number(salaryString.replace(/,/g, ''));
   }
-
-  async function handleMainSurvey(event: React.FormEvent<HTMLFormElement>) {
+  async function handleMainSurveySubmit(
+    event: React.FormEvent<HTMLFormElement>,
+  ) {
     event.preventDefault();
     formatSalary(salary);
 
@@ -65,11 +68,48 @@ export default function SurveyForm(props: any) {
     setSalary('');
     setYrs(1);
   }
-  console.log('jobUserDetails:::', props.jobUserDetails);
+
+  async function handleMainSurveyUpdate(
+    event: React.FormEvent<HTMLFormElement>,
+  ) {
+    event.preventDefault();
+    formatSalary(salary);
+    console.log('jobUserDetailsID:::', props.jobUserDetails[0].id);
+
+    const response = await fetch(
+      `/api/jobsinformation/${props.jobUserDetails[0].id}`,
+      {
+        method: 'PUT',
+        body: JSON.stringify({
+          jobFunction,
+          seniority,
+          industry,
+          gender,
+          salary: formatSalary(salary),
+          yrs,
+        }),
+      },
+    );
+    const data: MainSurveyResponseBodyPut = await response.json();
+
+    if ('errors' in data) {
+      setErrors(data.errors);
+      return;
+    }
+
+    router.push('/dashboard/survey');
+    router.refresh();
+
+    setJobFunction(0);
+    setSeniority(0);
+    setIndustry(0);
+    setGender(0);
+    setSalary('');
+    setYrs(1);
+  }
+  // console.log('jobUserDetailsID:::', props.jobUserDetails[0].id);
   return (
-    <section className="survey-page-container">
-      Here you will enter your salary
-      <h1>Add your salary details</h1>
+    <section className="main-form-container">
       {/*  <div>
         You are a <b>{gender}</b> <b>{seniority}</b> <b>{jobFunction}</b> with{' '}
         <b>{yrs}</b> years of expeience, working in <b>{industry}</b> (good for
@@ -79,7 +119,7 @@ export default function SurveyForm(props: any) {
         <div className="w-full max-w-xs">
           <form
             className="survey-form"
-            onSubmit={async (event) => await handleMainSurvey(event)}
+            onSubmit={async (event) => await handleMainSurveyUpdate(event)}
           >
             <label className="form-control w-full max-w-xs">
               <div className="label">
@@ -92,11 +132,12 @@ export default function SurveyForm(props: any) {
                 onChange={(e) => setJobFunction(Number(e.currentTarget.value))}
               >
                 <option value="">Select a Job Function</option>
-                {Object.entries(jobFunctionObject).map(([value, label]) => (
-                  <option key={value} value={value}>
-                    {label}
-                  </option>
-                ))}
+                {jobDetailsArray[0] &&
+                  Object.entries(jobDetailsArray[0]).map(([key, value]) => (
+                    <option key={`user-${key}`} value={key}>
+                      {value}
+                    </option>
+                  ))}
               </select>
             </label>
             <label className="form-control w-full max-w-xs">
@@ -110,11 +151,12 @@ export default function SurveyForm(props: any) {
                 onChange={(e) => setSeniority(Number(e.currentTarget.value))}
               >
                 <option value="">Select a Seniority level</option>
-                {Object.entries(seniorityObject).map(([value, label]) => (
-                  <option key={value} value={value}>
-                    {label}
-                  </option>
-                ))}
+                {jobDetailsArray[1] &&
+                  Object.entries(jobDetailsArray[1]).map(([key, value]) => (
+                    <option key={`user-${key}`} value={key}>
+                      {value}
+                    </option>
+                  ))}
               </select>
             </label>
             <label className="form-control w-full max-w-xs">
@@ -128,11 +170,12 @@ export default function SurveyForm(props: any) {
                 onChange={(e) => setIndustry(Number(e.currentTarget.value))}
               >
                 <option value="">Select the industry you are in</option>
-                {Object.entries(industryObject).map(([value, label]) => (
-                  <option key={value} value={value}>
-                    {label}
-                  </option>
-                ))}
+                {jobDetailsArray[2] &&
+                  Object.entries(jobDetailsArray[2]).map(([key, value]) => (
+                    <option key={`user-${key}`} value={key}>
+                      {value}
+                    </option>
+                  ))}
               </select>
             </label>
             <label className="form-control w-full max-w-xs">
@@ -146,11 +189,12 @@ export default function SurveyForm(props: any) {
                 onChange={(e) => setGender(Number(e.currentTarget.value))}
               >
                 <option value="">Select your gender</option>
-                {Object.entries(genderObject).map(([value, label]) => (
-                  <option key={value} value={value}>
-                    {label}
-                  </option>
-                ))}
+                {jobDetailsArray[3] &&
+                  Object.entries(jobDetailsArray[3]).map(([key, value]) => (
+                    <option key={`user-${key}`} value={key}>
+                      {value}
+                    </option>
+                  ))}
               </select>
             </label>
 
@@ -208,7 +252,7 @@ export default function SurveyForm(props: any) {
             </div>
             <br />
             <br />
-            <button className="btn btn-primary">Submit Salary</button>
+            <button className="btn btn-primary">Update Salary</button>
 
             <br />
             <br />
@@ -225,7 +269,7 @@ export default function SurveyForm(props: any) {
         <div className="w-full max-w-xs">
           <form
             className="survey-form"
-            onSubmit={async (event) => await handleMainSurvey(event)}
+            onSubmit={async (event) => await handleMainSurveySubmit(event)}
           >
             <label className="form-control w-full max-w-xs">
               <div className="label">
