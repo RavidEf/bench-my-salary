@@ -25,16 +25,63 @@
   font-weight: 700;
 }
 
-.Bar-rectangle {
-  width: 900px;
+/* Box plot bar */
+.box-chart-Large-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.Bar-left {
+  width: 300px;
   height: 100px;
   background-color: rgb(76, 76, 246);
   border-radius: 5px;
 }
-/* .bar-chart-section {
-  display: flex;
-  align-items: left;
+.line-female {
+  position: relative;
 
-  width: 400px;
+  width: 10px;
+  height: 100px;
+  background-color: rgb(13, 13, 14);
+  border-radius: 5px;
 }
- */
+.Bar-middle {
+  position: relative;
+
+  width: 300px;
+  height: 100px;
+  background-color: rgb(76, 246, 181);
+  border-radius: 5px;
+}
+.line-user {
+  position: relative;
+
+  width: 10px;
+  height: 100px;
+  background-color: rgb(13, 13, 14);
+  border-radius: 5px;
+}
+.line-avg {
+  position: relative;
+
+  width: 10px;
+  height: 100px;
+  background-color: rgb(13, 13, 14);
+  border-radius: 5px;
+}
+.line-male {
+  position: relative;
+
+  width: 10px;
+  height: 100px;
+  background-color: rgb(13, 13, 14);
+  border-radius: 5px;
+}
+.Bar-right {
+  position: relative;
+
+  width: 300px;
+  height: 100px;
+  background-color: rgb(246, 76, 209);
+  border-radius: 5px;
+}

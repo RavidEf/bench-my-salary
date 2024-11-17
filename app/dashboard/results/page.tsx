@@ -133,6 +133,20 @@ export default async function ResultsPage() {
   return (
     <section className="results-container">
       <div className="results-page">
+        <div className="box-chart-container">
+          <div className="box-chart-Large-box">
+            <div className="Bar-left" />
+            <div className="Bar-middle" />
+            <div className="Bar-right" />
+            <div className="line-female" />
+            <div className="line-user" />
+            <div className="line-avg" />
+            <div className="line-male" />
+          </div>
+        </div>
+      </div>
+
+      <div className="results-page">
         <div>
           <h1 className="results-h1">Results page</h1>
         </div>
@@ -192,14 +206,7 @@ export default async function ResultsPage() {
       <br />
       <br />
       <br />
-      {/* <div className="results-page">
-        <div className="Bar-chart-container">
-          <div className="Bar-chart-Large-box">
-            {' '}
-            <div className="Bar-rectangle">{userDeatail[0]?.salary}</div>
-          </div>
-        </div>
-      </div> */}
+
       <br />
       <br />
       <div />

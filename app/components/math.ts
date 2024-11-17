@@ -3,11 +3,10 @@ import {
   getAllJobsenioritiesInsecure,
   getJobFunctions,
 } from '../../database/jobinformation';
-import { getValidSessionToken } from '../../database/sessions';
 
 const sessionTokenCookie = (await cookies()).get('sessionToken');
 // 2. get the session token the use provides us in the FE
-const userDeatail = await getJobFunctions(sessionTokenCookie.value);
+const userDeatail = await getJobFunctions(sessionTokenCookie?.value);
 // console.log('userDetails from math:::', userDeatail);
 
 export async function MathAll() {

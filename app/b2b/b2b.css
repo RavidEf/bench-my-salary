@@ -1,0 +1,28 @@
+.b2b-page-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  height: 100vh; /* Full viewport height */
+  padding: 16px;
+  box-sizing: border-box;
+  text-align: center; /* Center text inside the container */
+}
+
+.b2b-form-container {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center;
+}
+.b2b-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.b2b-button {
+  background-color: rgb(91, 91, 249);
+  height: 40px;
+}
