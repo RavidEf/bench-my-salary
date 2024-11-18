@@ -119,27 +119,27 @@ export default function BarGraphI(props: BarGraphProps) {
               datasets: [
                 {
                   label: 'Food Delivery Salary average ',
-                  data: [Math.ceil(props.seniorSDFood)],
+                  data: [Math.ceil(props.leadSDFood)],
                 },
                 {
                   label: 'Technology Salary average ',
-                  data: [Math.ceil(props.seniorSDTech)],
+                  data: [Math.ceil(props.leadSDTech)],
                 },
                 {
                   label: 'Consulting Salary average ',
-                  data: [Math.ceil(props.seniorSDConsult)],
+                  data: [Math.ceil(props.leadSDConsult)],
                 },
                 {
                   label: 'Pharmaceuticals Salary average ',
-                  data: [Math.ceil(props.seniorSDPharma)],
+                  data: [Math.ceil(props.leadSDPharma)],
                 },
                 {
                   label: 'Finance and Banking Salary average ',
-                  data: [Math.ceil(props.seniorSDFinanace)],
+                  data: [Math.ceil(props.leadSDFinanace)],
                 },
                 {
                   label: 'Healthcare Salary average ',
-                  data: [Math.ceil(props.seniorSDHealthcare)],
+                  data: [Math.ceil(props.leadSDHealthcare)],
                 },
               ],
             }}
@@ -147,7 +147,7 @@ export default function BarGraphI(props: BarGraphProps) {
               plugins: {
                 title: {
                   display: true,
-                  text: 'Senior Full-Stack Developer by Industry',
+                  text: 'Lead Full-Stack Developer by Industry',
                   font: {
                     size: 22, // Customize the font size if desired
                   },

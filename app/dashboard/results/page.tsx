@@ -25,6 +25,12 @@ import {
   JuniorAverageHealthcare,
   JuniorAveragePharma,
   JuniorAverageTechnology,
+  LeadAverageConsult,
+  LeadAverageFinance,
+  LeadAverageFood,
+  LeadAverageHealthcare,
+  LeadAveragePharma,
+  LeadAverageTechnology,
   MidAverageConsult,
   MidAverageFinance,
   MidAverageFood,
@@ -32,6 +38,12 @@ import {
   MidAveragePharma,
   MidAverageTechnology,
   percentageDifBySeniorityTitle,
+  PrincipalAverageConsult,
+  PrincipalAverageFinance,
+  PrincipalAverageFood,
+  PrincipalAverageHealthcare,
+  PrincipalAveragePharma,
+  PrincipalAverageTechnology,
   SeniorAverageConsult,
   SeniorAverageFinance,
   SeniorAverageFood,
@@ -122,6 +134,22 @@ export default async function ResultsPage() {
   const seniorSDPharma = await SeniorAveragePharma();
   const seniorSDFinanace = await SeniorAverageFinance();
   const seniorSDHealthcare = await SeniorAverageHealthcare();
+
+  // industry avg only for SD positions Principle -----------
+  const princSDFood = await PrincipalAverageFood();
+  const princSDTech = await PrincipalAverageTechnology();
+  const princSDConsult = await PrincipalAverageConsult();
+  const princSDPharma = await PrincipalAveragePharma();
+  const princSDFinanace = await PrincipalAverageFinance();
+  const princSDHealthcare = await PrincipalAverageHealthcare();
+
+  // industry avg only for SD positions Lead -----------
+  const leadSDFood = await LeadAverageFood();
+  const leadSDTech = await LeadAverageTechnology();
+  const leadSDConsult = await LeadAverageConsult();
+  const leadSDPharma = await LeadAveragePharma();
+  const leadSDFinanace = await LeadAverageFinance();
+  const leadSDHealthcare = await LeadAverageHealthcare();
 
   // calling industry average math functions
   const foodDelivery = await IndustryAverageFood();
@@ -256,6 +284,18 @@ export default async function ResultsPage() {
         seniorSDPharma={seniorSDPharma}
         seniorSDFinanace={seniorSDFinanace}
         seniorSDHealthcare={seniorSDHealthcare}
+        princSDFood={princSDFood}
+        princSDTech={princSDTech}
+        princSDConsult={princSDConsult}
+        princSDPharma={princSDPharma}
+        princSDFinanace={princSDFinanace}
+        princSDHealthcare={princSDHealthcare}
+        leadSDFood={leadSDFood}
+        leadSDConsult={leadSDConsult}
+        leadSDTech={leadSDTech}
+        leadSDPharma={leadSDPharma}
+        leadSDFinanace={leadSDFinanace}
+        leadSDHealthcare={leadSDHealthcare}
       />
       <div />
       {/* <h1>

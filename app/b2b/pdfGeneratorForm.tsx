@@ -4,14 +4,12 @@ import { useState } from 'react';
 import Amazon from '../../public/images/amazon.png';
 import Logo from '../../public/images/bench-my-salary-logo.png';
 import Junior from '../../public/images/juniorFullStackIndustryGraph.png';
+import Lead from '../../public/images/LeadFullStackIndustyGRaph.png';
 import MidLevel from '../../public/images/MidLevelFullStackIndustryGRaph.png';
+import Principal from '../../public/images/PrincipalFullStackIndustryGraph.png';
+import Senior from '../../public/images/SeniorFullStackIndustryGRaph.png';
 
-export default async function PDForm({ juniorSDFood }) {
-  const [seniorityReport, setSeniorityReport] = useState([]);
-  // create the array that will hold the seniority vars
-
-  const seniorityArray = [juniorSDFood];
-
+export default function PDForm() {
   const handlePDF = async () => {
     const doc = new jsPDF('p', 'pt', 'a4', false);
 
@@ -41,6 +39,7 @@ export default async function PDForm({ juniorSDFood }) {
     // Calculate height of text to know where to put next element
     const titleLines = doc.splitTextToSize(title, pageWidth - margin * 2);
     const lineHeight = doc.getFontSize() * 1.5;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     const textHeight = titleLines.length * lineHeight;
 
     // Move down past the text
@@ -58,6 +57,14 @@ export default async function PDForm({ juniorSDFood }) {
 
     // Add MidLevel image on the new page
     doc.addImage(MidLevel.src, 'PNG', margin, yPosition, 550, 275);
+    doc.addImage(Senior.src, 'PNG', margin, yPosition + 400, 550, 275);
+
+    doc.addPage(); // Add a new page
+    yPosition = margin; // Reset yPosition for new page
+
+    // Add MidLevel image on the new page
+    doc.addImage(Principal.src, 'PNG', margin, yPosition, 550, 275);
+    doc.addImage(Lead.src, 'PNG', margin, yPosition + 400, 550, 275);
 
     // Save the document
     await doc.save('mypdf.pdf');
