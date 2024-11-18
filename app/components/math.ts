@@ -211,6 +211,107 @@ export async function MidAverageHealthcare() {
 }
 
 /* -------------------------------------------------------------------------------- */
+
+
+/* ------------------------------------------------------------------------------ */
+
+// Get the average salary of full-stack developers Senior for FoodDelivery
+export async function SeniorAverageFood() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 1 &&
+      item.seniorityId === 3 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+// Get the average salary of full-stack developers Mid for Tech
+export async function SeniorAverageTechnology() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 2 &&
+      item.seniorityId === 3 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+
+// Get the average salary of full-stack developers MID for Consulting
+export async function SeniorAverageConsult() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 3 &&
+      item.seniorityId === 3 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+// Get the average salary of full-stack developers Mid for Pharma
+export async function SeniorAveragePharma() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 4 &&
+      item.seniorityId === 3 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+
+// Get the average salary of full-stack developers Mid for Fianance
+export async function SeniorAverageFinance() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 5 &&
+      item.seniorityId === 3 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+
+// Get the average salary of full-stack developers Mid for Healthcare
+export async function SeniorAverageHealthcare() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 6 &&
+      item.seniorityId === 3 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+
+/* --------------------------------------------------------------------------------
+
+
 // Average of salaries in food delivery industry
 export async function IndustryAverageFood() {
   const jobSeniority = await getAllJobsenioritiesInsecure();

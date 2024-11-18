@@ -32,6 +32,12 @@ import {
   MidAveragePharma,
   MidAverageTechnology,
   percentageDifBySeniorityTitle,
+  SeniorAverageConsult,
+  SeniorAverageFinance,
+  SeniorAverageFood,
+  SeniorAverageHealthcare,
+  SeniorAveragePharma,
+  SeniorAverageTechnology,
   YearsofexperienceJunior,
   YearsofexperienceJuniorFemale,
   YearsofexperienceJuniorMale,
@@ -244,6 +250,12 @@ export default async function ResultsPage() {
         midSDPharma={midSDPharma}
         midSDFinanace={midSDFinanace}
         midSDHealthcare={midSDHealthcare}
+        seniorSDFood={seniorSDFood}
+        seniorSDTech={seniorSDTech}
+        seniorSDConsult={seniorSDConsult}
+        seniorSDPharma={seniorSDPharma}
+        seniorSDFinanace={seniorSDFinanace}
+        seniorSDHealthcare={seniorSDHealthcare}
       />
       <div />
       {/* <h1>
