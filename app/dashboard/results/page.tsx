@@ -93,7 +93,7 @@ export default async function ResultsPage() {
 
   console.log('new log:::', similarProfilesResult);
 
-  // industry avg only for SD positions
+  // industry avg only for SD positions Junior -----------
   const juniorSDFood = await JuniorAverageFood();
   const juniorSDTech = await JuniorAverageTechnology();
   const juniorSDConsult = await JuniorAverageConsult();
@@ -101,13 +101,21 @@ export default async function ResultsPage() {
   const juniorSDFinanace = await JuniorAverageFinance();
   const juniorSDHealthcare = await JuniorAverageHealthcare();
 
-  // industry avg only for SD positions
+  // industry avg only for SD positions midlevel -----------
   const midSDFood = await MidAverageFood();
   const midSDTech = await MidAverageTechnology();
   const midSDConsult = await MidAverageConsult();
   const midSDPharma = await MidAveragePharma();
   const midSDFinanace = await MidAverageFinance();
   const midSDHealthcare = await MidAverageHealthcare();
+
+  // industry avg only for SD positions senior -----------
+  const seniorSDFood = await SeniorAverageFood();
+  const seniorSDTech = await SeniorAverageTechnology();
+  const seniorSDConsult = await SeniorAverageConsult();
+  const seniorSDPharma = await SeniorAveragePharma();
+  const seniorSDFinanace = await SeniorAverageFinance();
+  const seniorSDHealthcare = await SeniorAverageHealthcare();
 
   // calling industry average math functions
   const foodDelivery = await IndustryAverageFood();

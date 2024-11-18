@@ -41,7 +41,10 @@ export default async function Header() {
             </div>
             <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
               <li>
-                <a>Item 1</a>
+                <Link href="/b2b" className="btn-primary">
+                  {' '}
+                  For Companies{' '}
+                </Link>
               </li>
               <li>
                 <a>Parent</a>

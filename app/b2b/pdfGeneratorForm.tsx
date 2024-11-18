@@ -14,10 +14,12 @@ export default async function PDForm({ juniorSDFood }) {
 
   const handlePDF = async () => {
     const doc = new jsPDF('p', 'pt', 'a4', false);
+
     // Constants for layout
     const margin = 40;
     let yPosition = margin;
     const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
 
     // Add the logo
     doc.addImage(Logo.src, 'PNG', margin, yPosition, 75, 50);
@@ -44,10 +46,20 @@ export default async function PDForm({ juniorSDFood }) {
     // Move down past the text
     yPosition += textHeight + 50;
 
-    // Add Amazon logo
+    // Add Junior image
     doc.addImage(Junior.src, 'PNG', margin, yPosition, 550, 275);
+    yPosition += 300; // Move down after adding the image
+
+    // Check if there's enough space for the next image, otherwise add a new page
+    if (yPosition + 275 > pageHeight - margin) {
+      doc.addPage(); // Add a new page
+      yPosition = margin; // Reset yPosition for new page
+    }
+
+    // Add MidLevel image on the new page
     doc.addImage(MidLevel.src, 'PNG', margin, yPosition, 550, 275);
 
+    // Save the document
     await doc.save('mypdf.pdf');
   };
   return <button onClick={handlePDF}>Generate PDF</button>;
