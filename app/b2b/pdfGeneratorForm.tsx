@@ -1,9 +1,17 @@
 'use client';
 import { jsPDF } from 'jspdf';
+import { useState } from 'react';
 import Amazon from '../../public/images/amazon.png';
 import Logo from '../../public/images/bench-my-salary-logo.png';
+import Junior from '../../public/images/juniorFullStackIndustryGraph.png';
+import MidLevel from '../../public/images/MidLevelFullStackIndustryGRaph.png';
 
-export default function PDForm() {
+export default async function PDForm({ juniorSDFood }) {
+  const [seniorityReport, setSeniorityReport] = useState([]);
+  // create the array that will hold the seniority vars
+
+  const seniorityArray = [juniorSDFood];
+
   const handlePDF = async () => {
     const doc = new jsPDF('p', 'pt', 'a4', false);
     // Constants for layout
@@ -37,7 +45,8 @@ export default function PDForm() {
     yPosition += textHeight + 50;
 
     // Add Amazon logo
-    doc.addImage(Amazon.src, 'PNG', margin, yPosition, 100, 80);
+    doc.addImage(Junior.src, 'PNG', margin, yPosition, 550, 275);
+    doc.addImage(MidLevel.src, 'PNG', margin, yPosition, 550, 275);
 
     await doc.save('mypdf.pdf');
   };

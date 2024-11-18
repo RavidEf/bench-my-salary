@@ -19,6 +19,18 @@ import {
   IndustryAverageHealthcare,
   IndustryAveragePharmaceuticals,
   IndustryAverageTech,
+  JuniorAverageConsult,
+  JuniorAverageFinance,
+  JuniorAverageFood,
+  JuniorAverageHealthcare,
+  JuniorAveragePharma,
+  JuniorAverageTechnology,
+  MidAverageConsult,
+  MidAverageFinance,
+  MidAverageFood,
+  MidAverageHealthcare,
+  MidAveragePharma,
+  MidAverageTechnology,
   percentageDifBySeniorityTitle,
   YearsofexperienceJunior,
   YearsofexperienceJuniorFemale,
@@ -80,6 +92,22 @@ export default async function ResultsPage() {
   const similarProfilesResult = Math.ceil(await compareWithMarket());
 
   console.log('new log:::', similarProfilesResult);
+
+  // industry avg only for SD positions
+  const juniorSDFood = await JuniorAverageFood();
+  const juniorSDTech = await JuniorAverageTechnology();
+  const juniorSDConsult = await JuniorAverageConsult();
+  const juniorSDPharma = await JuniorAveragePharma();
+  const juniorSDFinanace = await JuniorAverageFinance();
+  const juniorSDHealthcare = await JuniorAverageHealthcare();
+
+  // industry avg only for SD positions
+  const midSDFood = await MidAverageFood();
+  const midSDTech = await MidAverageTechnology();
+  const midSDConsult = await MidAverageConsult();
+  const midSDPharma = await MidAveragePharma();
+  const midSDFinanace = await MidAverageFinance();
+  const midSDHealthcare = await MidAverageHealthcare();
 
   // calling industry average math functions
   const foodDelivery = await IndustryAverageFood();
@@ -196,6 +224,18 @@ export default async function ResultsPage() {
         salaryAvgSeniorFemale={salaryAvgSeniorFemale}
         salaryAvgPrincpleFemale={salaryAvgPrincpleFemale}
         salaryAvgLeadFemale={salaryAvgLeadFemale}
+        juniorSDFood={juniorSDFood}
+        juniorSDTech={juniorSDTech}
+        juniorSDConsult={juniorSDConsult}
+        juniorSDPharma={juniorSDPharma}
+        juniorSDFinanace={juniorSDFinanace}
+        juniorSDHealthcare={juniorSDHealthcare}
+        midSDFood={midSDFood}
+        midSDTech={midSDTech}
+        midSDConsult={midSDConsult}
+        midSDPharma={midSDPharma}
+        midSDFinanace={midSDFinanace}
+        midSDHealthcare={midSDHealthcare}
       />
       <div />
       {/* <h1>

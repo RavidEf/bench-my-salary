@@ -110,6 +110,53 @@ export default function BarGraphI(props: BarGraphProps) {
         <br />
         <br />
 
+        {/* ------------ just for the pdf images delete late */}
+
+        <div className="bar-chart">
+          <Bar
+            data={{
+              labels: ['Industry salary average'],
+              datasets: [
+                {
+                  label: 'Food Delivery Salary average ',
+                  data: [Math.ceil(props.midSDFood)],
+                },
+                {
+                  label: 'Technology Salary average ',
+                  data: [Math.ceil(props.midSDTech)],
+                },
+                {
+                  label: 'Consulting Salary average ',
+                  data: [Math.ceil(props.midSDConsult)],
+                },
+                {
+                  label: 'Pharmaceuticals Salary average ',
+                  data: [Math.ceil(props.midSDPharma)],
+                },
+                {
+                  label: 'Finance and Banking Salary average ',
+                  data: [Math.ceil(props.midSDFinanace)],
+                },
+                {
+                  label: 'Healthcare Salary average ',
+                  data: [Math.ceil(props.midSDHealthcare)],
+                },
+              ],
+            }}
+            options={{
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Mid-Level Full-Stack Developer by Industry',
+                  font: {
+                    size: 22, // Customize the font size if desired
+                  },
+                },
+              },
+            }}
+          />
+        </div>
+
         <div style={{ width: '80%', margin: '0 auto' }}>
           <Line
             data={{

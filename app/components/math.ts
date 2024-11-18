@@ -19,6 +19,198 @@ export async function MathAll() {
 
   return salAverage;
 }
+
+// Get the average salary of full-stack developers JUNIOR for FoodDelivery
+export async function JuniorAverageFood() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 1 &&
+      item.seniorityId === 1 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+// Get the average salary of full-stack developers JUNIOR for Tech
+export async function JuniorAverageTechnology() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 2 &&
+      item.seniorityId === 1 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+
+// Get the average salary of full-stack developers JUNIOR for Consulting
+export async function JuniorAverageConsult() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 3 &&
+      item.seniorityId === 1 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+// Get the average salary of full-stack developers JUNIOR for Pharma
+export async function JuniorAveragePharma() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 4 &&
+      item.seniorityId === 1 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+
+// Get the average salary of full-stack developers JUNIOR for Fianance
+export async function JuniorAverageFinance() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 5 &&
+      item.seniorityId === 1 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+
+// Get the average salary of full-stack developers JUNIOR for Healthcare
+export async function JuniorAverageHealthcare() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 6 &&
+      item.seniorityId === 1 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+
+/* ------------------------------------------------------------------------------ */
+
+// Get the average salary of full-stack developers Midlevel for FoodDelivery
+export async function MidAverageFood() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 1 &&
+      item.seniorityId === 2 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+// Get the average salary of full-stack developers Mid for Tech
+export async function MidAverageTechnology() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 2 &&
+      item.seniorityId === 2 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+
+// Get the average salary of full-stack developers MID for Consulting
+export async function MidAverageConsult() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 3 &&
+      item.seniorityId === 2 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+// Get the average salary of full-stack developers Mid for Pharma
+export async function MidAveragePharma() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 4 &&
+      item.seniorityId === 2 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+
+// Get the average salary of full-stack developers Mid for Fianance
+export async function MidAverageFinance() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 5 &&
+      item.seniorityId === 2 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+
+// Get the average salary of full-stack developers Mid for Healthcare
+export async function MidAverageHealthcare() {
+  const jobSeniority = await getAllJobsenioritiesInsecure();
+  const jobFilterIndustry = jobSeniority.filter(
+    (item) =>
+      item.industryId === 6 &&
+      item.seniorityId === 2 &&
+      item.jobFunctionId === 3,
+  );
+  // First map to get all salaries, then reduce to get the sum divide by the length
+  const avgJuniorFoodDelivery =
+    jobFilterIndustry.reduce((sum, item) => sum + item.salary, 0) /
+    jobFilterIndustry.length;
+  return avgJuniorFoodDelivery;
+}
+
+/* -------------------------------------------------------------------------------- */
 // Average of salaries in food delivery industry
 export async function IndustryAverageFood() {
   const jobSeniority = await getAllJobsenioritiesInsecure();
