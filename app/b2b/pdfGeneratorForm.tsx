@@ -1,9 +1,9 @@
 'use client';
 import { jsPDF } from 'jspdf';
-import Amazon from '../../../public/images/amazon.png';
-import Logo from '../../../public/images/bench-my-salary-logo.png';
+import Amazon from '../../public/images/amazon.png';
+import Logo from '../../public/images/bench-my-salary-logo.png';
 
-export default function GeneratePDF() {
+export default function PDForm() {
   const handlePDF = async () => {
     const doc = new jsPDF('p', 'pt', 'a4', false);
     // Constants for layout
@@ -18,7 +18,7 @@ export default function GeneratePDF() {
     yPosition += 120;
 
     // Set font size for title
-    doc.setFontSize(40);
+    doc.setFontSize(30);
 
     // Add multi-line title using text options
     const title = 'The Developer Benchmark\nby Bench My Salary';
@@ -37,10 +37,9 @@ export default function GeneratePDF() {
     yPosition += textHeight + 50;
 
     // Add Amazon logo
-    doc.addImage(Amazon.src, 'PNG', margin, yPosition, 80, 100);
+    doc.addImage(Amazon.src, 'PNG', margin, yPosition, 100, 80);
 
     await doc.save('mypdf.pdf');
   };
-
   return <button onClick={handlePDF}>Generate PDF</button>;
 }
