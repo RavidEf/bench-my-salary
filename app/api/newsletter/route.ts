@@ -1,4 +1,8 @@
 import type { NextResponse } from 'next/server';
+import {
+  type BizEmailType,
+  bizFormSchema,
+} from '../../../migrations/00013-createtablebusinessemail';
 
 export type NewsletterResponseBody =
 | {

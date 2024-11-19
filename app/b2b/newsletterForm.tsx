@@ -2,11 +2,12 @@
 
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import type { NewsletterResponseBody } from '../api/newsletter/route';
 
 export default function NewsletterForm() {
   const [bizEmail, setBizEmail] = useState('');
 
-  const router = useRouter();
+  // const router = useRouter();
 
   async function newsletterSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -23,7 +24,7 @@ export default function NewsletterForm() {
       return;
     }
 
-    router.refresh();
+    // router.refresh();
 
     setBizEmail('');
   }
