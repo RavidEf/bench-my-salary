@@ -117,7 +117,7 @@ h1 {
 
 .card-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .btn-primary {
@@ -125,6 +125,7 @@ h1 {
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 0.375rem;
+  width: 45%;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -139,6 +140,8 @@ h1 {
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 0.375rem;
+  width: 45%;
+
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;

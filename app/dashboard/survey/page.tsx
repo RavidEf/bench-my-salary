@@ -20,13 +20,19 @@ export default async function SurveyPage() {
 
   // 3.
   const jobDetails = await getJobFunctions(sessionTokenCookie?.value);
+  console.log('jobDetails::::', jobDetails);
 
   if (!session) {
     redirect('/login?returnTo=/dashboard');
   }
   return (
     <div className="survey-page-container">
-      <h1 className="h1-surveypage">Add your salary details</h1>
+      {jobDetails.length > 0 ? (
+        <h1 className="h1-surveypage">Edit your salary</h1>
+      ) : (
+        <h1 className="h1-surveypage">Add your salary details</h1>
+      )}
+
       <div className="survey-user-container">
         <SurveyForm jobUserDetails={jobDetails} />
         {jobDetails.length > 0 ? (
