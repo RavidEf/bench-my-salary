@@ -211,7 +211,7 @@ export default async function ResultsPage() {
             <div className="Bar-middle">
               <div className="line-user">
                 <div className="user-salary">
-                  <b>50,000 €</b>
+                  <b>{userDeatail[0]?.salary.toLocaleString()} €</b>
                   Average Salary
                 </div>
               </div>

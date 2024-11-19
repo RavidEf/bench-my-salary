@@ -70,7 +70,9 @@
 }
 .line-user {
   width: 10px;
-
+  height: auto;
+  top: -10%;
+  bottom: -10%;
   background-color: rgb(20, 20, 247);
   border-radius: 5px;
 }
@@ -78,7 +80,7 @@
 .user-salary {
   position: absolute;
   width: 200px;
-  bottom: 120%;
+  bottom: 110%;
   text-align: center;
   left: -100px;
 }
@@ -93,12 +95,18 @@
   height: 100px;
   background-color: rgb(13, 13, 14);
   border-radius: 5px;
+  height: auto;
+  top: -10%;
+  bottom: -10%;
 }
 .line-male {
   width: 10px;
   height: 100px;
-  background-color: rgb(13, 13, 14);
+  background-color: rgb(68, 68, 104);
   border-radius: 5px;
+  height: auto;
+  top: -10%;
+  bottom: -10%;
 }
 .Bar-right {
   width: 50%;
