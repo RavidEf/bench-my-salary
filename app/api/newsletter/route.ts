@@ -27,8 +27,6 @@ export async function POST(
 
   const newBizEmail = await createBizEmailInsecure(result.data.businessEmail);
 
-  console.log('NEW newBizEmail:', newBizEmail);
-
   return NextResponse.json({
     newBizEmail: 'A new business email was submitted',
   });

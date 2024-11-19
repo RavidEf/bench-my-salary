@@ -69,5 +69,9 @@ export default function PDForm() {
     // Save the document
     await doc.save('mypdf.pdf');
   };
-  return <button onClick={handlePDF}>Generate PDF</button>;
+  return (
+    <button className="pdf-btn" onClick={handlePDF}>
+      Generate PDF
+    </button>
+  );
 }

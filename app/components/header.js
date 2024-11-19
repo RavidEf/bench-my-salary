@@ -69,23 +69,11 @@ export default async function Header() {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Item 1</a>
+              <Link href="/b2b"> For Companies </Link>
             </li>
+
             <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
+              <Link href="/dashboard"> For Individuals </Link>
             </li>
           </ul>
         </div>
@@ -95,7 +83,7 @@ export default async function Header() {
               {' '}
               <span>Hi {user.userName}</span>{' '}
             </p>
-            <Link href="/dashboard" className="btn-primary">
+            <Link href="/dashboard" className="btn">
               {' '}
               Dashboard{' '}
             </Link>
