@@ -1,11 +1,14 @@
 'use client';
 
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 export default function NewsletterForm() {
   const [bizEmail, setBizEmail] = useState('');
 
-  function newsletterSubmit(event: React.FormEvent<HTMLFormElement>) {
+  const router = useRouter();
+
+  async function newsletterSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const response = await fetch('/api/newsletter', {
       method: 'POST',
@@ -27,8 +30,11 @@ export default function NewsletterForm() {
 
   return (
     <div className="NL-form-container">
-      <form onSubmit={newsletterSubmit} className="NL-form">
-        <label>Enter your Business Emaill Address</label>
+      <form
+        onSubmit={async (event) => await newsletterSubmit(event)}
+        className="NL-form"
+      >
+        <label htmlFor="email">Enter your Business Emaill Address</label>
         <input name="email" type="email" />
         <button className="btn-nl-form">Submit Email</button>
       </form>
