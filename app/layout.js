@@ -1,7 +1,7 @@
 import './globals.css';
 import localFont from 'next/font/local';
-import { cookies } from 'next/headers';
-import { getUser } from '../database/users';
+// import { cookies } from 'next/headers';
+// import { getUser } from '../database/users';
 import Footer from './components/footer';
 import Header from './components/header';
 

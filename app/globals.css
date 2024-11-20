@@ -14,3 +14,15 @@ body {
 h1 {
   font-size: var(--h1-size);
 }
+
+.home-container {
+  background-color: rgb(252, 246, 238);
+}
+
+.home-hero-section {
+  height: 150%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}

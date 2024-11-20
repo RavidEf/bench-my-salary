@@ -66,10 +66,6 @@ export default async function Header() {
         </div>
         {user ? (
           <div className="navbar-end">
-            <p>
-              {' '}
-              <span>Hi {user.userName}</span>{' '}
-            </p>
             <Link href="/dashboard" className="btn">
               {' '}
               Dashboard{' '}
