@@ -1,3 +1,4 @@
+import './header.css';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -65,18 +66,22 @@ export default async function Header() {
           </ul>
         </div>
         {user ? (
-          <div className="navbar-end">
-            <Link href="/dashboard" className="btn">
-              {' '}
-              Dashboard{' '}
-            </Link>
+          <div className="navbar-end-btns">
+            <div className="btn-nav-dashboard">
+              <Link href="/dashboard" className="btn">
+                {' '}
+                Dashboard{' '}
+              </Link>
+            </div>
             <LogoutButton />{' '}
           </div>
         ) : (
-          <div className="navbar-end">
-            <Link href="/register" className="btn">
-              Register
-            </Link>
+          <div className="navbar-end-btns">
+            <div className="btn-nav-dashboard">
+              <Link href="/register" className="btn">
+                Register
+              </Link>
+            </div>
             <Link href="/login" className="btn">
               Login
             </Link>
