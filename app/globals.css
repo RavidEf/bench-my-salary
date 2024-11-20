@@ -9,20 +9,92 @@
 
 body {
   margin: 0 auto;
+  background-color: rgb(245, 240, 235);
 }
 
 h1 {
   font-size: var(--h1-size);
 }
-
 .home-container {
-  background-color: rgb(252, 246, 238);
+  margin-top: 5rem;
 }
-
 .home-hero-section {
   height: 150%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.5rem;
+}
+
+.companies-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+  height: 50%;
+}
+.companies-text {
+  font-weight: 600;
+}
+
+.below-fold-container {
+  margin-top: 10rem;
+  padding: 2rem;
+}
+
+.developer-trust-container {
+  height: 150%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.testimonial-section {
+  height: 150%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 5rem;
+  padding: 3rem;
+}
+
+.femaleDev {
+  border-radius: 90px;
+}
+
+.persona1,
+.persona2 {
+  border: 2px solid rgb(102, 102, 102);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for a clean look */
+}
+
+.persona1:hover {
+  box-shadow: 40px 35px 25px rgba(0, 0, 0, 0.1);
+  background-color: antiquewhite;
+}
+.persona2:hover {
+  box-shadow: 40px 35px 25px rgba(0, 0, 0, 0.1);
+  background-color: antiquewhite;
+}
+
+.testemo-text {
+  width: 60%;
+  padding: 1rem;
 }
