@@ -28,9 +28,6 @@ export default function BarGraphI(props: BarGraphProps) {
 
   return (
     <section>
-      <div className="filter-container">
-        <h1>Hello graphs page</h1>
-      </div>
       <section className="bar-chart-section">
         <div style={{ width: '80%', margin: '0 auto' }}>
           {' '}
@@ -112,7 +109,7 @@ export default function BarGraphI(props: BarGraphProps) {
 
         {/* ------------ just for the pdf images delete late */}
 
-        <div className="bar-chart">
+        {/*   <div className="bar-chart">
           <Bar
             data={{
               labels: ['Industry salary average'],
@@ -156,7 +153,7 @@ export default function BarGraphI(props: BarGraphProps) {
             }}
           />
         </div>
-
+ */}
         <div style={{ width: '80%', margin: '0 auto' }}>
           <Line
             data={{

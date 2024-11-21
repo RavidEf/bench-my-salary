@@ -202,29 +202,7 @@ export default async function ResultsPage() {
 
   return (
     <section className="results-container">
-      <div className="results-page">
-        <div className="box-chart-container">
-          <div className="box-chart-Large-box">
-            <div className="Bar-left">
-              <div className="line-female" />
-            </div>
-            <div className="Bar-middle">
-              <div className="line-user">
-                <div className="user-salary">
-                  <b>{userDeatail[0]?.salary.toLocaleString()} €</b>
-                  Average Salary
-                </div>
-              </div>
-            </div>
-            <div className="Bar-right">
-              <div className="line-avg" />
-              <div className="line-male" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
+      <div className="results-header">
         <div>
           <h1 className="results-h1">Results page</h1>
         </div>
@@ -306,11 +284,27 @@ export default async function ResultsPage() {
         leadSDHealthcare={leadSDHealthcare}
       />
       <div />
-      {/* <h1>
-        {' '}
-        Your salary is {percentageDifRound}% lower compared to the consulting
-        industry average
-      </h1> */}
+
+      <div className="box-chart-container">
+        <div className="box-chart-Large-box">
+          <div className="Bar-left">
+            <div className="line-female" />
+          </div>
+          <div className="Bar-middle">
+            <div className="line-user">
+              <div className="user-salary">
+                <b>{userDeatail[0]?.salary.toLocaleString()} €</b>
+                Average Salary
+              </div>
+            </div>
+          </div>
+          <div className="Bar-right">
+            <div className="line-avg" />
+            <div className="line-male" />
+          </div>
+        </div>
+      </div>
+
       <br />
       <br />
       <br />

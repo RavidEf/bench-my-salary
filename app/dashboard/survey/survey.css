@@ -44,7 +44,12 @@
   padding: 20px;
   background-color: #f8f8f8; /* Light gray background */
   border-radius: 12px; /* Rounded corners */
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for a clean look */
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for a clean look */
+}
+
+.main-form-container:hover {
+  background-color: #f4f4f4;
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for a clean look */
 }
 
 .form-div-container {

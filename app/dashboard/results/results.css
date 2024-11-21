@@ -1,8 +1,13 @@
 .results-container {
   min-height: 100vh;
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
+
   padding-top: 2rem;
+}
+.results-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .results-page {
