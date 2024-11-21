@@ -9,14 +9,13 @@
 }
 
 .survey-page-container-add {
-  margin-top: 1rem;
+  margin-top: 4rem;
   display: flex;
   flex-direction: column; /* Stack children vertically */
   justify-content: center; /* Center vertically */
   align-items: center; /* Center horizontally */
-  height: 100vh; /* Full viewport height */
   padding: 16px;
-  box-sizing: border-box;
+
   text-align: center;
 }
 

@@ -110,11 +110,6 @@ export default function SurveyForm(props: any) {
   // console.log('jobUserDetailsID:::', props.jobUserDetails[0].id);
   return (
     <section className="main-form-container">
-      {/*  <div>
-        You are a <b>{gender}</b> <b>{seniority}</b> <b>{jobFunction}</b> with{' '}
-        <b>{yrs}</b> years of expeience, working in <b>{industry}</b> (good for
-        you!!) and making <b>{salary}</b>€ a year, nice.
-      </div> */}
       {props.jobUserDetails.length > 0 ? (
         <div className="form-div-container">
           <form
@@ -267,7 +262,7 @@ export default function SurveyForm(props: any) {
           </form>
         </div>
       ) : (
-        <div className="w-full max-w-xs">
+        <div className="form-div-container">
           <form
             className="survey-form"
             onSubmit={async (event) => await handleMainSurveySubmit(event)}
@@ -363,7 +358,7 @@ export default function SurveyForm(props: any) {
                 }}
               />
             </label>
-            <label className="label mt-4">Years of Experience: {yrs}</label>
+            <label className="ex-yrs">Years of Experience: {yrs}</label>
             <input
               type="range"
               min={1}

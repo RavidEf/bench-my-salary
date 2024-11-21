@@ -71,8 +71,10 @@ export default async function SurveyPage() {
         <section className="survey-page-container-add">
           <div>
             <h1 className="h1-surveypage">Add your salary details</h1>
-            <div className="survey-user-container">
-              <SurveyForm jobUserDetails={jobDetails} />
+            <div className="survey-flex-edit">
+              <div className="survey-user-container">
+                <SurveyForm jobUserDetails={jobDetails} />
+              </div>
             </div>
           </div>
         </section>
