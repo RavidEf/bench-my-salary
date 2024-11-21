@@ -58,8 +58,11 @@ h3 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 3rem;
 }
-.graph-illustration {
+
+svg {
+  max-width: 100%;
 }
 
 .testimonial-section {

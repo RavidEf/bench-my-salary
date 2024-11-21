@@ -116,7 +116,7 @@ export default function SurveyForm(props: any) {
         you!!) and making <b>{salary}</b>€ a year, nice.
       </div> */}
       {props.jobUserDetails.length > 0 ? (
-        <div className="w-full max-w-xs">
+        <div className="form-div-container">
           <form
             className="survey-form"
             onSubmit={async (event) => await handleMainSurveyUpdate(event)}
@@ -217,7 +217,7 @@ export default function SurveyForm(props: any) {
                 }}
               />
             </label>
-            <label className="label mt-4">Years of Experience: {yrs}</label>
+            <label className="ex-yrs">Years of Experience: {yrs}</label>
             <input
               type="range"
               min={1}
@@ -229,7 +229,7 @@ export default function SurveyForm(props: any) {
                 setYrs(Number(e.target.value));
               }}
             />
-            <div className="flex w-full max-w-xs justify-between px-2 text-xs">
+            <div className="flex w-2/3 max-w-xs justify-between px-2 text-xs">
               <span>1</span>
               <span>2</span>
               <span>3</span>

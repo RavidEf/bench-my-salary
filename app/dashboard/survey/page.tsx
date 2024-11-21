@@ -26,46 +26,57 @@ export default async function SurveyPage() {
     redirect('/login?returnTo=/dashboard');
   }
   return (
-    <div className="survey-page-container">
+    <div>
       {jobDetails.length > 0 ? (
-        <h1 className="h1-surveypage">Edit your salary</h1>
-      ) : (
-        <h1 className="h1-surveypage">Add your salary details</h1>
-      )}
+        <section className="survey-page-container-edit">
+          <div>
+            <h1 className="h1-surveypage">Edit your salary</h1>
+            <div className="survey-flex-edit">
+              <div className="survey-user-container">
+                <SurveyForm jobUserDetails={jobDetails} />
+              </div>
 
-      <div className="survey-user-container">
-        <SurveyForm jobUserDetails={jobDetails} />
-        {jobDetails.length > 0 ? (
-          <div className="user-container">
-            <div className="avatar">
-              <Image
-                alt="avatar-icon"
-                src={jobDetails[0]?.genderId === 1 ? MaleAvatar : FemaleAvatar}
-                height={100}
-                width={100}
-              />
-            </div>
+              <div className="user-container">
+                <div className="avatar">
+                  <Image
+                    alt="avatar-icon"
+                    src={
+                      jobDetails[0]?.genderId === 1 ? MaleAvatar : FemaleAvatar
+                    }
+                    height={100}
+                    width={100}
+                  />
+                </div>
 
-            <div className="user-functionSeniority">
-              {jobDetails[0]?.seniorityLevel}
-              {jobDetails[0]?.jobFunction}
-            </div>
-            <div className="user-industry">
-              Industry: <b>{jobDetails[0]?.industryCategory}</b>
-            </div>
-            <div className="user-salary">
-              {' '}
-              Salary: <b>{jobDetails[0]?.salary.toLocaleString()}€</b>
-            </div>
-            <div className="user-yrs">
-              {' '}
-              Years of expeirnce: <b>{jobDetails[0]?.yearsOfExperience}</b>
+                <div className="user-functionSeniority">
+                  {jobDetails[0]?.seniorityLevel}
+                  {jobDetails[0]?.jobFunction}
+                </div>
+                <div className="user-industry">
+                  Industry: <b>{jobDetails[0]?.industryCategory}</b>
+                </div>
+                <div className="user-salary">
+                  {' '}
+                  Salary: <b>{jobDetails[0]?.salary.toLocaleString()}€</b>
+                </div>
+                <div className="user-yrs">
+                  {' '}
+                  Years of expeirnce: <b>{jobDetails[0]?.yearsOfExperience}</b>
+                </div>
+              </div>
             </div>
           </div>
-        ) : (
-          ''
-        )}
-      </div>
+        </section>
+      ) : (
+        <section className="survey-page-container-add">
+          <div>
+            <h1 className="h1-surveypage">Add your salary details</h1>
+            <div className="survey-user-container">
+              <SurveyForm jobUserDetails={jobDetails} />
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

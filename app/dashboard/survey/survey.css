@@ -1,4 +1,14 @@
-.survey-page-container {
+.survey-page-container-edit {
+  margin-top: 1rem;
+  /* Center vertically */
+  /* align-items: center; /* Center horizontally */
+  /* height: 100vh; /* Full viewport height */
+  padding: 16px;
+  box-sizing: border-box;
+  text-align: center; /* Center text inside the container */
+}
+
+.survey-page-container-add {
   margin-top: 1rem;
   display: flex;
   flex-direction: column; /* Stack children vertically */
@@ -7,7 +17,15 @@
   height: 100vh; /* Full viewport height */
   padding: 16px;
   box-sizing: border-box;
-  text-align: center; /* Center text inside the container */
+  text-align: center;
+}
+
+.survey-flex-edit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 4rem;
 }
 
 .survey-user-container {
@@ -15,19 +33,32 @@
   flex-direction: row;
   justify-content: space-between; /* Spread items horizontally with space */
   align-items: center; /* Vertically center both items */
-  width: 900px; /* Limit width for the layout */
   margin-bottom: 4rem;
 }
 
 .main-form-container {
   display: flex;
   margin-top: 2rem;
-  width: 100%; /* Full width in mobile view */
-  max-width: 500px; /* Limit width on larger screens */
+  justify-content: center;
+  width: 500px; /* Full width in mobile view */
+  /* max-width: 500px; /* Limit width on larger screens */
   padding: 20px;
   background-color: #f8f8f8; /* Light gray background */
   border-radius: 12px; /* Rounded corners */
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for a clean look */
+}
+
+.form-div-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.survey-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .user-container {
@@ -57,6 +88,7 @@
   color: #333;
   margin-bottom: 10px; /* Add space between each section */
   line-height: 1.4;
+  font-weight: 600;
 }
 
 .user-industry,
@@ -66,15 +98,6 @@
   color: #333;
   margin-bottom: 10px; /* Add space between each section */
   line-height: 1.4;
-}
-
-.user-functionSeniority {
-  font-weight: 600;
-}
-
-.user-industry,
-.user-salary,
-.user-yrs {
   font-weight: 400;
 }
 
@@ -82,4 +105,14 @@
   font-size: 2rem; /* Larger heading for prominence */
   color: #333;
   margin-bottom: 20px; /* Space below the title */
+}
+.range {
+  width: 70%;
+}
+.ex-yrs {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  width: 68%;
+  justify-content: flex-start;
 }
