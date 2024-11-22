@@ -3,15 +3,15 @@ import type { Sql } from 'postgres';
 const titles = [
   {
     id: 1,
-    jobFunction: 'Frontend  web Developer',
+    jobFunction: 'Frontend Web Developer',
   },
   {
     id: 2,
-    jobFunction: 'Backend  web Developer',
+    jobFunction: 'Backend Web Developer',
   },
   {
     id: 3,
-    jobFunction: 'Full-stack web Developer',
+    jobFunction: 'Full-stack Web Developer',
   },
   {
     id: 4,
@@ -19,11 +19,11 @@ const titles = [
   },
   {
     id: 5,
-    jobFunction: 'Android mobile Developer',
+    jobFunction: 'Android Mobile Developer',
   },
   {
     id: 6,
-    jobFunction: 'iOS mobile Developer',
+    jobFunction: 'iOS Mobile Developer',
   },
 ];
 

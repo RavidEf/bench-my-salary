@@ -39,7 +39,7 @@ export default function BarGraphI(props: BarGraphProps) {
                 {
                   label: 'Your Salary',
                   data: [Math.ceil(props.jobDetailsSalary)],
-                  backgroundColor: 'rgba(54, 162, 235, 0.6)', // Light blue color for "Your Salary"
+                  backgroundColor: 'rgba(45, 24, 238, 0.6)', // Light blue color for "Your Salary"
                 },
                 {
                   label: 'Market average',
@@ -265,8 +265,9 @@ export default function BarGraphI(props: BarGraphProps) {
               labels: ['Industry salary average'],
               datasets: [
                 {
-                  label: 'Your Salary 123',
+                  label: `Your Salary`,
                   data: [props.jobDetailsSalary],
+                  backgroundColor: 'rgba(87, 71, 236, 0.6)',
                 },
                 {
                   label: 'Food Delivery Salary average ',

@@ -159,6 +159,7 @@ export default async function ResultsPage() {
   const financeAvg = await IndustryAverageFinance();
   const healthAvg = await IndustryAverageHealthcare();
 
+  console.log('foodDelivery:::', foodDelivery);
   // calling gender average math functions
   const maleSalAvg = await GenderAverageMale();
   const femaleSalAvg = await GenderAverageFemale();
