@@ -33,7 +33,7 @@ export default function NewsletterForm() {
   }
 
   return (
-    <div>
+    <div className="inside-b2b-nl">
       {isSuccess ? (
         <div className="success-pdf-container">
           <div>

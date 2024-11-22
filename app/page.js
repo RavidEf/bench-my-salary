@@ -317,11 +317,10 @@ export default function Home() {
       <section className="testimonial-section">
         <div className="persona1">
           <div className="testemo-text">
-            “With Bench My Salary I found out I should be better compensated,
-            since the market is paying a lot more than my current position.{' '}
-            <br />
-            After negotiation based on the salary benchmark comparision, I
-            received a significant salary raise.”
+            “Bench My Salary showed me that I'm paid fairly compared to the
+            market. <br />
+            It's a really useful tool for finding out your worth and what you
+            can aspire to.”
           </div>
           <div className="testemo-person-image">
             <Image
@@ -337,11 +336,7 @@ export default function Home() {
               {' '}
               <b>Gal G.</b>
             </div>
-            <div>
-              Senior Software Developer with 5 yrs of experience
-              <br />
-              Negotiated his salary up to 79,000 €
-            </div>
+            <div>Mid-Level Android Developer with 4 yrs of experience</div>
           </div>
         </div>
         <div className="persona2">
@@ -367,9 +362,9 @@ export default function Home() {
               <b>Ron W.</b>
             </div>
             <div>
-              Senior Software Developer with 5 yrs of experience
+              Senior Software Developer with 6 yrs of experience
               <br />
-              Negotiated his salary up to 79,000 €
+              Negotiated his salary up to 88,000 €
             </div>
           </div>
         </div>

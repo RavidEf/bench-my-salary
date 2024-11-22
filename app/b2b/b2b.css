@@ -30,7 +30,6 @@ img {
   display: flex;
   justify-content: center;
   flex-direction: column;
-
   align-items: center;
 }
 
@@ -116,4 +115,12 @@ input {
   margin-top: 2rem;
   display: flex;
   justify-content: center;
+}
+.inside-b2b-nl {
+  margin-top: 1.5rem;
+  margin-bottom: 5rem;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
