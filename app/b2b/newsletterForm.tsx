@@ -50,6 +50,7 @@ export default function NewsletterForm() {
             <label htmlFor="email">Enter your Business Emaill Address</label>
             <input
               id="email"
+              placeholder="tina@meta.io"
               name="email"
               type="email"
               autoComplete="email"

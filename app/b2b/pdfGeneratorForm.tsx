@@ -70,8 +70,10 @@ export default function PDForm() {
     await doc.save('mypdf.pdf');
   };
   return (
-    <button className="pdf-btn" onClick={handlePDF}>
-      Download Report
-    </button>
+    <div className="pdf-div">
+      <button className="pdf-btn" onClick={handlePDF}>
+        Download Report
+      </button>
+    </div>
   );
 }

@@ -30,6 +30,7 @@ img {
   display: flex;
   justify-content: center;
   flex-direction: column;
+
   align-items: center;
 }
 
@@ -58,10 +59,10 @@ img {
   background-color: rgb(214, 214, 214);
   display: flex;
   flex-direction: column;
-  height: 90%;
-  width: 110%;
+  height: 150%;
+  width: 120%;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px rgb(104, 104, 104);
+  box-shadow: 6px 4px 10px rgb(104, 104, 104);
 }
 
 .NL-form {
@@ -69,13 +70,14 @@ img {
   flex-direction: column;
   border-radius: 2px;
   margin: 2px;
+  padding: 10px;
 }
 label {
   margin: 2px;
 }
 input {
   margin-top: 10px;
-
+  padding: 5px;
   border-radius: 2px;
   height: 30px;
 }
@@ -83,7 +85,7 @@ input {
 .btn-nl-form {
   margin-top: 1rem;
   background-color: #6b63ff;
-  border-radius: 2px;
+  border-radius: 5px;
   height: 30px;
 }
 
@@ -91,14 +93,27 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90%;
-  width: 80%;
-  margin: 0 auto;
+
+  margin-top: 2rem;
   font-size: large;
   flex-direction: column;
+  margin-bottom: 8rem;
 }
 .pdf-btn {
   background-color: rgb(133, 133, 248);
-  font-weight: 700;
-  height: 30px;
+  font-weight: 500;
+  height: 100%;
+  margin-top: 10px;
+  width: 50%;
+  border-radius: 10px;
+  padding: 10px;
+  color: rgb(0, 0, 0);
+}
+.success-container {
+  font-weight: 500;
+}
+.pdf-div {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
 }

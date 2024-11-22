@@ -103,4 +103,6 @@ svg {
 .testemo-text {
   width: 60%;
   padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
