@@ -39,7 +39,7 @@ h1 {
   padding: 2rem;
   background-color: #f4d4b5;
   border-radius: 0.5rem;
-  box-shadow: 20px 22px 20px;
+  box-shadow: 5px 7px 10px 1px;
 }
 
 .btns-dashboardPage {
@@ -48,7 +48,7 @@ h1 {
   justify-content: center;
   align-items: center;
   width: 90%;
-  gap: 5px;
+  gap: 30px;
   margin-top: 4rem;
 }
 

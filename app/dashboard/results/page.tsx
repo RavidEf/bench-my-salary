@@ -205,22 +205,32 @@ export default async function ResultsPage() {
     <section className="results-container">
       <div className="results-header">
         <div>
-          <h1 className="results-h1">Results page</h1>
+          <h1 className="results-h1">Salary Comparision</h1>
         </div>
         <br />
         <br />
-        <div>
+        <div className="insights-text">
           <p>
-            Your salary is {userDeatail[0]?.salary.toLocaleString()}€, the
-            market average for this position is:{' '}
-            {similarProfilesResult.toLocaleString()}€ <br />
-            Your salary is {percentageDifMarketAvg.toLocaleString()}%{' '}
-            {percentageDifMarketAvg > 0
-              ? `higher compared to the
+            The average salary as a{' '}
+            <b>
+              {userDeatail[0]?.seniorityLevel}
+              {userDeatail[0]?.jobFunction}
+            </b>{' '}
+            in Austria is €<b>{similarProfilesResult.toLocaleString()}</b> gross
+            per year.
+            <br />
+            Your salary is{' '}
+            <b>
+              {percentageDifMarketAvg.toLocaleString()}%{' '}
+              {percentageDifMarketAvg > 0
+                ? `higher compared to the
             market average. Hurray! you rock!`
-              : `lower compared to the
-            market average. You should do something.`}
+                : `lower compared to the
+            market average.`}
+            </b>
           </p>
+          <br />
+          <p>Checkout the graphs below for more insights.</p>
           <br />
           <br />
         </div>
@@ -286,7 +296,7 @@ export default async function ResultsPage() {
       />
       <div />
 
-      <div className="box-chart-container">
+      {/*   <div className="box-chart-container">
         <div className="box-chart-Large-box">
           <div className="Bar-left">
             <div className="line-female" />
@@ -304,7 +314,7 @@ export default async function ResultsPage() {
             <div className="line-male" />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <br />
       <br />

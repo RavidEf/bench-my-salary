@@ -5,7 +5,9 @@
   /* height: 100vh; /* Full viewport height */
   padding: 16px;
   box-sizing: border-box;
-  text-align: center; /* Center text inside the container */
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .survey-page-container-add {

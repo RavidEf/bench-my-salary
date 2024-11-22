@@ -1,13 +1,13 @@
 .results-container {
   min-height: 100vh;
-
-  padding-top: 2rem;
 }
 .results-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #e9ebf0;
+  padding-top: 3rem;
 }
 
 .results-page {
@@ -117,4 +117,8 @@
   width: 50%;
   right: 0;
   background-color: rgb(246, 76, 209);
+}
+
+.insights-text {
+  font-size: 1.2rem;
 }

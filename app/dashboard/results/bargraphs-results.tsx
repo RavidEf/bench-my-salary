@@ -52,7 +52,7 @@ export default function BarGraphI(props: BarGraphProps) {
               plugins: {
                 title: {
                   display: true,
-                  text: `${props.jobDetailsLevel} ${props.jobDetailstitle} compared to the market average`,
+                  text: `${props.jobDetailsLevel}${props.jobDetailstitle} compared to the market average`,
                   font: {
                     size: 22, // Customize the font size if desired
                   },
@@ -76,7 +76,7 @@ export default function BarGraphI(props: BarGraphProps) {
                 x: {
                   title: {
                     display: true,
-                    text: 'Industry salary average', // X-axis title
+                    text: '', // X-axis title
                     font: {
                       size: 14, // Customize font size if desired
                     },
