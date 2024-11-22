@@ -1,14 +1,36 @@
 .b2b-page-container {
   margin-top: 1rem;
   background-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
-  display: flex;
-  flex-direction: column; /* Stack children vertically */
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
-  height: 100vh; /* Full viewport height */
+
   padding: 16px;
-  box-sizing: border-box;
-  text-align: center; /* Center text inside the container */
+}
+.hero-b2b {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 60vh;
+  gap: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+.h1-b2b {
+  font-size: 3rem;
+}
+
+svg,
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.NL-b2b-div {
+  margin-top: 6rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .b2b-form-container {
@@ -17,46 +39,66 @@
   flex-direction: column; /* Stack children vertically */
   justify-content: center; /* Center vertically */
   align-items: center;
+  width: 100%;
 }
 .b2b-form {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .b2b-button {
   background-color: rgb(91, 91, 249);
-  height: 40px;
+  height: 45px;
 }
 
 .NL-form-container {
   margin: 1rem;
   padding: 1rem;
-  background-color: rgb(158, 205, 247);
+  background-color: rgb(214, 214, 214);
   display: flex;
   flex-direction: column;
   height: 90%;
-  width: 90%;
+  width: 110%;
   border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(104, 104, 104);
 }
 
 .NL-form {
   display: flex;
   flex-direction: column;
+  border-radius: 2px;
+  margin: 2px;
 }
+label {
+  margin: 2px;
+}
+input {
+  margin-top: 10px;
+
+  border-radius: 2px;
+  height: 30px;
+}
+
 .btn-nl-form {
-  background-color: aqua;
+  margin-top: 1rem;
+  background-color: #6b63ff;
+  border-radius: 2px;
+  height: 30px;
 }
 
 .success-pdf-container {
   display: flex;
   justify-content: center;
-  background-color: aquamarine;
+  align-items: center;
   height: 90%;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   font-size: large;
+  flex-direction: column;
 }
 .pdf-btn {
   background-color: rgb(133, 133, 248);
   font-weight: 700;
+  height: 30px;
 }

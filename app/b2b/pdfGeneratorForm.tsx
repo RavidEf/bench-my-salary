@@ -71,7 +71,7 @@ export default function PDForm() {
   };
   return (
     <button className="pdf-btn" onClick={handlePDF}>
-      Generate PDF
+      Download Report
     </button>
   );
 }

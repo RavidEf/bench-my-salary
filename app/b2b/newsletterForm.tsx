@@ -52,7 +52,6 @@ export default function NewsletterForm() {
               id="email"
               name="email"
               type="email"
-              required
               autoComplete="email"
               value={businessEmail}
               onChange={(event) => setBizEmail(event.currentTarget.value)}
