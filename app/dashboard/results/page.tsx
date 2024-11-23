@@ -104,13 +104,23 @@ export default async function ResultsPage() {
       similarProfiles.reduce((sum, item) => sum + item.salary, 0) /
       similarProfiles.length;
 
-    return salaryAvgMarket;
+    const minValueMArket = Math.min(
+      ...similarProfiles.map((item) => item.salary),
+    );
+    const maxValueMArket = Math.max(
+      ...similarProfiles.map((item) => item.salary),
+    );
+
+    return { salaryAvgMarket, minValueMArket, maxValueMArket };
   }
 
-  const similarProfilesResult = Math.ceil(await compareWithMarket());
+  const { salaryAvgMarket, minValueMArket, maxValueMArket } =
+    await compareWithMarket();
 
-  console.log('new log:::', similarProfilesResult);
-
+  /* console.log('avg market:::', salaryAvgMarket);
+  console.log('Max market:::', maxValueMArket);
+  console.log('Min market:::', minValueMArket);
+ */
   // industry avg only for SD positions Junior -----------
   const juniorSDFood = await JuniorAverageFood();
   const juniorSDTech = await JuniorAverageTechnology();
@@ -199,7 +209,8 @@ export default async function ResultsPage() {
   if (userDeatail[0] !== undefined) {
     percentageDif = ((userDeatail[0].salary - consultAvg) / consultAvg) * 100;
   }
-  const percentageDifRound = percentageDif.toFixed(2);
+  // percetange change
+  // const percentageDifRound = percentageDif.toFixed(2);
 
   return (
     <section className="results-container">
@@ -216,8 +227,8 @@ export default async function ResultsPage() {
               {userDeatail[0]?.seniorityLevel}
               {userDeatail[0]?.jobFunction}
             </b>{' '}
-            in Austria is €<b>{similarProfilesResult.toLocaleString()}</b> gross
-            per year.
+            in Austria is €<b>{salaryAvgMarket.toLocaleString()}</b> gross per
+            year.
             <br />
             Your salary is{' '}
             <b>
@@ -247,7 +258,9 @@ export default async function ResultsPage() {
         healthAvg={healthAvg}
         maleSalAvg={maleSalAvg}
         femaleSalAvg={femaleSalAvg}
-        similarProfilesResult={similarProfilesResult}
+        salaryAvgMarket={salaryAvgMarket}
+        minValueMArket={minValueMArket}
+        maxValueMArket={maxValueMArket}
         salaryAvgJunior={salaryAvgJunior}
         salaryAvgMid={salaryAvgMid}
         salaryAvgSenior={salaryAvgSenior}

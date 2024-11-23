@@ -26,6 +26,10 @@ export default function BarGraphI(props: BarGraphProps) {
     ChartDataLabels,
   );
 
+  console.log('avg market:::', props.salaryAvgMarket);
+  console.log('Max market:::', props.maxValueMArket);
+  console.log('Min market:::', props.minValueMArket);
+
   return (
     <section>
       <section className="bar-chart-section">
@@ -34,17 +38,33 @@ export default function BarGraphI(props: BarGraphProps) {
           {/* Center the chart on the page */}
           <Bar
             data={{
-              labels: [` ${props.jobDetailsLevel}${props.jobDetailstitle}`],
+              labels: [`${props.jobDetailsLevel} ${props.jobDetailstitle}`],
               datasets: [
+                // "Your Salary" Bar (Not Stacked)
                 {
                   label: 'Your Salary',
-                  data: [Math.ceil(props.jobDetailsSalary)],
-                  backgroundColor: 'rgba(45, 24, 238, 0.6)', // Light blue color for "Your Salary"
+                  data: [props.jobDetailsSalary], // Place it in the first position
+                  backgroundColor: 'rgba(45, 24, 238, 0.6)', // Blue color for "Your Salary"
+                  stack: 'your-salary', // Separate stack group
+                },
+                // "Market Data" Bar (Stacked)
+                {
+                  label: 'Minimum to Average',
+                  data: [
+                    Number(props.salaryAvgMarket) -
+                      Number(props.minValueMarket),
+                  ], // Second position
+                  backgroundColor: 'rgba(34, 197, 94, 0.6)', // Green for the range between Min and Avg
+                  stack: 'market-data', // Stack group for Market Data
                 },
                 {
-                  label: 'Market average',
-                  data: [Math.ceil(props.similarProfilesResult)],
-                  backgroundColor: 'rgba(255, 99, 132, 0.6)', // Light pink color for "Market average"
+                  label: 'Average to Maximum',
+                  data: [
+                    Number(props.maxValueMarket) -
+                      Number(props.salaryAvgMarket),
+                  ], // Second position
+                  backgroundColor: 'rgba(239, 68, 68, 0.6)', // Red for the range between Avg and Max
+                  stack: 'market-data', // Same stack group for Market Data
                 },
               ],
             }}
@@ -52,56 +72,35 @@ export default function BarGraphI(props: BarGraphProps) {
               plugins: {
                 title: {
                   display: true,
-                  text: `${props.jobDetailsLevel}${props.jobDetailstitle} compared to the market average`,
-                  font: {
-                    size: 22, // Customize the font size if desired
-                  },
-                  padding: {
-                    top: 20, // Space above the title
-                    bottom: 20, // Space below the title
-                  },
+                  text: `${props.jobDetailsLevel} ${props.jobDetailstitle} compared to the market range`,
+                  font: { size: 22 },
+                  padding: { top: 20, bottom: 20 },
                 },
                 datalabels: {
-                  color: 'black', // Label color
-                  anchor: 'end', // Position the label at the end of each bar
-                  align: 'top', // Align label at the top of each bar
-                  formatter: (value) => `${value.toLocaleString()}€`, // Format labels with "€"
-                  font: {
-                    weight: 'bold', // Make labels bold
-                    size: 16,
-                  },
+                  color: 'black',
+                  anchor: 'end',
+                  align: 'top',
+                  formatter: (value) => `${value}€`,
+                  font: { weight: 'bold', size: 16 },
                 },
               },
               scales: {
                 x: {
-                  title: {
-                    display: true,
-                    text: '', // X-axis title
-                    font: {
-                      size: 14, // Customize font size if desired
-                    },
-                  },
+                  stacked: true, // Enable stacking for x-axis
                 },
                 y: {
+                  stacked: true, // Enable stacking for y-axis
                   title: {
                     display: true,
-                    text: 'Annual Salary (€)', // Y-axis title
-                    font: {
-                      size: 14, // Customize font size if desired
-                    },
+                    text: 'Annual Salary (€)',
+                    font: { size: 14 },
                   },
                   beginAtZero: true,
-                  max:
-                    Math.ceil(
-                      Math.max(
-                        props.jobDetailsSalary,
-                        props.similarProfilesResult,
-                      ),
-                    ) + 12000,
+                  max: Math.ceil(props.maxValueMarket) + 12000, // Add padding to the max value
                 },
               },
             }}
-            plugins={[ChartDataLabels]} // Enables ChartDataLabels plugin
+            plugins={[ChartDataLabels]} // Optional: Use ChartDataLabels for better visualization
           />
         </div>
         <br />
