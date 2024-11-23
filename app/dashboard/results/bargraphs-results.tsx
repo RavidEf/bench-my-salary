@@ -68,6 +68,14 @@ export default function BarGraphI(props: BarGraphProps) {
                   font: { size: 22 },
                   padding: { top: 20, bottom: 20 },
                 },
+                subtitle: {
+                  display: true,
+                  text: 'Your Salary compared to the market average for the same role and seniority',
+                  font: { size: 15 },
+                  color: '#666', // Optional: Subtitle color
+                  padding: { bottom: 10 },
+                },
+
                 datalabels: {
                   color: 'black',
                   anchor: 'end',
@@ -161,6 +169,13 @@ export default function BarGraphI(props: BarGraphProps) {
                   font: {
                     size: 20, // Customize the font size if desired
                   },
+                },
+                subtitle: {
+                  display: true,
+                  text: 'Graph illustrating the overall database of developer salary for male vs female average by years of experience',
+                  font: { size: 15 },
+                  color: '#666', // Optional: Subtitle color
+                  padding: { bottom: 10 },
                 },
               },
               scales: {
@@ -258,50 +273,79 @@ export default function BarGraphI(props: BarGraphProps) {
             }}
           />
         </div>
-        <div className="pie-chart">
-          <Pie
-            data={{
-              labels: ['Male', 'Female'],
-              datasets: [
-                {
-                  label: ['Gender Distribution in %'],
-                  data: [
-                    props.ratioMaleGender.toFixed(2) * 100,
-                    props.ratioFemGender.toFixed(2) * 100,
-                  ],
-                  backgroundColor: [
-                    'rgba(45, 24, 238, 0.6)',
-                    'rgba(255, 99, 132, 0.6)',
-                  ],
-                  borderWidth: 10,
-                },
-              ],
-            }}
-            options={{
-              plugins: {
-                title: {
-                  display: true,
-                  text: 'Software Developer Gender Distribution for Principal & Lead roles',
-                  font: {
-                    size: 24,
+        <div className="pie-container">
+          <div className="pie-text-box">
+            <div>
+              <p>
+                This chart illustrates the gender distribution among software
+                developers in senior roles, such as Principal and Lead
+                positions.
+              </p>
+              <br />
+              The data reveals a significant disparity:
+              <ul>
+                <li>
+                  Male developers account for 76% of these roles, represented by
+                  the larger blue segment of the chart.
+                </li>
+                <li>
+                  Female developers make up just 24%, as shown in the smaller
+                  pink segment.
+                </li>
+              </ul>
+              <p>
+                This stark difference highlights the underrepresentation of
+                women in leadership roles within the software development
+                industry. The data could encourage further discussions on
+                promoting diversity and inclusivity in higher-level technical
+                positions.
+              </p>
+            </div>
+          </div>
+          <div className="pie-chart">
+            <Pie
+              data={{
+                labels: ['Male', 'Female'],
+                datasets: [
+                  {
+                    label: ['Gender Distribution in %'],
+                    data: [
+                      props.ratioMaleGender.toFixed(2) * 100,
+                      props.ratioFemGender.toFixed(2) * 100,
+                    ],
+                    backgroundColor: [
+                      'rgba(45, 24, 238, 0.6)',
+                      'rgba(255, 99, 132, 0.6)',
+                    ],
+                    borderWidth: 10,
+                  },
+                ],
+              }}
+              options={{
+                plugins: {
+                  title: {
+                    display: true,
+                    text: 'Software Developer Gender Distribution for Principal & Lead roles',
+                    font: {
+                      size: 24,
+                    },
+                  },
+                  datalabels: {
+                    display: true, // Enable data labels
+                    color: 'black', // Color of the labels
+                    font: {
+                      weight: 'bold',
+                      size: 16,
+                    },
+                    formatter: (value) => `${value}%`, // Add percentage sign
+                    anchor: 'center', // Position the label in the center
+                    align: 'center', // Align text in the center
                   },
                 },
-                datalabels: {
-                  display: true, // Enable data labels
-                  color: 'black', // Color of the labels
-                  font: {
-                    weight: 'bold',
-                    size: 16,
-                  },
-                  formatter: (value) => `${value}%`, // Add percentage sign
-                  anchor: 'center', // Position the label in the center
-                  align: 'center', // Align text in the center
-                },
-              },
-            }}
-          />
+              }}
+            />
+          </div>
         </div>
-
         {/* <div className="bar-chart">
         <Bar
           data={{

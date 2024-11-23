@@ -21,11 +21,34 @@
   display: flex;
   min-height: 80vh;
 }
+.pie-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.pie-text-box {
+  background-color: #e9ebf0;
+  width: 40%;
+  padding: 1.5rem;
+  box-shadow: 3px 3px 10px;
+  border-radius: 15px;
+}
+.pie-text-box ul {
+  list-style-type: disc; /* Ensures the bullets are shown */
+  padding-left: 20px; /* Adds indentation to align bullets properly */
+  margin: 10px 0; /* Optional: Adds some spacing */
+}
+
+.pie-text-box li {
+  margin-bottom: 5px; /* Optional: Adds spacing between list items */
+}
+
 .pie-chart {
   margin-top: 4rem;
   padding: 4rem;
-  display: flex;
-  max-height: 90vh;
+  height: 50%;
+  width: 50%;
 }
 .results-h1 {
   margin-top: 4rem;

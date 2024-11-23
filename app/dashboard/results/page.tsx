@@ -287,7 +287,7 @@ export default async function ResultsPage() {
         salaryAvgSeniorFemale={salaryAvgSeniorFemale}
         salaryAvgPrincpleFemale={salaryAvgPrincpleFemale}
         salaryAvgLeadFemale={salaryAvgLeadFemale}
-        juniorSDFood={juniorSDFood}
+        /*  juniorSDFood={juniorSDFood}
         juniorSDTech={juniorSDTech}
         juniorSDConsult={juniorSDConsult}
         juniorSDPharma={juniorSDPharma}
@@ -316,13 +316,13 @@ export default async function ResultsPage() {
         leadSDTech={leadSDTech}
         leadSDPharma={leadSDPharma}
         leadSDFinanace={leadSDFinanace}
-        leadSDHealthcare={leadSDHealthcare}
+        leadSDHealthcare={leadSDHealthcare} */
         ratioMaleGender={ratioMaleGender}
         ratioFemGender={ratioFemGender}
       />
       <div />
 
-      <div className="box-chart-container">
+      {/*  <div className="box-chart-container">
         <div className="box-chart-Large-box">
           <div className="Bar-left">
             <div className="line-female" />
@@ -340,7 +340,7 @@ export default async function ResultsPage() {
             <div className="line-male" />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <br />
       <br />
