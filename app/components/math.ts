@@ -964,3 +964,23 @@ export async function percentageDifBySeniorityTitle() {
 
   return percentageDif;
 }
+
+// ----------  how many SD males are there in our dataset? -----------
+
+export async function MaleSDDistribution() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  const findMalesSD = getAllData.filter(
+    (item) =>
+      item.genderId === 1 && item.jobFunctionId === 4 && item.seniorityId >= 4,
+  ).length;
+  return findMalesSD;
+}
+
+export async function FemaleSDDistribution() {
+  const getAllData = await getAllJobsenioritiesInsecure();
+  const findMalesSD = getAllData.filter(
+    (item) =>
+      item.genderId === 2 && item.jobFunctionId === 4 && item.seniorityId >= 4,
+  ).length;
+  return findMalesSD;
+}

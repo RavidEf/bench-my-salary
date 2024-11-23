@@ -21,6 +21,12 @@
   display: flex;
   min-height: 80vh;
 }
+.pie-chart {
+  margin-top: 4rem;
+  padding: 4rem;
+  display: flex;
+  max-height: 90vh;
+}
 .results-h1 {
   margin-top: 4rem;
   font-size: 3rem /* 48px */;

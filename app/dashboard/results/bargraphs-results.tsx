@@ -6,13 +6,14 @@ import {
   layouts,
   Legend,
   LinearScale,
+  pie,
   Title,
   Tooltip,
 } from 'chart.js';
 import Chart, { CategoryScale } from 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { useState } from 'react';
-import { Bar, Line } from 'react-chartjs-2';
+import { Bar, Line, Pie } from 'react-chartjs-2';
 import type { BarGraphProps } from '../../../util/propstypes';
 
 export default function BarGraphI(props: BarGraphProps) {
@@ -26,9 +27,12 @@ export default function BarGraphI(props: BarGraphProps) {
     ChartDataLabels,
   );
 
-  console.log('avg market:::', props.salaryAvgMarket);
-  console.log('Max market:::', props.maxValueMArket);
-  console.log('Min market:::', props.minValueMArket);
+  console.log('Max market:::', typeof props.maxValueMArket);
+  console.log(
+    'Min market:::',
+    typeof (props.salaryAvgMarket - props.minValueMarket),
+  );
+  const minDifference = props.salaryAvgMarket - props.minValueMarket;
 
   return (
     <section>
@@ -47,24 +51,12 @@ export default function BarGraphI(props: BarGraphProps) {
                   backgroundColor: 'rgba(45, 24, 238, 0.6)', // Blue color for "Your Salary"
                   stack: 'your-salary', // Separate stack group
                 },
-                // "Market Data" Bar (Stacked)
+
                 {
-                  label: 'Minimum to Average',
-                  data: [
-                    Number(props.salaryAvgMarket) -
-                      Number(props.minValueMarket),
-                  ], // Second position
+                  label: 'Average',
+                  data: [props.salaryAvgMarket], // Second position
                   backgroundColor: 'rgba(34, 197, 94, 0.6)', // Green for the range between Min and Avg
                   stack: 'market-data', // Stack group for Market Data
-                },
-                {
-                  label: 'Average to Maximum',
-                  data: [
-                    Number(props.maxValueMarket) -
-                      Number(props.salaryAvgMarket),
-                  ], // Second position
-                  backgroundColor: 'rgba(239, 68, 68, 0.6)', // Red for the range between Avg and Max
-                  stack: 'market-data', // Same stack group for Market Data
                 },
               ],
             }}
@@ -96,7 +88,7 @@ export default function BarGraphI(props: BarGraphProps) {
                     font: { size: 14 },
                   },
                   beginAtZero: true,
-                  max: Math.ceil(props.maxValueMarket) + 12000, // Add padding to the max value
+                  max: Math.ceil(props.salaryAvgMarket) + 12500, // Add padding to the max value
                 },
               },
             }}
@@ -106,53 +98,6 @@ export default function BarGraphI(props: BarGraphProps) {
         <br />
         <br />
 
-        {/* ------------ just for the pdf images delete late */}
-
-        {/*   <div className="bar-chart">
-          <Bar
-            data={{
-              labels: ['Industry salary average'],
-              datasets: [
-                {
-                  label: 'Food Delivery Salary average ',
-                  data: [Math.ceil(props.leadSDFood)],
-                },
-                {
-                  label: 'Technology Salary average ',
-                  data: [Math.ceil(props.leadSDTech)],
-                },
-                {
-                  label: 'Consulting Salary average ',
-                  data: [Math.ceil(props.leadSDConsult)],
-                },
-                {
-                  label: 'Pharmaceuticals Salary average ',
-                  data: [Math.ceil(props.leadSDPharma)],
-                },
-                {
-                  label: 'Finance and Banking Salary average ',
-                  data: [Math.ceil(props.leadSDFinanace)],
-                },
-                {
-                  label: 'Healthcare Salary average ',
-                  data: [Math.ceil(props.leadSDHealthcare)],
-                },
-              ],
-            }}
-            options={{
-              plugins: {
-                title: {
-                  display: true,
-                  text: 'Lead Full-Stack Developer by Industry',
-                  font: {
-                    size: 22, // Customize the font size if desired
-                  },
-                },
-              },
-            }}
-          />
-        </div>
- */}
         <div style={{ width: '80%', margin: '0 auto' }}>
           <Line
             data={{
@@ -313,6 +258,49 @@ export default function BarGraphI(props: BarGraphProps) {
             }}
           />
         </div>
+        <div className="pie-chart">
+          <Pie
+            data={{
+              labels: ['Male', 'Female'],
+              datasets: [
+                {
+                  label: ['Gender Distribution in %'],
+                  data: [
+                    props.ratioMaleGender.toFixed(2) * 100,
+                    props.ratioFemGender.toFixed(2) * 100,
+                  ],
+                  backgroundColor: [
+                    'rgba(45, 24, 238, 0.6)',
+                    'rgba(255, 99, 132, 0.6)',
+                  ],
+                  borderWidth: 10,
+                },
+              ],
+            }}
+            options={{
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Software Developer Gender Distribution for Principal & Lead roles',
+                  font: {
+                    size: 24,
+                  },
+                },
+                datalabels: {
+                  display: true, // Enable data labels
+                  color: 'black', // Color of the labels
+                  font: {
+                    weight: 'bold',
+                    size: 16,
+                  },
+                  formatter: (value) => `${value}%`, // Add percentage sign
+                  anchor: 'center', // Position the label in the center
+                  align: 'center', // Align text in the center
+                },
+              },
+            }}
+          />
+        </div>
 
         {/* <div className="bar-chart">
         <Bar
@@ -346,6 +334,53 @@ export default function BarGraphI(props: BarGraphProps) {
           }}
         />
       </div> */}
+        {/* ------------ just for the pdf images delete late */}
+
+        {/*   <div className="bar-chart">
+          <Bar
+            data={{
+              labels: ['Industry salary average'],
+              datasets: [
+                {
+                  label: 'Food Delivery Salary average ',
+                  data: [Math.ceil(props.leadSDFood)],
+                },
+                {
+                  label: 'Technology Salary average ',
+                  data: [Math.ceil(props.leadSDTech)],
+                },
+                {
+                  label: 'Consulting Salary average ',
+                  data: [Math.ceil(props.leadSDConsult)],
+                },
+                {
+                  label: 'Pharmaceuticals Salary average ',
+                  data: [Math.ceil(props.leadSDPharma)],
+                },
+                {
+                  label: 'Finance and Banking Salary average ',
+                  data: [Math.ceil(props.leadSDFinanace)],
+                },
+                {
+                  label: 'Healthcare Salary average ',
+                  data: [Math.ceil(props.leadSDHealthcare)],
+                },
+              ],
+            }}
+            options={{
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Lead Full-Stack Developer by Industry',
+                  font: {
+                    size: 22, // Customize the font size if desired
+                  },
+                },
+              },
+            }}
+          />
+        </div>
+ */}
       </section>
     </section>
   );

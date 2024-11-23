@@ -11,6 +11,7 @@ import {
 import { getValidSessionToken } from '../../../database/sessions';
 import { getUser } from '../../../database/users';
 import {
+  FemaleSDDistribution,
   GenderAverageFemale,
   GenderAverageMale,
   IndustryAverageConsult,
@@ -31,6 +32,7 @@ import {
   LeadAverageHealthcare,
   LeadAveragePharma,
   LeadAverageTechnology,
+  MaleSDDistribution,
   MidAverageConsult,
   MidAverageFinance,
   MidAverageFood,
@@ -203,6 +205,15 @@ export default async function ResultsPage() {
   );
   const salaryAvgLeadFemale = Math.ceil(await YearsofexperienceLeadFemale());
 
+  // MAle and Female dis as SD
+  const maleSD = await MaleSDDistribution();
+  const femaleSD = await FemaleSDDistribution();
+  const maleDis = maleSD + 23;
+  const ratioFemGender = femaleSD / (maleDis + femaleSD);
+  const ratioMaleGender = maleDis / (maleDis + femaleSD);
+  console.log('maleSDlength:::', maleSD);
+  console.log('maleSDlength:::', ratioMaleGender);
+
   // Calculate differrence of user salary compared to consulting average
   const percentageDifMarketAvg = await percentageDifBySeniorityTitle();
   let percentageDif = 0;
@@ -306,10 +317,12 @@ export default async function ResultsPage() {
         leadSDPharma={leadSDPharma}
         leadSDFinanace={leadSDFinanace}
         leadSDHealthcare={leadSDHealthcare}
+        ratioMaleGender={ratioMaleGender}
+        ratioFemGender={ratioFemGender}
       />
       <div />
 
-      {/*   <div className="box-chart-container">
+      <div className="box-chart-container">
         <div className="box-chart-Large-box">
           <div className="Bar-left">
             <div className="line-female" />
@@ -327,7 +340,7 @@ export default async function ResultsPage() {
             <div className="line-male" />
           </div>
         </div>
-      </div> */}
+      </div>
 
       <br />
       <br />
