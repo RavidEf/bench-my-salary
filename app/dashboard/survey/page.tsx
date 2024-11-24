@@ -6,9 +6,8 @@ import { redirect } from 'next/navigation';
 import React from 'react';
 import { getJobFunctions } from '../../../database/jobinformation';
 import { getValidSessionToken } from '../../../database/sessions';
-import MaleAvatar from '../../../public/images/man-avatar.png';
-import FemaleAvatar from '../../../public/images/woman-avatar.png';
 import SurveyForm from './surveyForm';
+import UserContainer from './userContainer';
 
 export default async function SurveyPage() {
   const sessionTokenCookie = (await cookies()).get('sessionToken');
@@ -20,7 +19,6 @@ export default async function SurveyPage() {
 
   // 3.
   const jobDetails = await getJobFunctions(sessionTokenCookie?.value);
-  console.log('jobDetails::::', jobDetails);
 
   if (!session) {
     redirect('/login?returnTo=/dashboard');
@@ -34,35 +32,7 @@ export default async function SurveyPage() {
             <div className="survey-flex-edit">
               <div className="survey-user-container">
                 <SurveyForm jobUserDetails={jobDetails} />
-              </div>
-
-              <div className="user-container">
-                <div className="avatar">
-                  <Image
-                    alt="avatar-icon"
-                    src={
-                      jobDetails[0]?.genderId === 1 ? MaleAvatar : FemaleAvatar
-                    }
-                    height={100}
-                    width={100}
-                  />
-                </div>
-
-                <div className="user-functionSeniority">
-                  {jobDetails[0]?.seniorityLevel}
-                  {jobDetails[0]?.jobFunction}
-                </div>
-                <div className="user-industry">
-                  Industry: <b>{jobDetails[0]?.industryCategory}</b>
-                </div>
-                <div className="user-salary">
-                  {' '}
-                  Salary: <b>{jobDetails[0]?.salary.toLocaleString()}€</b>
-                </div>
-                <div className="user-yrs">
-                  {' '}
-                  Years of expeirnce: <b>{jobDetails[0]?.yearsOfExperience}</b>
-                </div>
+                <UserContainer jobUserDetails={jobDetails} />
               </div>
             </div>
           </div>
