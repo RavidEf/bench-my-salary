@@ -1,5 +1,5 @@
 .b2b-page-container {
-  margin-top: 1rem;
+  margin-top: 4.5rem;
   background-color: var(--fallback-b2, oklch(var(--b2) / var(--tw-bg-opacity)));
 
   padding: 16px;

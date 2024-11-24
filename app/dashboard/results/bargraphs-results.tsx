@@ -172,7 +172,7 @@ export default function BarGraphI(props: BarGraphProps) {
                 },
                 subtitle: {
                   display: true,
-                  text: 'Graph illustrating the overall database of developer salary for male vs female average by years of experience',
+                  text: 'Graph illustrating the overall database of developer salary for male vs female average by years',
                   font: { size: 15 },
                   color: '#666', // Optional: Subtitle color
                   padding: { bottom: 10 },
