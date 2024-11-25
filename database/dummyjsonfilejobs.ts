@@ -1,6 +1,9 @@
 import type { JobInformationType } from '../migrations/00010-createtablejobinformation';
 
-export const jobInformationDummyData: JobInformationType[] = [
+export const jobInformationDummyData: Omit<
+  JobInformationType,
+  'sessionTokenCookie'
+>[] = [
   {
     id: 1,
     jobFunctionId: 4,

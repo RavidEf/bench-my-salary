@@ -27,7 +27,16 @@ export async function POST(
 
   const newBizEmail = await createBizEmailInsecure(result.data.businessEmail);
 
+  const businessEmail = newBizEmail[0]?.businessEmail;
+
+  if (!businessEmail) {
+    return NextResponse.json(
+      { errors: [{ message: 'Failed to retrieve business email.' }] },
+      { status: 500 },
+    );
+  }
+
   return NextResponse.json({
-    newsletter: { businessEmail: newBizEmail },
+    newsletter: { businessEmail },
   });
 }

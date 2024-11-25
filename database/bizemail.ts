@@ -4,7 +4,7 @@ import { sql } from './connect';
 
 export const createBizEmailInsecure = cache(
   async (businessEmail: BizEmailType['businessEmail']) => {
-    const email = await sql<{ businessEmail: string }>`
+    const email = await sql<{ businessEmail: string }[]>`
       INSERT INTO
         business_emails (business_email)
       VALUES
