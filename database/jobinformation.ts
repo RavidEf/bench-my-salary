@@ -1,5 +1,6 @@
 import { cache } from 'react';
 import type {
+  JobFunctionsGet,
   JobInformationAndTitles,
   JobInformationType,
 } from '../migrations/00010-createtablejobinformation';
@@ -58,7 +59,7 @@ export const createNewSurveyEntryInsecure = cache(
 );
 
 export const getJobFunctions = cache(async (sessionToken: string) => {
-  const jobTitle = await sql<JobInformationAndTitles[]>`
+  const jobTitle = await sql<JobFunctionsGet[]>`
     SELECT
       users.user_name AS user_name,
       titles.job_function AS job_function,

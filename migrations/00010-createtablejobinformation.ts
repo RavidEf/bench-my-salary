@@ -42,6 +42,21 @@ export type JobInformationAndTitles = {
   industryCategory: string;
 };
 
+export type JobFunctionsGet = {
+  userName: string;
+  jobFunction: string;
+  seniorityLevel: string;
+  industryCategory: string;
+  id: number;
+  jobFunctionId: number;
+  seniorityId: number;
+  genderId: number;
+  industryId: number;
+  userId: number;
+  salary: number;
+  yearsOfExperience: number;
+};
+
 export async function up(sql: Sql) {
   await sql`
     CREATE TABLE job_information (
