@@ -1,4 +1,4 @@
-const gender = [
+export const gender = [
   {
     id: 1,
     genderTitle: 'Male',

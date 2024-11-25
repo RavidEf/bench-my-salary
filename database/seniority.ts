@@ -1,4 +1,4 @@
-const seniority = [
+export const seniority = [
   {
     id: 1,
     seniorityLevel: 'Junior',

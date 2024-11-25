@@ -1,4 +1,4 @@
-const industry = [
+export const industry = [
   {
     id: 1,
     industryCategory: 'Food Delivery',
