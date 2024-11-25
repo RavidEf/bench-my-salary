@@ -17,7 +17,7 @@ import { secureCookieOptions } from '../../../../util/cookies';
 
 export type RegisterResponseBody =
   | {
-      user: User;
+      user: Omit<User, 'passwordHash'>;
     }
   | { errors: { message: string }[] };
 

@@ -1,8 +1,8 @@
+import forms from '@tailwindcss/forms';
 /** @type {import('tailwindcss').Config} */
 import daisyui from 'daisyui';
-import forms from 'tailwindcss';
 
-module.exports = {
+const tailwindConfig = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -27,3 +27,5 @@ module.exports = {
   },
   plugins: [daisyui, forms],
 };
+
+export default tailwindConfig;

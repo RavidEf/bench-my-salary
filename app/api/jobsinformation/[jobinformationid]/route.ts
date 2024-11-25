@@ -5,7 +5,12 @@ import {
   type JobInformationType,
   mainSurveySchema,
 } from '../../../../migrations/00010-createtablejobinformation';
-import { getCookie } from '../../../../util/cookies';
+
+// import { getCookie } from '../../../../util/cookies';
+
+export type JobsParams = {
+  params: Promise<{ jobInformationId: string }>;
+};
 
 export type MainSurveyResponseBodyPut =
   | {
@@ -15,12 +20,12 @@ export type MainSurveyResponseBodyPut =
 
 export async function PUT(
   request: NextRequest,
-  { params }: any,
+  { params }: JobsParams,
 ): Promise<NextResponse<MainSurveyResponseBodyPut>> {
   const requestBody = await request.json();
 
   const result = mainSurveySchema.safeParse(requestBody);
-  console.log('result::', result);
+  // console.log('result::', result);
   if (!result.success) {
     return NextResponse.json(
       {
@@ -40,7 +45,7 @@ export async function PUT(
     sessionTokenCookie &&
     (await updateJobInfromation(sessionTokenCookie.value, {
       id: Number((await params).jobInformationId),
-      sessionTokenCookie,
+      sessionTokenCookie: sessionTokenCookie.value,
       jobFunctionId: result.data.jobFunction,
       seniorityId: result.data.seniority,
       industryId: result.data.industry,
@@ -48,7 +53,18 @@ export async function PUT(
       salary: result.data.salary,
       yearsOfExperience: result.data.yrs,
     }));
-  return NextResponse.json({
-    updatedSurvey: updateJobInfo,
-  });
+  if (updateJobInfo) {
+    return NextResponse.json({
+      survey: updateJobInfo,
+    });
+  } else {
+    return NextResponse.json(
+      {
+        errors: [{ message: 'Unable to update salary entry.' }],
+      },
+      {
+        status: 400,
+      },
+    );
+  }
 }

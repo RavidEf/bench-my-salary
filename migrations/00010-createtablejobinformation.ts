@@ -22,9 +22,22 @@ export type JobInformationType = {
   seniorityId: number;
   industryId: number;
   genderId: number;
+  userId?: number;
+  salary: number;
+  yearsOfExperience: number;
+  sessionTokenCookie: string;
+};
+
+export type JobInfoWithSession = {
+  id: number;
+  jobFunctionId: number;
+  seniorityId: number;
+  industryId: number;
+  genderId: number;
   userId: number;
   salary: number;
   yearsOfExperience: number;
+  sessionTokenCookie: string;
 };
 
 export type JobInformationAndTitles = {

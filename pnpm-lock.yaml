@@ -11,6 +11,9 @@ importers:
       '@sgratzl/chartjs-chart-boxplot':
         specifier: ^4.4.3
         version: 4.4.3(chart.js@4.4.6)
+      '@tailwindcss/forms':
+        specifier: ^0.5.9
+        version: 0.5.9(tailwindcss@3.4.14)
       '@upleveled/ley':
         specifier: ^0.9.2
         version: 0.9.2
@@ -735,6 +738,11 @@ packages:
 
   '@swc/helpers@0.5.13':
     resolution: {integrity: sha512-UoKGxQ3r5kYI9dALKJapMmuK+1zWM/H17Z1+iwnNmzcJRnfFuevZs375TA5rW31pu4BS4NoSy1fRsexDXfWn5w==}
+
+  '@tailwindcss/forms@0.5.9':
+    resolution: {integrity: sha512-tM4XVr2+UVTxXJzey9Twx48c1gcxFStqn1pQz0tRsX8o3DvxhN5oY5pvyAbUx7VTaZxpej4Zzvc6h+1RJBzpIg==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1 || >= 4.0.0-alpha.20'
 
   '@ts-safeql/eslint-plugin@3.4.7':
     resolution: {integrity: sha512-f98bQeqrfzIAkBFD0pgWgC9OrTSdYnfPXJ9CPtSNO/jAJ7chm7pm3PsyOu0akXlo7+Y81kDyikBbdghOe2fZAw==}
@@ -2202,6 +2210,10 @@ packages:
   min-indent@1.0.1:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
+
+  mini-svg-data-uri@1.4.4:
+    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
+    hasBin: true
 
   minimatch@10.0.1:
     resolution: {integrity: sha512-ethXTt3SGGR+95gudmqJ1eNhRO7eGEGIgYA9vnPatK4/etz2MEVDno5GMCibdMTuBMyElzIlgxMna3K94XDIDQ==}
@@ -3871,6 +3883,11 @@ snapshots:
   '@swc/helpers@0.5.13':
     dependencies:
       tslib: 2.8.0
+
+  '@tailwindcss/forms@0.5.9(tailwindcss@3.4.14)':
+    dependencies:
+      mini-svg-data-uri: 1.4.4
+      tailwindcss: 3.4.14
 
   '@ts-safeql/eslint-plugin@3.4.7(@typescript-eslint/utils@8.13.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.6.3))(libpg-query@16.2.0(encoding@0.1.13))':
     dependencies:
@@ -5600,6 +5617,8 @@ snapshots:
       picomatch: 2.3.1
 
   min-indent@1.0.1: {}
+
+  mini-svg-data-uri@1.4.4: {}
 
   minimatch@10.0.1:
     dependencies:
