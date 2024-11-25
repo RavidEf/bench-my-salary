@@ -7,7 +7,16 @@ import SuccessEmailSubmit from './emailSubmit';
 import NewsletterForm from './newsletterForm';
 import PDForm from './pdfGeneratorForm';
 
-export default async function B2bPage() {
+export const metadata = {
+  title: 'For Companies | Bench My Salary - Developer Salary Report',
+  description:
+    'Here you can find the most up to date salary report for developers in Europe. See how software developers are paid across diferrent industries and seniority levels.',
+  icons: {
+    icon: '/favicon.ico',
+  },
+};
+
+export default function B2bPage() {
   // const juniorSDFood = await JuniorAverageFood();
 
   return (

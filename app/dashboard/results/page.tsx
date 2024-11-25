@@ -70,6 +70,15 @@ import {
 } from '../../components/math';
 import BarGraphI from './bargraphs-results';
 
+export const metadata = {
+  title: 'Graphs | Bench My Salary - your salary results',
+  description:
+    'Here you can find the results of your salary entry. You can see how your developer salary is compared to others in the market and more specifically the average market salary for your developer role.',
+  icons: {
+    icon: '/favicon.ico',
+  },
+};
+
 export default async function ResultsPage() {
   const sessionTokenCookie = (await cookies()).get('sessionToken');
   // 2. get the session token the use provides us in the FE

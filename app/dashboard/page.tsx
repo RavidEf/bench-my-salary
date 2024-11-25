@@ -14,6 +14,15 @@ import {
   handelLinkToResults,
 } from '../components/handelLinks';
 
+export const metadata = {
+  title: 'Dashboard | Bench My Salary',
+  description:
+    'Add your developer salary and compare it to the current job market',
+  icons: {
+    icon: '/favicon.ico',
+  },
+};
+
 export default async function DashboardPage() {
   // 1.
   const sessionTokenCookie = (await cookies()).get('sessionToken');

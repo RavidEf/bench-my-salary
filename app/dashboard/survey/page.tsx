@@ -11,6 +11,15 @@ import Programmer2 from '../../../public/images/undraw_proud_coder.svg';
 import SurveyForm from './surveyForm';
 import UserContainer from './userContainer';
 
+export const metadata = {
+  title: 'Survey | Bench My Salary',
+  description:
+    'Fill out the information of your salary, software developer or backend developer, even iOS developer. Then add your seniority, gender, years of experience and at the end enter your salary in euro.',
+  icons: {
+    icon: '/favicon.ico',
+  },
+};
+
 export default async function SurveyPage() {
   const sessionTokenCookie = (await cookies()).get('sessionToken');
 
@@ -44,15 +53,19 @@ export default async function SurveyPage() {
           <div>
             <h1 className="h1-surveypage">Add your salary details</h1>
             <div className="survey-flex-edit">
+              <div>
+                <Image src={Programmer1} alt="programmer-image-icon" />
+              </div>
               <div className="survey-user-container">
                 <SurveyForm jobUserDetails={jobDetails} />
               </div>
-            </div>
-            <div>
-              <Image src={Programmer1} alt="programmer-image-icon" />
-            </div>
-            <div>
-              <Image src={Programmer2} alt="programmer-image-icon" />
+              <div>
+                <Image
+                  className="pogrammer2-image-survey"
+                  src={Programmer2}
+                  alt="programmer-image-icon"
+                />
+              </div>
             </div>
           </div>
         </section>
