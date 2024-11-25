@@ -8,7 +8,7 @@ import {
   getJobFunctions,
 } from '../../../database/jobinformation';
 import { getValidSessionToken } from '../../../database/sessions';
-import { getUser } from '../../../database/users';
+// import { getUser } from '../../../database/users';
 import {
   FemaleSDDistribution,
   GenderAverageFemale,
@@ -327,6 +327,8 @@ export default async function ResultsPage() {
         leadSDHealthcare={leadSDHealthcare} */
         ratioMaleGender={ratioMaleGender}
         ratioFemGender={ratioFemGender}
+        user={''}
+        jobdetails={[]}
       />
       <div />
 

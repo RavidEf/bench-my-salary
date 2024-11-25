@@ -1,18 +1,8 @@
 'use client';
 import './results.css';
-import {
-  BarElement,
-  Chart as ChartJS,
-  layouts,
-  Legend,
-  LinearScale,
-  pie,
-  Title,
-  Tooltip,
-} from 'chart.js';
+import { BarElement, Legend, LinearScale, Title, Tooltip } from 'chart.js';
 import Chart, { CategoryScale } from 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { useState } from 'react';
 import { Bar, Line, Pie } from 'react-chartjs-2';
 import type { BarGraphProps } from '../../../util/propstypes';
 
@@ -289,13 +279,13 @@ export default function BarGraphI(props: BarGraphProps) {
               <ul>
                 <li>
                   Male developers account for{' '}
-                  {props.ratioMaleGender.toFixed(2) * 100}% of these roles,
-                  represented by the larger blue segment of the chart.
+                  {Number(props.ratioMaleGender.toFixed(2)) * 100}% of these
+                  roles, represented by the larger blue segment of the chart.
                 </li>
                 <li>
                   Female developers make up just{' '}
-                  {props.ratioFemGender.toFixed(2) * 100}%, as shown in the
-                  smaller pink segment.
+                  {Number(props.ratioFemGender.toFixed(2)) * 100}%, as shown in
+                  the smaller pink segment.
                 </li>
               </ul>
               <p>
@@ -315,8 +305,8 @@ export default function BarGraphI(props: BarGraphProps) {
                   {
                     label: 'Gender Distribution in %',
                     data: [
-                      props.ratioMaleGender.toFixed(2) * 100,
-                      props.ratioFemGender.toFixed(2) * 100,
+                      Number(props.ratioMaleGender.toFixed(2)) * 100,
+                      Number(props.ratioFemGender.toFixed(2)) * 100,
                     ],
                     backgroundColor: [
                       'rgba(45, 24, 238, 0.6)',

@@ -27,9 +27,9 @@ export type BarGraphProps = {
   salaryAvgSeniorFemale: number;
   salaryAvgPrincpleFemale: number;
   salaryAvgLeadFemale: number;
-  jobDetailsLevel: string;
-  jobDetailstitle: string;
-  jobDetailsSalary: number;
+  jobDetailsLevel: string | undefined;
+  jobDetailstitle: string | undefined;
+  jobDetailsSalary: number | undefined;
   ratioMaleGender: number;
   ratioFemGender: number;
 };
