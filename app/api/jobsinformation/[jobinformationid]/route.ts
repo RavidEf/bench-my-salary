@@ -14,7 +14,7 @@ export type JobsParams = {
 
 export type MainSurveyResponseBodyPut =
   | {
-      survey: JobInformationType;
+      survey: Omit<JobInformationType, 'sessionTokenCookie'>;
     }
   | { errors: { message: string }[] };
 

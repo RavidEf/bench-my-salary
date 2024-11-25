@@ -28,6 +28,6 @@ export async function POST(
   const newBizEmail = await createBizEmailInsecure(result.data.businessEmail);
 
   return NextResponse.json({
-    newBizEmail: 'A new business email was submitted',
+    newsletter: { businessEmail: newBizEmail },
   });
 }

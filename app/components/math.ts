@@ -6,7 +6,10 @@ import {
 
 const sessionTokenCookie = (await cookies()).get('sessionToken');
 // 2. get the session token the use provides us in the FE
-const userDeatail = await getJobFunctions(sessionTokenCookie?.value);
+if (!sessionTokenCookie?.value) {
+  throw new Error('Session token is missing. Please provide a valid token.');
+}
+const userDeatail = await getJobFunctions(sessionTokenCookie.value);
 // console.log('userDetails from math:::', userDeatail);
 
 export async function MathAll() {
@@ -949,7 +952,7 @@ export async function percentageDifBySeniorityTitle() {
   const matchUserData = getAllData.filter(
     (item) =>
       item.genderId === userDeatail[0]?.genderId &&
-      item.seniorityId === userDeatail[0]?.seniorityId &&
+      item.seniorityId === userDeatail[0].seniorityId &&
       item.jobFunctionId === userDeatail[0].jobFunctionId,
   );
 

@@ -18,7 +18,18 @@ export const createNewSurveyEntryInsecure = cache(
     salary: JobInformationType['salary'],
     yrs: JobInformationType['yearsOfExperience'],
   ) => {
-    const [job] = await sql<JobInformationType[]>`
+    const [job] = await sql<
+      {
+        id: number;
+        jobFunctionId: number;
+        seniorityId: number;
+        industryId: number;
+        genderId: number;
+        userId: number;
+        salary: number;
+        yearsOfExperience: number;
+      }[]
+    >`
       INSERT INTO
         job_information (
           job_function_id,
@@ -106,7 +117,18 @@ export const updateJobInfromation = cache(
     sessionToken: Session['token'],
     updatedJobInformation: JobInformationType,
   ) => {
-    const [singleEntry] = await sql<JobInformationType[]>`
+    const [singleEntry] = await sql<
+      {
+        id: number;
+        jobFunctionId: number;
+        seniorityId: number;
+        genderId: number;
+        industryId: number;
+        userId: number;
+        salary: number;
+        yearsOfExperience: number;
+      }[]
+    >`
       UPDATE job_information
       SET
         job_function_id = ${updatedJobInformation.jobFunctionId},

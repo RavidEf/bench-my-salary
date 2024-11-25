@@ -8,7 +8,7 @@ import { getCookie } from '../../../util/cookies';
 
 export type MainSurveyResponseBody =
   | {
-      survey: JobInformationType;
+      survey: Omit<JobInformationType, 'sessionTokenCookie'>;
     }
   | { errors: { message: string }[] };
 

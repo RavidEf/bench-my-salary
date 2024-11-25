@@ -3,9 +3,20 @@ import Image from 'next/image';
 import MaleAvatar from '../../../public/images/man-avatar.png';
 import FemaleAvatar from '../../../public/images/woman-avatar.png';
 
-export default function UserContainer(props) {
-  console.log('props---', props.jobUserDetails[0]);
+/* export type UserSurveyType={
 
+} */
+
+export default function UserContainer(props: {
+  jobUserDetails: {
+    yearsOfExperience: number;
+    genderId: number;
+    seniorityLevel: string;
+    jobFunction: string;
+    industryCategory: string;
+    salary: number;
+  }[];
+}) {
   return (
     <div className="user-container">
       <div className="avatar">

@@ -33,7 +33,7 @@ export default function PDForm() {
     doc.setFontSize(12); // Font size for introduction text
     const introduction =
       "This report provides a comprehensive analysis of salary trends within the software development industry, segmented by seniority levels ranging from Junior to Lead positions. By presenting detailed breakdowns of salaries across various industries, it offers valuable insights to help HR professionals make informed decisions. Designed for HR recruiters and managers, this report serves as a reliable resource to evaluate market benchmarks and set competitive salary ranges for employees. Whether you're hiring top talent or ensuring your current workforce is compensated equitably, this data will help align your organization with industry standards while fostering employee satisfaction and retention.";
-    const introLines = doc.splitTextToSize(
+    const introLines: string = doc.splitTextToSize(
       introduction,
       pageWidth - margin * 2,
     );
@@ -44,7 +44,7 @@ export default function PDForm() {
     yPosition += introHeight + 20; // Add spacing below the introduction
 
     // Helper function to add images with page checks
-    const addImageWithCheck = (imageSrc, imageHeight = 275) => {
+    const addImageWithCheck = (imageSrc: string, imageHeight = 275) => {
       if (yPosition + imageHeight > pageHeight - margin) {
         doc.addPage(); // Add a new page if there's not enough space
         yPosition = margin; // Reset yPosition for the new page

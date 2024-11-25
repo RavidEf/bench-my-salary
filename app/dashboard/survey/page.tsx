@@ -28,7 +28,10 @@ export default async function SurveyPage() {
     (await getValidSessionToken(sessionTokenCookie.value));
 
   // 3.
-  const jobDetails = await getJobFunctions(sessionTokenCookie?.value);
+  if (!sessionTokenCookie?.value) {
+    throw new Error('Session token is missing. Please provide a valid token.');
+  }
+  const jobDetails = await getJobFunctions(sessionTokenCookie.value);
 
   if (!session) {
     redirect('/login?returnTo=/dashboard');
