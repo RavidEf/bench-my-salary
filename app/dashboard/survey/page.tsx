@@ -6,6 +6,8 @@ import { redirect } from 'next/navigation';
 import React from 'react';
 import { getJobFunctions } from '../../../database/jobinformation';
 import { getValidSessionToken } from '../../../database/sessions';
+import Programmer1 from '../../../public/images/undraw_programmer.svg';
+import Programmer2 from '../../../public/images/undraw_proud_coder.svg';
 import SurveyForm from './surveyForm';
 import UserContainer from './userContainer';
 
@@ -45,6 +47,12 @@ export default async function SurveyPage() {
               <div className="survey-user-container">
                 <SurveyForm jobUserDetails={jobDetails} />
               </div>
+            </div>
+            <div>
+              <Image src={Programmer1} alt="programmer-image-icon" />
+            </div>
+            <div>
+              <Image src={Programmer2} alt="programmer-image-icon" />
             </div>
           </div>
         </section>
