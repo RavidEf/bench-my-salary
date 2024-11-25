@@ -27,12 +27,12 @@ export default function BarGraphI(props: BarGraphProps) {
     ChartDataLabels,
   );
 
-  console.log('Max market:::', typeof props.maxValueMArket);
+  /*  console.log('Max market:::', typeof props.maxValueMArket);
   console.log(
     'Min market:::',
     typeof (props.salaryAvgMarket - props.minValueMarket),
-  );
-  const minDifference = props.salaryAvgMarket - props.minValueMarket;
+  ); */
+  // const minDifference = props.salaryAvgMarket - props.minValueMArket;
 
   return (
     <section>
@@ -273,6 +273,9 @@ export default function BarGraphI(props: BarGraphProps) {
             }}
           />
         </div>
+
+        {/* ------ Pie chart -------- */}
+
         <div className="pie-container">
           <div className="pie-text-box">
             <div>
@@ -285,12 +288,14 @@ export default function BarGraphI(props: BarGraphProps) {
               The data reveals a significant disparity:
               <ul>
                 <li>
-                  Male developers account for 76% of these roles, represented by
-                  the larger blue segment of the chart.
+                  Male developers account for{' '}
+                  {props.ratioMaleGender.toFixed(2) * 100}% of these roles,
+                  represented by the larger blue segment of the chart.
                 </li>
                 <li>
-                  Female developers make up just 24%, as shown in the smaller
-                  pink segment.
+                  Female developers make up just{' '}
+                  {props.ratioFemGender.toFixed(2) * 100}%, as shown in the
+                  smaller pink segment.
                 </li>
               </ul>
               <p>
@@ -308,7 +313,7 @@ export default function BarGraphI(props: BarGraphProps) {
                 labels: ['Male', 'Female'],
                 datasets: [
                   {
-                    label: ['Gender Distribution in %'],
+                    label: 'Gender Distribution in %',
                     data: [
                       props.ratioMaleGender.toFixed(2) * 100,
                       props.ratioFemGender.toFixed(2) * 100,

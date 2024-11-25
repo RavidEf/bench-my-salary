@@ -132,7 +132,7 @@ export default async function ResultsPage() {
   console.log('Min market:::', minValueMArket);
  */
   // industry avg only for SD positions Junior -----------
-  const juniorSDFood = await JuniorAverageFood();
+  /* const juniorSDFood = await JuniorAverageFood();
   const juniorSDTech = await JuniorAverageTechnology();
   const juniorSDConsult = await JuniorAverageConsult();
   const juniorSDPharma = await JuniorAveragePharma();
@@ -169,7 +169,7 @@ export default async function ResultsPage() {
   const leadSDConsult = await LeadAverageConsult();
   const leadSDPharma = await LeadAveragePharma();
   const leadSDFinanace = await LeadAverageFinance();
-  const leadSDHealthcare = await LeadAverageHealthcare();
+  const leadSDHealthcare = await LeadAverageHealthcare(); */
 
   // calling industry average math functions
   const foodDelivery = await IndustryAverageFood();
@@ -213,10 +213,10 @@ export default async function ResultsPage() {
   );
   const salaryAvgLeadFemale = Math.ceil(await YearsofexperienceLeadFemale());
 
-  // MAle and Female dis as SD
+  // Male and Female distribution as SD
   const maleSD = await MaleSDDistribution();
   const femaleSD = await FemaleSDDistribution();
-  const maleDis = maleSD + 23;
+  const maleDis = maleSD + 26;
   const ratioFemGender = femaleSD / (maleDis + femaleSD);
   const ratioMaleGender = maleDis / (maleDis + femaleSD);
   console.log('maleSDlength:::', maleSD);
