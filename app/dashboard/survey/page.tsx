@@ -1,4 +1,3 @@
-'use server';
 import './survey.css';
 import { cookies } from 'next/headers';
 import Image from 'next/image';

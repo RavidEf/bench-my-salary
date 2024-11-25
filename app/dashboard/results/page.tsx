@@ -1,4 +1,3 @@
-'use server';
 import './results.css';
 import { BoxPlotChart } from '@sgratzl/chartjs-chart-boxplot';
 import { cookies } from 'next/headers';

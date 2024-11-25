@@ -97,7 +97,7 @@ export default function SurveyForm(props: any) {
       return;
     }
 
-    router.push('/dashboard/survey');
+    router.push('/dashboard');
     router.refresh();
 
     setJobFunction(0);
