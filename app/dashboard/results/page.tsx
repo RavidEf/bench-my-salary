@@ -11,44 +11,7 @@ import {
   FemaleSDDistribution,
   GenderAverageFemale,
   GenderAverageMale,
-  IndustryAverageConsult,
-  IndustryAverageFinance,
-  IndustryAverageFood,
-  IndustryAverageHealthcare,
-  IndustryAveragePharmaceuticals,
-  IndustryAverageTech,
-  JuniorAverageConsult,
-  JuniorAverageFinance,
-  JuniorAverageFood,
-  JuniorAverageHealthcare,
-  JuniorAveragePharma,
-  JuniorAverageTechnology,
-  LeadAverageConsult,
-  LeadAverageFinance,
-  LeadAverageFood,
-  LeadAverageHealthcare,
-  LeadAveragePharma,
-  LeadAverageTechnology,
   MaleSDDistribution,
-  MidAverageConsult,
-  MidAverageFinance,
-  MidAverageFood,
-  MidAverageHealthcare,
-  MidAveragePharma,
-  MidAverageTechnology,
-  percentageDifBySeniorityTitle,
-  PrincipalAverageConsult,
-  PrincipalAverageFinance,
-  PrincipalAverageFood,
-  PrincipalAverageHealthcare,
-  PrincipalAveragePharma,
-  PrincipalAverageTechnology,
-  SeniorAverageConsult,
-  SeniorAverageFinance,
-  SeniorAverageFood,
-  SeniorAverageHealthcare,
-  SeniorAveragePharma,
-  SeniorAverageTechnology,
   YearsofexperienceJunior,
   YearsofexperienceJuniorFemale,
   YearsofexperienceJuniorMale,
@@ -95,6 +58,175 @@ export default async function ResultsPage() {
   async function getMarketData() {
     const marketData = await getAllJobsenioritiesInsecure();
     return marketData;
+  }
+
+  async function percentageDifBySeniorityTitle() {
+    const getAllData = await getAllJobsenioritiesInsecure();
+    const matchUserData = getAllData.filter(
+      (item) =>
+        item.genderId === userDeatail[0]?.genderId &&
+        item.seniorityId === userDeatail[0].seniorityId &&
+        item.jobFunctionId === userDeatail[0].jobFunctionId,
+    );
+
+    const marketAvg =
+      matchUserData.reduce((sum, item) => sum + item.salary, 0) /
+      matchUserData.length;
+
+    let percentageDif = 0;
+    if (userDeatail[0] !== undefined) {
+      percentageDif = ((userDeatail[0].salary - marketAvg) / marketAvg) * 100;
+    }
+
+    return percentageDif;
+  }
+
+  /* -------------------------------------------------------------------------------- */
+
+  // Average of salaries in food delivery industry
+  async function IndustryAverageFood() {
+    const jobSeniority = await getAllJobsenioritiesInsecure();
+    // console.log('userDetails from math:::', jobSeniority.length);
+
+    //
+    const jobFilterIndustry = jobSeniority.filter(
+      (item) =>
+        item.industryId === 1 &&
+        item.seniorityId === userDeatail[0]?.seniorityId &&
+        item.jobFunctionId === userDeatail[0].jobFunctionId,
+    );
+
+    // First map to get all salaries, then reduce to get the sum
+
+    const totalSalaryFoodDelivery = jobFilterIndustry.reduce(
+      (sum, item) => sum + item.salary,
+      0,
+    );
+
+    // Calculate average by dividing by the number of items
+    const salAverageFoodDelivery =
+      totalSalaryFoodDelivery / jobFilterIndustry.length;
+
+    return salAverageFoodDelivery;
+  }
+
+  // Average of salaries in the Technology industry
+  async function IndustryAverageTech() {
+    const jobSeniority = await getAllJobsenioritiesInsecure();
+    //
+    const jobFilterIndustry = jobSeniority.filter(
+      (item) =>
+        item.industryId === 2 &&
+        item.seniorityId === userDeatail[0]?.seniorityId &&
+        item.jobFunctionId === userDeatail[0].jobFunctionId,
+    );
+    // First map to get all salaries, then reduce to get the sum
+
+    const totalSalaryTechnology = jobFilterIndustry.reduce(
+      (sum, item) => sum + item.salary,
+      0,
+    );
+
+    // Calculate average by dividing by the number of items
+    const salAverageTechnology =
+      totalSalaryTechnology / jobFilterIndustry.length;
+
+    return salAverageTechnology;
+  }
+
+  // Average of salaries in the Consulting industry
+  async function IndustryAverageConsult() {
+    const jobSeniority = await getAllJobsenioritiesInsecure();
+    //
+    const jobFilterIndustry = jobSeniority.filter(
+      (item) =>
+        item.industryId === 3 &&
+        item.seniorityId === userDeatail[0]?.seniorityId &&
+        item.jobFunctionId === userDeatail[0].jobFunctionId,
+    );
+    // First map to get all salaries, then reduce to get the sum
+
+    const totalSalaryConsulting = jobFilterIndustry.reduce(
+      (sum, item) => sum + item.salary,
+      0,
+    );
+
+    // Calculate average by dividing by the number of items
+    const salAverageConsulting =
+      totalSalaryConsulting / jobFilterIndustry.length;
+
+    return salAverageConsulting;
+  }
+
+  // Average of salaries in the Pharmaceuticals industry
+  async function IndustryAveragePharmaceuticals() {
+    const jobSeniority = await getAllJobsenioritiesInsecure();
+    //
+    const jobFilterIndustry = jobSeniority.filter(
+      (item) =>
+        item.industryId === 4 &&
+        item.seniorityId === userDeatail[0]?.seniorityId &&
+        item.jobFunctionId === userDeatail[0].jobFunctionId,
+    );
+    // First map to get all salaries, then reduce to get the sum
+
+    const totalSalaryPharmaceuticals = jobFilterIndustry.reduce(
+      (sum, item) => sum + item.salary,
+      0,
+    );
+
+    // Calculate average by dividing by the number of items
+    const salAveragePharma =
+      totalSalaryPharmaceuticals / jobFilterIndustry.length;
+
+    return salAveragePharma;
+  }
+
+  // Average of salaries in the Finance and Banking industry
+  async function IndustryAverageFinance() {
+    const jobSeniority = await getAllJobsenioritiesInsecure();
+    //
+    const jobFilterIndustry = jobSeniority.filter(
+      (item) =>
+        item.industryId === 5 &&
+        item.seniorityId === userDeatail[0]?.seniorityId &&
+        item.jobFunctionId === userDeatail[0].jobFunctionId,
+    );
+    // First map to get all salaries, then reduce to get the sum
+
+    const totalSalaryFinan = jobFilterIndustry.reduce(
+      (sum, item) => sum + item.salary,
+      0,
+    );
+
+    // Calculate average by dividing by the number of items
+    const salAverageFinanace = totalSalaryFinan / jobFilterIndustry.length;
+
+    return salAverageFinanace;
+  }
+
+  // Average of salaries in the Healthcare industry
+  async function IndustryAverageHealthcare() {
+    const jobSeniority = await getAllJobsenioritiesInsecure();
+    //
+    const jobFilterIndustry = jobSeniority.filter(
+      (item) =>
+        item.industryId === 6 &&
+        item.seniorityId === userDeatail[0]?.seniorityId &&
+        item.jobFunctionId === userDeatail[0].jobFunctionId,
+    );
+    // First map to get all salaries, then reduce to get the sum
+
+    const totalSalaryHealth = jobFilterIndustry.reduce(
+      (sum, item) => sum + item.salary,
+      0,
+    );
+
+    // Calculate average by dividing by the number of items
+    const salAverageHealth: number =
+      totalSalaryHealth / jobFilterIndustry.length;
+
+    return salAverageHealth;
   }
 
   // match the user data to the market data
@@ -177,7 +309,6 @@ export default async function ResultsPage() {
   const financeAvg = await IndustryAverageFinance();
   const healthAvg = await IndustryAverageHealthcare();
 
-  console.log('foodDelivery:::', foodDelivery);
   // calling gender average math functions
   const maleSalAvg = await GenderAverageMale();
   const femaleSalAvg = await GenderAverageFemale();
@@ -217,8 +348,6 @@ export default async function ResultsPage() {
   const maleDis = maleSD + 26;
   const ratioFemGender = femaleSD / (maleDis + femaleSD);
   const ratioMaleGender = maleDis / (maleDis + femaleSD);
-  console.log('maleSDlength:::', maleSD);
-  console.log('maleSDlength:::', ratioMaleGender);
 
   // Calculate differrence of user salary compared to consulting average
   const percentageDifMarketAvg = await percentageDifBySeniorityTitle();
