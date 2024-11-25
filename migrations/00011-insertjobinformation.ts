@@ -1,6 +1,5 @@
 import type { Sql } from 'postgres';
 import { jobInformationDummyData } from '../database/dummyjsonfilejobs';
-import type { JobInformationType } from './00010-createtablejobinformation';
 
 export async function up(sql: Sql) {
   for (const entry of jobInformationDummyData) {

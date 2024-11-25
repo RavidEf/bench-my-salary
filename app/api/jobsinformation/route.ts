@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { createNewSurveyEntryInsecure } from '../../../database/jobinformation';
 import {
   type JobInformationType,
