@@ -1,8 +1,6 @@
 import './results.css';
-import { BoxPlotChart } from '@sgratzl/chartjs-chart-boxplot';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { use } from 'react';
 import {
   getAllJobsenioritiesInsecure,
   getJobFunctions,
@@ -224,10 +222,10 @@ export default async function ResultsPage() {
 
   // Calculate differrence of user salary compared to consulting average
   const percentageDifMarketAvg = await percentageDifBySeniorityTitle();
-  let percentageDif = 0;
+  /*   let percentageDif = 0;
   if (userDeatail[0] !== undefined) {
     percentageDif = ((userDeatail[0].salary - consultAvg) / consultAvg) * 100;
-  }
+  } */
   // percetange change
   // const percentageDifRound = percentageDif.toFixed(2);
 
@@ -295,6 +293,9 @@ export default async function ResultsPage() {
         salaryAvgSeniorFemale={salaryAvgSeniorFemale}
         salaryAvgPrincpleFemale={salaryAvgPrincpleFemale}
         salaryAvgLeadFemale={salaryAvgLeadFemale}
+        ratioMaleGender={ratioMaleGender}
+        ratioFemGender={ratioFemGender}
+        jobdetails={[]}
         /*  juniorSDFood={juniorSDFood}
         juniorSDTech={juniorSDTech}
         juniorSDConsult={juniorSDConsult}
@@ -325,10 +326,6 @@ export default async function ResultsPage() {
         leadSDPharma={leadSDPharma}
         leadSDFinanace={leadSDFinanace}
         leadSDHealthcare={leadSDHealthcare} */
-        ratioMaleGender={ratioMaleGender}
-        ratioFemGender={ratioFemGender}
-        user={''}
-        jobdetails={[]}
       />
       <div />
 

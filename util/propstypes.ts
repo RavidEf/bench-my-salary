@@ -5,7 +5,7 @@ export type BarGraphProps = {
   pharmaAvg: number;
   financeAvg: number;
   healthAvg: number;
-  user: string;
+
   jobdetails: { salary: number; jobFunction: string }[];
   maleSalAvg: number;
   femaleSalAvg: number;
