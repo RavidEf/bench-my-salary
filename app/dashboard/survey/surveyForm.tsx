@@ -2,6 +2,7 @@
 import './survey.css';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import type { SurveyProps } from '../../../util/propstypes';
 import type { MainSurveyResponseBodyPut } from '../../api/jobsinformation/[jobInformationId]/route';
 import type { MainSurveyResponseBody } from '../../api/jobsinformation/route';
 import {
@@ -12,7 +13,7 @@ import {
   seniorityObject,
 } from '../../components/formObjects';
 
-export default function SurveyForm(props: any) {
+export default function SurveyForm(props: SurveyProps) {
   const [jobFunction, setJobFunction] = useState(0);
   const [seniority, setSeniority] = useState(0);
   const [industry, setIndustry] = useState(0);
@@ -74,10 +75,10 @@ export default function SurveyForm(props: any) {
   ) {
     event.preventDefault();
     formatSalary(salary);
-    console.log('jobUserDetailsID:::', props.jobUserDetails[0].id);
+    console.log('jobUserDetailsID:::', props.jobUserDetails[0]?.id);
 
     const response = await fetch(
-      `/api/jobsinformation/${props.jobUserDetails[0].id}`,
+      `/api/jobsinformation/${props.jobUserDetails[0]?.id}`,
       {
         method: 'PUT',
         body: JSON.stringify({
@@ -193,13 +194,14 @@ export default function SurveyForm(props: any) {
               </select>
             </label>
 
-            <label htmlFor="salary" className="form-control w-full max-w-xs">
-              <div className="label">
+            <div className="form-control w-full max-w-xs">
+              <label htmlFor="salary" className="label">
                 <span className="label-text">
                   What is your annual salary in Euro?
                 </span>
-              </div>
+              </label>
               <input
+                id="salary"
                 name="salary"
                 inputMode="numeric"
                 placeholder="55,000"
@@ -211,7 +213,7 @@ export default function SurveyForm(props: any) {
                   setSalary(formatWithCommas(value));
                 }}
               />
-            </label>
+            </div>
             <label className="ex-yrs">Years of Experience: {yrs}</label>
             <input
               type="range"
@@ -279,7 +281,7 @@ export default function SurveyForm(props: any) {
               >
                 <option value="">Select a Job Function</option>
                 {Object.entries(jobFunctionObject).map(([value, label]) => (
-                  <option key={value} value={value}>
+                  <option key={`user-${value}`} value={value}>
                     {label}
                   </option>
                 ))}
@@ -297,7 +299,7 @@ export default function SurveyForm(props: any) {
               >
                 <option value="">Select a Seniority level</option>
                 {Object.entries(seniorityObject).map(([value, label]) => (
-                  <option key={value} value={value}>
+                  <option key={`user-${value}`} value={value}>
                     {label}
                   </option>
                 ))}
@@ -315,7 +317,7 @@ export default function SurveyForm(props: any) {
               >
                 <option value="">Select the industry you are in</option>
                 {Object.entries(industryObject).map(([value, label]) => (
-                  <option key={value} value={value}>
+                  <option key={`user-${value}`} value={value}>
                     {label}
                   </option>
                 ))}
@@ -333,20 +335,21 @@ export default function SurveyForm(props: any) {
               >
                 <option value="">Select your gender</option>
                 {Object.entries(genderObject).map(([value, label]) => (
-                  <option key={value} value={value}>
+                  <option key={`user-${value}`} value={value}>
                     {label}
                   </option>
                 ))}
               </select>
             </label>
 
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
+            <div className="form-control w-full max-w-xs">
+              <label htmlFor="salary" className="label">
                 <span className="label-text">
                   What is your annual salary in Euro?
                 </span>
-              </div>
+              </label>
               <input
+                id="salary"
                 inputMode="numeric"
                 placeholder="55,000"
                 className="input input-bordered w-full max-w-xs"
@@ -357,7 +360,7 @@ export default function SurveyForm(props: any) {
                   setSalary(formatWithCommas(value));
                 }}
               />
-            </label>
+            </div>
             <label className="ex-yrs">Years of Experience: {yrs}</label>
             <input
               type="range"

@@ -5,7 +5,6 @@ export type BarGraphProps = {
   pharmaAvg: number;
   financeAvg: number;
   healthAvg: number;
-
   jobdetails: { salary: number; jobFunction: string }[];
   maleSalAvg: number;
   femaleSalAvg: number;
@@ -32,4 +31,8 @@ export type BarGraphProps = {
   jobDetailsSalary: number | undefined;
   ratioMaleGender: number;
   ratioFemGender: number;
+};
+
+export type SurveyProps = {
+  jobUserDetails: { id: number | undefined }[];
 };
