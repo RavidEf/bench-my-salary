@@ -202,6 +202,11 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="cta-bottom">
+          <button className="btn btn-primary" onClick={handelClickToLogin}>
+            Add your salary
+          </button>
+        </div>
       </section>
     </>
   );
