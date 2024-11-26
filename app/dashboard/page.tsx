@@ -43,7 +43,6 @@ export default async function DashboardPage() {
   }
 
   const jobDetails = await getJobFunctions(sessionTokenCookie.value);
-  console.log('JOBDETAILs:', jobDetails);
 
   return (
     <section className="dashboard-page-container">
