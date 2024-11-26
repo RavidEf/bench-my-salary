@@ -7,7 +7,7 @@ import {
 } from '../../../../migrations/00010-createtablejobinformation';
 
 type JobsParams = {
-  params: Promise<{ jobInformationId: string }>;
+  params: { jobInformationId: string };
 };
 
 export type MainSurveyResponseBodyPut =
