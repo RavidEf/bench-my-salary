@@ -48,6 +48,25 @@ export default async function Header() {
               <li>
                 <Link href="/dashboard"> For Individuals </Link>
               </li>
+              {user ? (
+                <>
+                  <li>
+                    <Link href="/dashboard"> Dashboard </Link>
+                  </li>
+                  <li>
+                    <LogoutButton />
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link href="/register"> Register </Link>
+                  </li>
+                  <li>
+                    <Link href="/login"> Login </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <Link href="/" className="btn btn-ghost text-xl">

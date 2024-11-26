@@ -6,3 +6,26 @@
 .btn-nav-dashboard {
   margin-right: 1rem;
 }
+
+@media (max-width: 450px) {
+  div.navbar {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    flex-direction: row;
+  }
+  div.navbar-start {
+    width: 100%;
+  }
+  #logout-btn {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .navbar-end-btns {
+    display: none;
+  }
+}

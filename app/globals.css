@@ -67,6 +67,7 @@ h1 {
     width: 100%;
     justify-content: center;
     gap: 2rem;
+    align-content: center;
   }
   svg {
     max-width: 100%;
@@ -79,7 +80,7 @@ h1 {
   }
   div.persona1,
   div.persona2 {
-    width: 90%;
+    width: 100%;
     max-width: 300px;
   }
   .graph-illustration {
