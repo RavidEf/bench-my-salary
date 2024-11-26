@@ -7,7 +7,6 @@ import { createSessionInsecure } from '../../../../database/sessions';
 import {
   createUserInsecure,
   getUserEmailInsecure,
-  getUserInsecure,
 } from '../../../../database/users';
 import {
   registerUserSchema,

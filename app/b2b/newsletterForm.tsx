@@ -1,13 +1,12 @@
 'use client';
 
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import type { NewsletterResponseBody } from '../api/newsletter/route';
 import SuccessEmailSubmit from './emailSubmit';
 import PDForm from './pdfGeneratorForm';
 
 export default function NewsletterForm() {
-  const [businessEmail, setBizEmail] = useState('');
+  const [businessEmail, setBusinessEmail] = useState('');
   const [errors, setErrors] = useState<{ message: string }[]>([]);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -28,7 +27,7 @@ export default function NewsletterForm() {
       setErrors(data.errors);
       return;
     }
-    setBizEmail('');
+    setBusinessEmail('');
     setIsSuccess(true);
   }
 
@@ -55,7 +54,7 @@ export default function NewsletterForm() {
               type="email"
               autoComplete="email"
               value={businessEmail}
-              onChange={(event) => setBizEmail(event.currentTarget.value)}
+              onChange={(event) => setBusinessEmail(event.currentTarget.value)}
             />
             <button className="btn-nl-form">Submit Email</button>
             {errors.map((error) => (

@@ -1,24 +1,18 @@
-'use server';
 import './b2b.css';
 import Image from 'next/image';
 import ReportImage from '../../public/images/undraw_data_reports_706v.svg';
-// import { JuniorAverageFood } from '../components/math';
-import SuccessEmailSubmit from './emailSubmit';
 import NewsletterForm from './newsletterForm';
-import PDForm from './pdfGeneratorForm';
 
-/* export const metadata = {
-  title: 'For Companies | Bench My Salary - Developer Salary Report',
+export const metadata = {
+  title: 'Salary Report | Bench My Salary - Developer Salary Report',
   description:
     'Here you can find the most up to date salary report for developers in Europe. See how software developers are paid across diferrent industries and seniority levels.',
   icons: {
     icon: '/favicon.ico',
   },
-}; */
+};
 
-export default async function B2bPage() {
-  // const juniorSDFood = await JuniorAverageFood();
-
+export default function B2bPage() {
   return (
     <section className="b2b-page-container">
       <div className="hero-b2b">

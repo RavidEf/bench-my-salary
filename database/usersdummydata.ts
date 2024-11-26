@@ -1,5 +1,3 @@
-import type { User } from '../migrations/00000-createtableusers';
-
 export const usersDummyData = [
   {
     passwordHash:

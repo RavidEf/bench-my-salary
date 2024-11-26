@@ -17,7 +17,7 @@ export default async function Header() {
     (await getValidSessionToken(sessionTokenCookie.value)); */
 
   // Display the user name that has a valid token from the DB
-  const user = sessionTokenCookie && (await getUser(sessionTokenCookie?.value));
+  const user = sessionTokenCookie && (await getUser(sessionTokenCookie.value));
 
   return (
     <section>

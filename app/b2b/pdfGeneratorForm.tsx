@@ -22,7 +22,10 @@ export default function PDForm() {
     // Add the title
     doc.setFontSize(24); // Title font size
     const title = 'The Developer Benchmark\nby Bench My Salary';
-    const titleLines = doc.splitTextToSize(title, pageWidth - margin * 2);
+    const titleLines: string = doc.splitTextToSize(
+      title,
+      pageWidth - margin * 2,
+    );
     const titleHeight = titleLines.length * (24 * 1.5); // Title line height
     doc.text(titleLines, margin, yPosition, {
       maxWidth: pageWidth - margin * 2,

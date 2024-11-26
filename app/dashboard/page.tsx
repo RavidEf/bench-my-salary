@@ -34,7 +34,7 @@ export default async function DashboardPage() {
     (await getValidSessionToken(sessionTokenCookie.value));
 
   // get the user name so we can show it without having the need for a first salary entry
-  const user = sessionTokenCookie && (await getUser(sessionTokenCookie?.value));
+  const user = sessionTokenCookie && (await getUser(sessionTokenCookie.value));
 
   // 3. if there is no valid session redirect user to login page
 
