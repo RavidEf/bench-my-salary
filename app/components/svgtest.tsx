@@ -3,8 +3,6 @@ import * as React from 'react';
 const ChartSVG = (props: any) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={772.909}
-    height={531.441}
     viewBox="0 0 772.909 531.441 "
     data-name="Layer 1"
     {...props}
