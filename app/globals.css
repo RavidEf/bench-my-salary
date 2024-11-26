@@ -26,6 +26,24 @@ h1 {
   align-items: center;
 }
 
+@media (width <=450px) {
+  .home-container {
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .home-hero-section {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+  }
+  .companies-section {
+    width: auto;
+  }
+}
+
 h2 {
   font-size: 3rem;
   font-weight: 700;
@@ -63,6 +81,7 @@ h3 {
 
 svg {
   max-width: 100%;
+  display: block;
 }
 
 .testimonial-section {
@@ -80,7 +99,7 @@ svg {
 
 .persona1,
 .persona2 {
-  border: 2px solid rgb(102, 102, 102);
+  border: 2px solid #666666;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -105,4 +124,10 @@ svg {
   padding: 1rem;
   font-size: 1.1rem;
   font-weight: 500;
+}
+.page-bottom {
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
 }

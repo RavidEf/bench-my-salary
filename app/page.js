@@ -170,7 +170,11 @@ export default function Home() {
               {' '}
               <b>Gal G.</b>
             </div>
-            <div>Mid-Level Android Developer with 4 yrs of experience</div>
+            <div>
+              Mid-Level Android Developer with 4 yrs of experience.
+              <br />
+              Making 64,500 €.
+            </div>
           </div>
         </div>
         <div className="persona2">
@@ -198,14 +202,9 @@ export default function Home() {
             <div>
               Senior Software Developer with 6 yrs of experience
               <br />
-              Negotiated his salary up to 88,000 €
+              Negotiated his salary up to 88,000 €.
             </div>
           </div>
-        </div>
-        <div className="cta-bottom">
-          <button className="btn btn-primary" onClick={handelClickToLogin}>
-            Add your salary
-          </button>
         </div>
       </section>
     </>
