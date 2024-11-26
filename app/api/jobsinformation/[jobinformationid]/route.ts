@@ -6,9 +6,7 @@ import {
   mainSurveySchema,
 } from '../../../../migrations/00010-createtablejobinformation';
 
-// import { getCookie } from '../../../../util/cookies';
-
-export type JobsParams = {
+type JobsParams = {
   params: Promise<{ jobInformationId: string }>;
 };
 

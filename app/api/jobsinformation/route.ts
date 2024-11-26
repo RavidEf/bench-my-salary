@@ -19,7 +19,7 @@ export async function POST(
   // 1. Get the survey data from the request
   const requestBody = await request.json();
   //
-  console.log('REQUEST BODY:', requestBody);
+  // console.log('REQUEST BODY:', requestBody);
 
   // 2. Validate the survey data with zod
   const result = mainSurveySchema.safeParse(requestBody);
