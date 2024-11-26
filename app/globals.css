@@ -30,6 +30,7 @@ h1 {
   .home-container {
     margin-top: 2rem;
     margin-left: 1rem;
+    max-width: 100%;
   }
   .home-hero-section {
     display: flex;
@@ -37,14 +38,19 @@ h1 {
     width: auto;
     justify-content: center;
     align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    gap: 3rem;
   }
   .companies-section {
     width: auto;
   }
-  div.below-fold-container {
+  section.below-fold-container {
     max-width: 100%;
     padding: 0;
-    margin-top: 5px;
+    margin-top: 2rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
   }
 
   div.developer-trust-container {
@@ -52,14 +58,15 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
+    gap: 3rem;
   }
-  .testimonial-section {
+  section.testimonial-section {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     width: 100%;
+    justify-content: center;
+    gap: 2rem;
   }
   svg {
     max-width: 100%;
@@ -70,13 +77,19 @@ h1 {
     font-size: 2rem;
     font-weight: 700;
   }
-  .persona1,
-  .persona2 {
+  div.persona1,
+  div.persona2 {
     width: 90%;
     max-width: 300px;
   }
-  .graph-illustratio {
+  .graph-illustration {
     width: 100%;
+  }
+  div.testemo-text {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
   }
 }
 

@@ -18,7 +18,7 @@ export default function Home() {
                 Developers{' '}
               </h1>
               <h3 className="py-6">
-                Evaluate your value - enter your salary to see if you're
+                Check your worth - enter your salary to see if you're -
                 <br /> being fairly compensated in comparison to the market.
               </h3>
 
