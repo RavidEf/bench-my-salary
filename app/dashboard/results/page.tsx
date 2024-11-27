@@ -54,6 +54,8 @@ export default async function ResultsPage() {
   // query the user data from the DB with the session token
   const userDeatail = await getJobFunctions(sessionTokenCookie.value);
   // console.log('userDeatail::', userDeatail);
+  /* -------------------------------------------------------------------------------- */
+
   // query all market data from the DB
   async function getMarketData() {
     const marketData = await getAllJobsenioritiesInsecure();
@@ -81,6 +83,29 @@ export default async function ResultsPage() {
     return percentageDif;
   }
 
+  /* -------------------------------------------------------------------------------- */
+  // find the percentage dif of the user to the industry they are in
+
+  async function percentageDifbyindustrySeniority() {
+    const getAllData = await getAllJobsenioritiesInsecure();
+    const matchUserData = getAllData.filter(
+      (item) =>
+        item.industryId === userDeatail[0]?.industryId &&
+        item.seniorityId === userDeatail[0].seniorityId &&
+        item.jobFunctionId === userDeatail[0].jobFunctionId,
+    );
+
+    const marketAvg =
+      matchUserData.reduce((sum, item) => sum + item.salary, 0) /
+      matchUserData.length;
+
+    let percentageDif = 0;
+    if (userDeatail[0] !== undefined) {
+      percentageDif = ((userDeatail[0].salary - marketAvg) / marketAvg) * 100;
+    }
+
+    return percentageDif;
+  }
   /* -------------------------------------------------------------------------------- */
 
   // Average of salaries in food delivery industry
@@ -257,50 +282,6 @@ export default async function ResultsPage() {
   const { salaryAvgMarket, minValueMArket, maxValueMArket } =
     await compareWithMarket();
 
-  /* console.log('avg market:::', salaryAvgMarket);
-  console.log('Max market:::', maxValueMArket);
-  console.log('Min market:::', minValueMArket);
- */
-  // industry avg only for SD positions Junior -----------
-  /* const juniorSDFood = await JuniorAverageFood();
-  const juniorSDTech = await JuniorAverageTechnology();
-  const juniorSDConsult = await JuniorAverageConsult();
-  const juniorSDPharma = await JuniorAveragePharma();
-  const juniorSDFinanace = await JuniorAverageFinance();
-  const juniorSDHealthcare = await JuniorAverageHealthcare();
-
-  // industry avg only for SD positions midlevel -----------
-  const midSDFood = await MidAverageFood();
-  const midSDTech = await MidAverageTechnology();
-  const midSDConsult = await MidAverageConsult();
-  const midSDPharma = await MidAveragePharma();
-  const midSDFinanace = await MidAverageFinance();
-  const midSDHealthcare = await MidAverageHealthcare();
-
-  // industry avg only for SD positions senior -----------
-  const seniorSDFood = await SeniorAverageFood();
-  const seniorSDTech = await SeniorAverageTechnology();
-  const seniorSDConsult = await SeniorAverageConsult();
-  const seniorSDPharma = await SeniorAveragePharma();
-  const seniorSDFinanace = await SeniorAverageFinance();
-  const seniorSDHealthcare = await SeniorAverageHealthcare();
-
-  // industry avg only for SD positions Principle -----------
-  const princSDFood = await PrincipalAverageFood();
-  const princSDTech = await PrincipalAverageTechnology();
-  const princSDConsult = await PrincipalAverageConsult();
-  const princSDPharma = await PrincipalAveragePharma();
-  const princSDFinanace = await PrincipalAverageFinance();
-  const princSDHealthcare = await PrincipalAverageHealthcare();
-
-  // industry avg only for SD positions Lead -----------
-  const leadSDFood = await LeadAverageFood();
-  const leadSDTech = await LeadAverageTechnology();
-  const leadSDConsult = await LeadAverageConsult();
-  const leadSDPharma = await LeadAveragePharma();
-  const leadSDFinanace = await LeadAverageFinance();
-  const leadSDHealthcare = await LeadAverageHealthcare(); */
-
   // calling industry average math functions
   const foodDelivery = await IndustryAverageFood();
   const techAvg = await IndustryAverageTech();
@@ -351,6 +332,7 @@ export default async function ResultsPage() {
 
   // Calculate differrence of user salary compared to consulting average
   const percentageDifMarketAvg = await percentageDifBySeniorityTitle();
+  const percentageDifIndustryAvg = await percentageDifbyindustrySeniority();
   /*   let percentageDif = 0;
   if (userDeatail[0] !== undefined) {
     percentageDif = ((userDeatail[0].salary - consultAvg) / consultAvg) * 100;
@@ -373,8 +355,8 @@ export default async function ResultsPage() {
               {userDeatail[0]?.seniorityLevel}
               {userDeatail[0]?.jobFunction}
             </b>{' '}
-            in Austria is €<b>{salaryAvgMarket.toLocaleString()}</b> gross per
-            year.
+            in Austria is €<b>{salaryAvgMarket.toFixed(0).toLocaleString()}</b>{' '}
+            gross per year.
             <br />
             Your salary is{' '}
             <b>
@@ -428,63 +410,9 @@ export default async function ResultsPage() {
         salaryAvgLeadFemale={salaryAvgLeadFemale}
         ratioMaleGender={ratioMaleGender}
         ratioFemGender={ratioFemGender}
-        jobdetails={[]}
-        /*  juniorSDFood={juniorSDFood}
-        juniorSDTech={juniorSDTech}
-        juniorSDConsult={juniorSDConsult}
-        juniorSDPharma={juniorSDPharma}
-        juniorSDFinanace={juniorSDFinanace}
-        juniorSDHealthcare={juniorSDHealthcare}
-        midSDFood={midSDFood}
-        midSDTech={midSDTech}
-        midSDConsult={midSDConsult}
-        midSDPharma={midSDPharma}
-        midSDFinanace={midSDFinanace}
-        midSDHealthcare={midSDHealthcare}
-        seniorSDFood={seniorSDFood}
-        seniorSDTech={seniorSDTech}
-        seniorSDConsult={seniorSDConsult}
-        seniorSDPharma={seniorSDPharma}
-        seniorSDFinanace={seniorSDFinanace}
-        seniorSDHealthcare={seniorSDHealthcare}
-        princSDFood={princSDFood}
-        princSDTech={princSDTech}
-        princSDConsult={princSDConsult}
-        princSDPharma={princSDPharma}
-        princSDFinanace={princSDFinanace}
-        princSDHealthcare={princSDHealthcare}
-        leadSDFood={leadSDFood}
-        leadSDConsult={leadSDConsult}
-        leadSDTech={leadSDTech}
-        leadSDPharma={leadSDPharma}
-        leadSDFinanace={leadSDFinanace}
-        leadSDHealthcare={leadSDHealthcare} */
+        percentageDifIndustryAvg={percentageDifIndustryAvg}
       />
       <div />
-
-      {/*  <div className="box-chart-container">
-        <div className="box-chart-Large-box">
-          <div className="Bar-left">
-            <div className="line-female" />
-          </div>
-          <div className="Bar-middle">
-            <div className="line-user">
-              <div className="user-salary">
-                <b>{userDeatail[0]?.salary.toLocaleString()} €</b>
-                Average Salary
-              </div>
-            </div>
-          </div>
-          <div className="Bar-right">
-            <div className="line-avg" />
-            <div className="line-male" />
-          </div>
-        </div>
-      </div> */}
-
-      <br />
-      <br />
-      <br />
 
       <br />
       <br />

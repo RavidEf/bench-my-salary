@@ -40,16 +40,36 @@
 }
 
 .bar-chart-industry {
-  margin-top: 4rem;
-  padding: 4rem;
+  margin-top: 3rem;
+  padding: 1.5rem;
   display: flex;
-  min-height: 80vh;
+  max-height: 100vh;
+  justify-content: center;
 }
 .pie-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+.industry-container {
+  margin-top: 2rem;
+}
+.industry-text-container {
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+.industry-text-box {
+  background-color: #e9ebf0;
+  width: 40%;
+  padding: 1.5rem;
+  box-shadow: 3px 3px 10px;
+  border-radius: 15px;
+}
+.title-graph-text-box {
+  display: flex;
+  justify-content: center;
 }
 .pie-text-box {
   background-color: #e9ebf0;

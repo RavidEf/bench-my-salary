@@ -40,7 +40,7 @@ export default function BarGraphI(props: BarGraphProps) {
 
                 {
                   label: 'Average',
-                  data: [props.salaryAvgMarket], // Second position
+                  data: [Math.ceil(props.salaryAvgMarket)], // Second position
                   backgroundColor: 'rgba(34, 197, 94, 0.6)', // Green for the range between Min and Avg
                   stack: 'market-data', // Stack group for Market Data
                 },
@@ -206,61 +206,99 @@ export default function BarGraphI(props: BarGraphProps) {
         <br />
         <br />
         <br />
-
-        <div className="bar-chart-industry">
-          <Bar
-            data={{
-              labels: ['Industry salary average'],
-              datasets: [
-                {
-                  label: `Your Salary`,
-                  data: [props.jobDetailsSalary],
-                  backgroundColor: 'rgba(87, 71, 236, 0.6)',
-                },
-                {
-                  label: 'Food Delivery Salary average ',
-                  data: [Math.ceil(props.foodDelivery)],
-                  backgroundColor: 'rgba(244, 172, 38, 0.6)',
-                },
-                {
-                  label: 'Technology Salary average ',
-                  data: [Math.ceil(props.techAvg)],
-                  backgroundColor: 'rgba(216, 241, 29, 0.6)',
-                },
-                {
-                  label: 'Consulting Salary average ',
-                  data: [Math.ceil(props.consultAvg)],
-                  backgroundColor: 'rgba(128, 237, 54, 0.6)',
-                },
-                {
-                  label: 'Pharmaceuticals Salary average ',
-                  data: [Math.ceil(props.pharmaAvg)],
-                  backgroundColor: 'rgba(91, 237, 223, 0.6)',
-                },
-                {
-                  label: 'Finance and Banking Salary average ',
-                  data: [Math.ceil(props.financeAvg)],
-                  backgroundColor: 'rgba(202, 73, 254, 0.6)',
-                },
-                {
-                  label: 'Healthcare Salary average ',
-                  data: [Math.ceil(props.healthAvg)],
-                  backgroundColor: 'rgba(88, 83, 130, 0.6)',
-                },
-              ],
-            }}
-            options={{
-              plugins: {
-                title: {
-                  display: true,
-                  text: 'Average salary comparision by industry',
-                  font: {
-                    size: 20, // Customize the font size if desired
+        {/* -------------- Industry bar chart ----------------- */}
+        <div className="industry-container">
+          <div className="industry-text-container">
+            <div className="industry-text-box">
+              <div>
+                <div className="title-graph-text-box">
+                  <h3>Industry Comparision</h3>
+                </div>
+                <p>
+                  This chart illustrates the gender distribution among software
+                  developers in senior roles, such as Principal and Lead
+                  positions.
+                </p>
+                <br />
+                The data reveals a significant disparity:
+                <ul>
+                  <li>
+                    Industry average{' '}
+                    {Number(props.percentageDifIndustryAvg.toFixed(2)) * 100}%
+                    of these roles, represented by the larger blue segment of
+                    the chart.
+                  </li>
+                  <li>
+                    Female developers make up just{' '}
+                    {Number(props.ratioFemGender.toFixed(2)) * 100}%, as shown
+                    in the smaller pink segment.
+                  </li>
+                </ul>
+                <p>
+                  This strong difference highlights the underrepresentation of
+                  women in leadership roles within the software development
+                  industry. The data could encourage further discussions on
+                  promoting diversity and inclusivity in higher-level technical
+                  positions.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="bar-chart-industry">
+            <Bar
+              data={{
+                labels: ['Industry salary average'],
+                datasets: [
+                  {
+                    label: `Your Salary`,
+                    data: [props.jobDetailsSalary],
+                    backgroundColor: 'rgba(87, 71, 236, 0.6)',
+                  },
+                  {
+                    label: 'Food Delivery Salary average ',
+                    data: [Math.ceil(props.foodDelivery)],
+                    backgroundColor: 'rgba(244, 172, 38, 0.6)',
+                  },
+                  {
+                    label: 'Technology Salary average ',
+                    data: [Math.ceil(props.techAvg)],
+                    backgroundColor: 'rgba(216, 241, 29, 0.6)',
+                  },
+                  {
+                    label: 'Consulting Salary average ',
+                    data: [Math.ceil(props.consultAvg)],
+                    backgroundColor: 'rgba(128, 237, 54, 0.6)',
+                  },
+                  {
+                    label: 'Pharmaceuticals Salary average ',
+                    data: [Math.ceil(props.pharmaAvg)],
+                    backgroundColor: 'rgba(91, 237, 223, 0.6)',
+                  },
+                  {
+                    label: 'Finance and Banking Salary average ',
+                    data: [Math.ceil(props.financeAvg)],
+                    backgroundColor: 'rgba(202, 73, 254, 0.6)',
+                  },
+                  {
+                    label: 'Healthcare Salary average ',
+                    data: [Math.ceil(props.healthAvg)],
+                    backgroundColor: 'rgba(88, 83, 130, 0.6)',
+                  },
+                ],
+              }}
+              options={{
+                plugins: {
+                  title: {
+                    display: true,
+                    text: 'Average salary comparision by industry',
+                    font: {
+                      size: 20, // Customize the font size if desired
+                    },
                   },
                 },
-              },
-            }}
-          />
+              }}
+            />
+          </div>
         </div>
 
         {/* ------ Pie chart -------- */}
@@ -340,85 +378,6 @@ export default function BarGraphI(props: BarGraphProps) {
             />
           </div>
         </div>
-        {/* <div className="bar-chart">
-        <Bar
-          data={{
-            labels: ['Industry salary average'],
-            datasets: [
-              {
-                label: 'Your Salary Becca',
-                data: [props.jobDetailsSalary],
-              },
-              {
-                label: 'Male Average Salary',
-                data: [Math.ceil(props.maleSalAvg)],
-              },
-              {
-                label: 'Female Average Salary',
-                data: [Math.ceil(props.femaleSalAvg)],
-              },
-            ],
-          }}
-          options={{
-            plugins: {
-              title: {
-                display: true,
-                text: 'Senior developers Male vs Female comparision',
-                font: {
-                  size: 20, // Customize the font size if desired
-                },
-              },
-            },
-          }}
-        />
-      </div> */}
-        {/* ------------ just for the pdf images delete late */}
-
-        {/*   <div className="bar-chart">
-          <Bar
-            data={{
-              labels: ['Industry salary average'],
-              datasets: [
-                {
-                  label: 'Food Delivery Salary average ',
-                  data: [Math.ceil(props.leadSDFood)],
-                },
-                {
-                  label: 'Technology Salary average ',
-                  data: [Math.ceil(props.leadSDTech)],
-                },
-                {
-                  label: 'Consulting Salary average ',
-                  data: [Math.ceil(props.leadSDConsult)],
-                },
-                {
-                  label: 'Pharmaceuticals Salary average ',
-                  data: [Math.ceil(props.leadSDPharma)],
-                },
-                {
-                  label: 'Finance and Banking Salary average ',
-                  data: [Math.ceil(props.leadSDFinanace)],
-                },
-                {
-                  label: 'Healthcare Salary average ',
-                  data: [Math.ceil(props.leadSDHealthcare)],
-                },
-              ],
-            }}
-            options={{
-              plugins: {
-                title: {
-                  display: true,
-                  text: 'Lead Full-Stack Developer by Industry',
-                  font: {
-                    size: 22, // Customize the font size if desired
-                  },
-                },
-              },
-            }}
-          />
-        </div>
- */}
       </section>
     </section>
   );

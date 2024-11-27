@@ -26,6 +26,7 @@
     font-weight: 400;
     display: block;
     color: rgb(16, 16, 16);
+    box-shadow: 0;
   }
   .navbar-end-btns {
     display: none;

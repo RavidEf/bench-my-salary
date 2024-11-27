@@ -21,6 +21,7 @@
     "jspdf": "^2.5.2",
     "next": "15.0.0-canary.171",
     "node": "^23.1.0",
+    "openai": "^4.73.1",
     "postgres": "^3.4.5",
     "react": "19.0.0-rc-5d19e1c8-20240923",
     "react-chartjs-2": "^5.2.0",
