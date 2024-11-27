@@ -17,17 +17,13 @@ export default function BarGraphI(props: BarGraphProps) {
     ChartDataLabels,
   );
 
-  /*  console.log('Max market:::', typeof props.maxValueMArket);
-  console.log(
-    'Min market:::',
-    typeof (props.salaryAvgMarket - props.minValueMarket),
-  ); */
-  // const minDifference = props.salaryAvgMarket - props.minValueMArket;
-
   return (
     <section>
       <section className="bar-chart-section">
-        <div style={{ width: '80%', margin: '0 auto' }}>
+        <div
+          className="bar-chart-container-compare"
+          style={{ width: '80%', margin: '0 auto' }}
+        >
           {' '}
           {/* Center the chart on the page */}
           <Bar
@@ -96,7 +92,10 @@ export default function BarGraphI(props: BarGraphProps) {
         <br />
         <br />
 
-        <div style={{ width: '80%', margin: '0 auto' }}>
+        <div
+          className="Line-chart-section"
+          style={{ width: '80%', margin: '0 auto' }}
+        >
           <Line
             data={{
               labels: [
@@ -208,7 +207,7 @@ export default function BarGraphI(props: BarGraphProps) {
         <br />
         <br />
 
-        <div className="bar-chart">
+        <div className="bar-chart-industry">
           <Bar
             data={{
               labels: ['Industry salary average'],
@@ -289,7 +288,7 @@ export default function BarGraphI(props: BarGraphProps) {
                 </li>
               </ul>
               <p>
-                This stark difference highlights the underrepresentation of
+                This strong difference highlights the underrepresentation of
                 women in leadership roles within the software development
                 industry. The data could encourage further discussions on
                 promoting diversity and inclusivity in higher-level technical

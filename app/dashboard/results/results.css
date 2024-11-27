@@ -1,3 +1,27 @@
+@media (max-width: 450px) {
+  .results-page {
+    width: 100%;
+  }
+  .results-header {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  section.bar-chart-section {
+    display: none;
+  }
+}
+
+@media (min-width: 600px) {
+  .mobile-disclaimer {
+    display: none;
+  }
+}
+
+.mobile-disclaimer {
+  justify-content: center;
+  margin: 1rem;
+}
+
 .results-container {
   min-height: 100vh;
 }
@@ -15,7 +39,7 @@
   max-width: 80%;
 }
 
-.bar-chart {
+.bar-chart-industry {
   margin-top: 4rem;
   padding: 4rem;
   display: flex;
