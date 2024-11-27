@@ -54,14 +54,14 @@ export default async function SurveyPage() {
         <section className="survey-page-container-add">
           <div>
             <h1 className="h1-surveypage">Add your salary details</h1>
-            <div className="survey-flex-edit">
-              <div>
+            <div className="survey-flex-add">
+              <div className="survey-image1">
                 <Image src={Programmer1} alt="programmer-image-icon" />
               </div>
               <div className="survey-user-container">
                 <SurveyForm jobUserDetails={jobDetails} />
               </div>
-              <div>
+              <div className="survey-image2">
                 <Image
                   className="pogrammer2-image-survey"
                   src={Programmer2}

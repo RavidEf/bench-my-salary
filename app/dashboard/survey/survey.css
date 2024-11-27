@@ -1,3 +1,49 @@
+@media (max-width: 450px) {
+  .survey-page-container-add {
+    margin-top: 1rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  div.survey-flex-add {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .survey-image1 {
+    display: none;
+  }
+  div.survey-user-container {
+    max-width: 300px;
+  }
+  img.pogrammer2-image-survey {
+    max-width: 300px;
+    display: block;
+  }
+  div.survey-image2 {
+    max-width: 300px;
+  }
+  input.range {
+    width: 90%;
+  }
+  div.survey-flex-edit {
+    width: 100%;
+  }
+  div.survey-user-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+  }
+  .main-form-container {
+    max-width: 300px;
+  }
+  .user-container {
+    margin-top: 1rem;
+  }
+}
+
 .survey-page-container-edit {
   margin-top: 1rem;
   /* Center vertically */
@@ -22,6 +68,14 @@
 }
 
 .survey-flex-edit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 4rem;
+}
+
+.survey-flex-add {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
