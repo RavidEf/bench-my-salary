@@ -1,4 +1,31 @@
 /* Dashboard.css */
+
+@media (max-width: 450px) {
+  .dashboard-page-container {
+    margin-top: 1rem;
+    padding: 0;
+    margin-bottom: 3rem;
+  }
+  .card-layout {
+    width: 100%;
+  }
+  .card-div-container {
+    min-width: 300px;
+    height: 100%;
+  }
+  .card-entry {
+    min-width: 225px;
+  }
+  .user-functionSeniority-dash {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btns-dashboardPage {
+    width: 100%;
+  }
+}
+
 .dashboard-page-container {
   min-height: 100vh;
   padding: 2rem;
