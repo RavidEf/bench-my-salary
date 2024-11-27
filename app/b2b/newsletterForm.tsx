@@ -46,7 +46,7 @@ export default function NewsletterForm() {
             onSubmit={async (event) => await newsletterSubmit(event)}
             className="NL-form"
           >
-            <label htmlFor="email">Enter your Business Emaill Address</label>
+            <label htmlFor="email">Enter your Emaill Address</label>
             <input
               id="email"
               placeholder="tina@meta.io"

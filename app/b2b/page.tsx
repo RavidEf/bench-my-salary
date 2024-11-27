@@ -21,7 +21,7 @@ export default function B2bPage() {
           <h3>
             Get the most up to date Developer Salary Report.
             <br />
-            Backed up by +25,000 developers.
+            Backed up by +8000 developers.
           </h3>
         </div>
         <div className="hero-b2b-image">

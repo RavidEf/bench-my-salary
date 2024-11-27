@@ -393,8 +393,8 @@ export default async function ResultsPage() {
         </div>
       </div>
       <div className="mobile-disclaimer">
-        *In order to view the graphs please use a larger screen, such as laptop
-        or larger monitors.
+        *In order to view the graphs please use a larger screen, such as a
+        desktop computer.
       </div>
       <BarGraphI
         jobDetailsSalary={userDeatail[0]?.salary}
