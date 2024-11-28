@@ -1,8 +1,8 @@
 # Bench My Salary
 
-## This is a full-stack web application using Next.js, Node, Typescript PostgreSQL, and more.
+## This is a full-stack web application built with Next.js, Node, Typescript PostgreSQL, and more.
 
-### This web application is an app that lets developer enter their salary and see some data anaylisys on how their salary entry compares to the rest of the market (fictisious dummy data).
+This web application is an app that lets developer enter their salary and see some data anaylisys on how their salary entry compares to the rest of the market (fictisious dummy data).
 
 ![image](https://github.com/user-attachments/assets/731f3a6d-e2e5-4e44-9a2d-07ece9793b27)
 
@@ -15,3 +15,15 @@ Showcasing how they compare to the market using Chart.js
 
 ![image](https://github.com/user-attachments/assets/44bc2b3f-1d51-4733-a1e9-a5aef4ea7f0e)
 ![image](https://github.com/user-attachments/assets/1ad32005-ba38-43ac-ac6d-d9df00cccbd8)
+
+This project was built by me (Ravid) as part of my final project of the full-stack web development bootcamp.
+I really enjoyed building this project as I like discussing the job market, salaries, recruitings, etc.
+Also I like it when websites show graphs, it is easier to convery a point with graphs.
+
+The project is meant to run on a desktop, although most of the pages are responsive and fit mobile devices, the graph page was tricky therefore that's the only page which is not responsive.
+
+This project is deplyoed to Vercel with a DB.
+
+I have used PostgreSQL to create the DB on my machine and used AI to generate the dummy data so there is enough data to analyze and show in graphs.
+
+I tried to get a good combination of male and female ratio, diferrent seniority levels, diferrent industries, and job fucntions (frontend dev, backend dev, full-stack dev etc...).
