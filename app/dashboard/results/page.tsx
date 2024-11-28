@@ -333,6 +333,7 @@ export default async function ResultsPage() {
   // Calculate differrence of user salary compared to consulting average
   const percentageDifMarketAvg = await percentageDifBySeniorityTitle();
   const percentageDifIndustryAvg = await percentageDifbyindustrySeniority();
+  console.log('percentageDifIndustryAvg:::', percentageDifIndustryAvg);
   /*   let percentageDif = 0;
   if (userDeatail[0] !== undefined) {
     percentageDif = ((userDeatail[0].salary - consultAvg) / consultAvg) * 100;
@@ -382,6 +383,7 @@ export default async function ResultsPage() {
         jobDetailsSalary={userDeatail[0]?.salary}
         jobDetailstitle={userDeatail[0]?.jobFunction}
         jobDetailsLevel={userDeatail[0]?.seniorityLevel}
+        jobDetailsIndustryString={userDeatail[0]?.industryCategory}
         foodDelivery={foodDelivery}
         techAvg={techAvg}
         consultAvg={consultAvg}

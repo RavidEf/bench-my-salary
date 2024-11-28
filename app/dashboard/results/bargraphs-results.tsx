@@ -214,19 +214,15 @@ export default function BarGraphI(props: BarGraphProps) {
                 <div className="title-graph-text-box">
                   <h3>Industry Comparision</h3>
                 </div>
-                <p>
-                  This chart illustrates the gender distribution among software
-                  developers in senior roles, such as Principal and Lead
-                  positions.
-                </p>
+                <p>Your industry {props.jobDetailsIndustryString}</p>
                 <br />
                 The data reveals a significant disparity:
                 <ul>
                   <li>
                     Industry average{' '}
-                    {Number(props.percentageDifIndustryAvg.toFixed(2)) * 100}%
-                    of these roles, represented by the larger blue segment of
-                    the chart.
+                    {Number(props.percentageDifIndustryAvg.toFixed(2))}% of
+                    these roles, represented by the larger blue segment of the
+                    chart.
                   </li>
                   <li>
                     Female developers make up just{' '}
