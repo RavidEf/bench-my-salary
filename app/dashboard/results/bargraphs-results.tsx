@@ -228,6 +228,12 @@ export default function BarGraphI(props: BarGraphProps) {
                     : `lower compared to the
             industry average.`}
                 </p>
+                <br />
+                <p>
+                  This bar graphs illustrates the average salary for the role{' '}
+                  {props.jobDetailsLevel}
+                  {props.jobDetailstitle} across the industries in our database.
+                </p>
               </div>
             </div>
           </div>
