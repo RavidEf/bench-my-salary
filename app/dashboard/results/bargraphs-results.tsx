@@ -50,7 +50,7 @@ export default function BarGraphI(props: BarGraphProps) {
               plugins: {
                 title: {
                   display: true,
-                  text: `${props.jobDetailsLevel} ${props.jobDetailstitle} compared to the market range`,
+                  text: `${props.jobDetailsLevel}${props.jobDetailstitle} compared to the market range`,
                   font: { size: 22 },
                   padding: { top: 20, bottom: 20 },
                 },

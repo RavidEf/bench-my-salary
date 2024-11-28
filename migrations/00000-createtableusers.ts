@@ -2,9 +2,13 @@ import type { Sql } from 'postgres';
 import { z } from 'zod';
 
 export const registerUserSchema = z.object({
-  username: z.string().min(3),
+  username: z.string().min(3, {
+    message: '*Please choose a longer username ',
+  }),
   email: z.string().email().min(5),
-  password: z.string().min(6),
+  password: z.string().min(6, {
+    message: '*Your Password should be at least 6 charachters long. ',
+  }),
 });
 
 export const loginSchema = z.object({
