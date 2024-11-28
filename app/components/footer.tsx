@@ -13,7 +13,7 @@ export default function Footer() {
         <p>
           Bench My Salary GmbH.
           <br />
-          Developer firends since 2024.
+          Developer friendly since 2024.
         </p>
       </aside>
       <nav>

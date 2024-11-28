@@ -243,32 +243,34 @@ export default function BarGraphI(props: BarGraphProps) {
                   },
                   {
                     label: 'Food Delivery Salary average ',
-                    data: [Math.ceil(props.foodDelivery)],
+                    data: [
+                      props.foodDelivery ? Math.ceil(props.foodDelivery) : 0,
+                    ],
                     backgroundColor: 'rgba(244, 172, 38, 0.6)',
                   },
                   {
                     label: 'Technology Salary average ',
-                    data: [Math.ceil(props.techAvg)],
+                    data: [props.techAvg ? Math.ceil(props.techAvg) : 0],
                     backgroundColor: 'rgba(216, 241, 29, 0.6)',
                   },
                   {
                     label: 'Consulting Salary average ',
-                    data: [Math.ceil(props.consultAvg)],
+                    data: [props.consultAvg ? Math.ceil(props.consultAvg) : 0],
                     backgroundColor: 'rgba(128, 237, 54, 0.6)',
                   },
                   {
                     label: 'Pharmaceuticals Salary average ',
-                    data: [Math.ceil(props.pharmaAvg)],
+                    data: [props.pharmaAvg ? Math.ceil(props.pharmaAvg) : 0],
                     backgroundColor: 'rgba(91, 237, 223, 0.6)',
                   },
                   {
                     label: 'Finance and Banking Salary average ',
-                    data: [Math.ceil(props.financeAvg)],
+                    data: [props.financeAvg ? Math.ceil(props.financeAvg) : 0],
                     backgroundColor: 'rgba(202, 73, 254, 0.6)',
                   },
                   {
                     label: 'Healthcare Salary average ',
-                    data: [Math.ceil(props.healthAvg)],
+                    data: [props.healthAvg ? Math.ceil(props.healthAvg) : 0],
                     backgroundColor: 'rgba(88, 83, 130, 0.6)',
                   },
                 ],
