@@ -1,8 +1,8 @@
-Welcome to the Bench My Salary project. 
+#Welcome to the Bench My Salary project.
 
-This is a full-stack web application using Next.js, Node, Typescript PostgreSQL, and more. 
+###This is a full-stack web application using Next.js, Node, Typescript PostgreSQL, and more.
 
-The website is deployed on Vercel. 
+The website is deployed on Vercel.
 
 ![image](https://github.com/user-attachments/assets/731f3a6d-e2e5-4e44-9a2d-07ece9793b27)
 
@@ -15,6 +15,3 @@ Showcasing how they compare to the market using Chart.js
 
 ![image](https://github.com/user-attachments/assets/44bc2b3f-1d51-4733-a1e9-a5aef4ea7f0e)
 ![image](https://github.com/user-attachments/assets/1ad32005-ba38-43ac-ac6d-d9df00cccbd8)
-
-
-
