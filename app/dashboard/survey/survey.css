@@ -13,9 +13,7 @@
   .survey-image1 {
     display: none;
   }
-  div.survey-user-container {
-    max-width: 300px;
-  }
+
   img.pogrammer2-image-survey {
     max-width: 300px;
     display: block;
@@ -89,6 +87,7 @@
   justify-content: space-between; /* Spread items horizontally with space */
   align-items: center; /* Vertically center both items */
   margin-bottom: 4rem;
+  gap: 3.5rem;
 }
 
 .main-form-container {

@@ -214,28 +214,19 @@ export default function BarGraphI(props: BarGraphProps) {
                 <div className="title-graph-text-box">
                   <h3>Industry Comparision</h3>
                 </div>
-                <p>Your industry {props.jobDetailsIndustryString}</p>
-                <br />
-                The data reveals a significant disparity:
-                <ul>
-                  <li>
-                    Industry average{' '}
-                    {Number(props.percentageDifIndustryAvg.toFixed(2))}% of
-                    these roles, represented by the larger blue segment of the
-                    chart.
-                  </li>
-                  <li>
-                    Female developers make up just{' '}
-                    {Number(props.ratioFemGender.toFixed(2)) * 100}%, as shown
-                    in the smaller pink segment.
-                  </li>
-                </ul>
                 <p>
-                  This strong difference highlights the underrepresentation of
-                  women in leadership roles within the software development
-                  industry. The data could encourage further discussions on
-                  promoting diversity and inclusivity in higher-level technical
-                  positions.
+                  How is your salary compared to the same job function and
+                  seniority when it comes to the <b>industry</b>?
+                  <br />
+                  Your industry is <b> {props.jobDetailsIndustryString}</b>,
+                  according to the market average for this industry, you are
+                  paid{' '}
+                  <b> {Number(props.percentageDifIndustryAvg.toFixed(2))}%</b>{' '}
+                  {props.percentageDifIndustryAvg > 0
+                    ? `higher compared to the
+            industry average. Nice!`
+                    : `lower compared to the
+            industry average.`}
                 </p>
               </div>
             </div>
