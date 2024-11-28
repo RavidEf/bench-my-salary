@@ -1,6 +1,6 @@
-#Welcome to the Bench My Salary project.
+# Welcome to the Bench My Salary project.
 
-###This is a full-stack web application using Next.js, Node, Typescript PostgreSQL, and more.
+### This is a full-stack web application using Next.js, Node, Typescript PostgreSQL, and more.
 
 The website is deployed on Vercel.
 
