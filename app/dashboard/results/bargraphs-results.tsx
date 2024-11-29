@@ -285,7 +285,7 @@ export default function BarGraphI(props: BarGraphProps) {
                 plugins: {
                   title: {
                     display: true,
-                    text: 'Average salary comparision by industry',
+                    text: 'Average salary comparison by industry',
                     font: {
                       size: 20, // Customize the font size if desired
                     },
