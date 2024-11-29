@@ -212,7 +212,7 @@ export default function BarGraphI(props: BarGraphProps) {
             <div className="industry-text-box">
               <div>
                 <div className="title-graph-text-box">
-                  <h3>Industry Comparision</h3>
+                  <h3>Industry Comparison</h3>
                 </div>
                 <p>
                   How is your salary compared to the same job function and

@@ -345,7 +345,7 @@ export default async function ResultsPage() {
     <section className="results-container">
       <div className="results-header">
         <div>
-          <h1 className="results-h1">Salary Comparision</h1>
+          <h1 className="results-h1">Salary Comparison</h1>
         </div>
         <br />
         <br />

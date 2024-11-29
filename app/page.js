@@ -286,7 +286,7 @@ export default function Home() {
             “With Bench My Salary I found out I should be better compensated,
             since the market is paying a lot more than my current position.{' '}
             <br />
-            After negotiation based on the salary benchmark comparision, I
+            After negotiation based on the salary benchmark comparison, I
             received a significant salary raise.”
           </div>
           <div className="testemo-person-image">

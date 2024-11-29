@@ -89,7 +89,7 @@ export default async function DashboardPage() {
                   </div>
                   <div className="user-yrs-dash">
                     {' '}
-                    Years of expeirnce:{' '}
+                    Years of experience:{' '}
                     <b>{jobDetails[0]?.yearsOfExperience}</b>
                   </div>
                   <div className="btns-dashboardPage">

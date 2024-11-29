@@ -43,7 +43,7 @@ export default function UserContainer(props: {
       </div>
       <div className="user-yrs">
         {' '}
-        Years of expeirnce: <b>{props.jobUserDetails[0]?.yearsOfExperience}</b>
+        Years of experience: <b>{props.jobUserDetails[0]?.yearsOfExperience}</b>
       </div>
     </div>
   );
