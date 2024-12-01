@@ -29,3 +29,4 @@ I have used PostgreSQL to create the DB on my machine and used AI to generate th
 I tried to get a good combination of male and female ratios, different seniority levels, different industries, and job functions (frontend dev, backend dev, full-stack dev, etc...).
 
 My next step is to try to implemnt a chatbot.
+#a chatbot using OpenAi API.
