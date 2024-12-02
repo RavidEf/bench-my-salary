@@ -4,6 +4,19 @@
   bottom: 3%;
   right: 3%;
 }
+
+@media (max-width: 450px) {
+  .chat-container {
+    width: 95%;
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+  }
+  .response-container {
+    height: 60vh;
+  }
+}
+
 .headline-chat {
   background-color: #9c6afb;
   height: 50px;
