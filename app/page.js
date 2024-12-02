@@ -4,7 +4,6 @@ import FemaleDev from '../public/images/female-dev-headshot.jpg';
 import MaleDev from '../public/images/male-dev-headshot.jpg';
 import CarouselCompanies from './components/carousel';
 import { handelClickToLogin } from './components/navigationlogin';
-import ChartSVG from './components/svgtest';
 
 export default function Home() {
   return (

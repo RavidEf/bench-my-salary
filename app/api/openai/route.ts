@@ -42,7 +42,6 @@ export async function POST(req: Request): Promise<NextResponse<OpenAiType>> {
 
       for await (const chunk of response) {
         const content = chunk.choices[0]?.delta?.content || '';
-        console.log('Chunk content:::', content);
 
         controller.enqueue(textEncoder.encode(content));
       }
