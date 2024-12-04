@@ -48,7 +48,7 @@
 }
 .response-container {
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 370px;
   padding: 15px;
 }
@@ -85,6 +85,14 @@
   align-items: flex-end;
   gap: 5px;
 }
+
+/* .msg-left span,
+.msg-right span {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+} */
 
 .msg-right span {
   display: inline-block;

@@ -25,18 +25,22 @@ export default function Chat() {
     e.preventDefault();
     if (!input.trim()) return;
 
-    const newMessages = [
-      ...messages,
-      {
-        id: Date.now(),
-        role: 'user',
-        content: input,
-      },
-      { id: Date.now() + 1, role: 'assistant', content: '' },
-    ];
-    setMessages(newMessages);
-    setInput('');
-    setIsLoading(true);
+    // **1. User and Assistant Placeholder Initialization**
+    const userMessage = {
+      id: Date.now(), // Generate a unique ID for the user message
+      role: 'user',
+      content: input,
+    };
+
+    const assistantPlaceholder = {
+      id: Date.now() + 1, // Generate a unique ID for the assistant placeholder
+      role: 'assistant',
+      content: '', // Placeholder for streaming response
+    };
+    const newMessages = [...messages, userMessage, assistantPlaceholder];
+    setMessages(newMessages); // Add both messages to the state
+    setInput(''); // Clear the input field
+    setIsLoading(true); // Set loading state to true
 
     // Fetch streaming response
     const response = await fetch('/api/openai', {
@@ -52,12 +56,15 @@ export default function Chat() {
     while (true) {
       const { value, done } = await reader.read();
       if (done) break;
-      responseContent += textDecoder.decode(value);
+
+      const chunk = textDecoder.decode(value, { stream: true });
+      responseContent += chunk;
+      console.log('responseContent::', responseContent);
       // eslint-disable-next-line no-loop-func
       setMessages((prev) =>
         prev.map(
           (msg) =>
-            msg.role === 'assistant' && msg.content === '' // Identify the placeholder
+            msg.id === assistantPlaceholder.id // Identify the placeholder
               ? { ...msg, content: responseContent } // Update content
               : msg, // Leave other messages untouched
         ),
