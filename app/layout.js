@@ -1,4 +1,5 @@
 import './globals.css';
+import { Analytics } from '@vercel/analytics/react';
 import localFont from 'next/font/local';
 // import { cookies } from 'next/headers';
 // import { getUser } from '../database/users';
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
       >
         <Header />
         {children}
+        <Analytics />
         <Footer />
       </body>
     </html>
