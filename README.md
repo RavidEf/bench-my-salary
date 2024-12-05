@@ -28,5 +28,10 @@ I have used PostgreSQL to create the DB on my machine and used AI to generate th
 
 I tried to get a good combination of male and female ratios, different seniority levels, different industries, and job functions (frontend dev, backend dev, full-stack dev, etc...).
 
-My next step is to try to implemnt a chatbot.
-#a chatbot using OpenAi API.
+I implemnted an AI chat bot with an API integration to openAI.
+
+### AI chat bot
+
+The chat bot is acting as a developer advisor for developers on things like salary negotiations and best practices to find a job as a developer.
+I had fun implemnting it, you can only see it on the Results page, so you need to be a logged in user.
+I also limited the tokens returned.
